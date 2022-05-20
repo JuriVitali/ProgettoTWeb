@@ -19,7 +19,7 @@ class CreateProposalsTable extends Migration
             $table->unsignedBigInteger('mittente');
             $table->foreign('mittente')->references('id')->on('users');
             $table->unsignedBigInteger('alloggio')->index();
-            $table->foreign('alloggio')->references('id')->on('accomodations');
+            $table->foreign('alloggio')->references('id')->on('accomodations')->onDelete('cascade');
             $table->string('stato', 15);
             $table->text('testo');
             $table->data('data');
