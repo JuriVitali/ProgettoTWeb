@@ -15,7 +15,6 @@ class CreateAccomodationsTable extends Migration
     {
         Schema::create('accomodations', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
-            $table->primary('id');
             $table->unsignedBigInteger('proprietario')->index();
             $table->foreign('proprietario')->references('id')->on('users');
             $table->string('titolo_annuncio', 30);

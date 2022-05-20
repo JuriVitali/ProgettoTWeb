@@ -15,14 +15,13 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
-            $table->primary('id');
-            $table->unsignedBigInteger('alloggio');
-            $table->foreign('alloggio')->references('id')->on('accomodations')->onDelete('set null');
+            $table->unsignedBigInteger('alloggio')->nullable();
             $table->unsignedBigInteger('locatore');
-            $table->foreign('locatore')->references('id')->on('users');
             $table->unsignedBigInteger('locatario');
+            $table->date('data');
             $table->foreign('locatario')->references('id')->on('users');
-            $table->data('data');
+            $table->foreign('locatore')->references('id')->on('users');
+            $table->foreign('alloggio')->references('id')->on('accomodations')->onDelete('set null');
         });
     }
 

@@ -15,7 +15,6 @@ class CreateFaqsTable extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->unsignedSmallInteger('id', true);
-            $table->primary('id');
             $table->string('domanda', 40);
             $table->text('risposta');
         });

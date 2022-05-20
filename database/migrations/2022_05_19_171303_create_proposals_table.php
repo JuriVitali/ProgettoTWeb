@@ -15,14 +15,13 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
-            $table->primary('id');
             $table->unsignedBigInteger('mittente');
             $table->foreign('mittente')->references('id')->on('users');
             $table->unsignedBigInteger('alloggio')->index();
             $table->foreign('alloggio')->references('id')->on('accomodations')->onDelete('cascade');
             $table->string('stato', 15);
             $table->text('testo');
-            $table->data('data');
+            $table->date('data');
             $table->time('ora');
         });
     }

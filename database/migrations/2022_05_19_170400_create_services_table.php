@@ -14,8 +14,7 @@ class CreateServicesTable extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->unsignedTinyInteger('id');
-            $table->primary('id');
+            $table->unsignedTinyInteger('id', true);
             $table->string('descrizione', 25);
         });
     }

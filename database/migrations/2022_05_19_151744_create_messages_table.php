@@ -15,12 +15,11 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
-            $table->primary('id');
             $table->unsignedBigInteger('mittente')->index();
             $table->unsignedBigInteger('destinatario')->index();
             $table->boolean('letto');
             $table->text('testo');
-            $table->data('data');
+            $table->date('data');
             $table->time('ora');
         });
     }
