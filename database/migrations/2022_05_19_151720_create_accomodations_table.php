@@ -17,6 +17,7 @@ class CreateAccomodationsTable extends Migration
             $table->unsignedBigInteger('id', true);
             $table->primary('id');
             $table->unsignedBigInteger('proprietario')->index();
+            $table->foreign('proprietario')->references('id')->on('users');
             $table->string('titolo_annuncio', 30);
             $table->string('tipologia', 15);
             $table->date('inizio_disponibilita');

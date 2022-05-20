@@ -18,6 +18,7 @@ class CreatePhotosTable extends Migration
             $table->primary('id');
             $table->string('nome');
             $table->unsignedBigInteger('alloggio')->index();
+            $table->foreign('alloggio')->references('id')->on('accomodations');
         });
     }
 

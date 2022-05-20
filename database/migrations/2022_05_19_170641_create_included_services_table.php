@@ -15,7 +15,9 @@ class CreateIncludedServicesTable extends Migration
     {
         Schema::create('included_services', function (Blueprint $table) {
             $table->unsignedTinyInteger('servizio');
+            $table->foreign('servizio')->references('id')->on('services');
             $table->unsignedBigInteger('alloggio');
+            $table->foreign('alloggio')->references('id')->on('accomodations');
         });
     }
 

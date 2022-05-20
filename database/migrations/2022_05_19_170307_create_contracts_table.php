@@ -17,8 +17,11 @@ class CreateContractsTable extends Migration
             $table->unsignedBigInteger('id', true);
             $table->primary('id');
             $table->unsignedBigInteger('alloggio');
+            $table->foreign('alloggio')->references('id')->on('accomodations');
             $table->unsignedBigInteger('locatore');
+            $table->foreign('locatore')->references('id')->on('users');
             $table->unsignedBigInteger('locatario');
+            $table->foreign('locatario')->references('id')->on('users');
             $table->data('data');
         });
     }
