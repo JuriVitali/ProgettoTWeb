@@ -21,7 +21,7 @@ class CreateContractsTable extends Migration
             $table->date('data');
             $table->foreign('locatario')->references('id')->on('users');
             $table->foreign('locatore')->references('id')->on('users');
-            $table->foreign('alloggio')->references('id')->on('accomodations')->onDelete('set null');
+            $table->foreign('alloggio')->references('id')->on('accommodations')->onDelete('set null');
         });
     }
 

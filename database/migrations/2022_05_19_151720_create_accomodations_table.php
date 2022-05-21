@@ -13,7 +13,7 @@ class CreateAccomodationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accomodations', function (Blueprint $table) {
+        Schema::create('accommodations', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
             $table->unsignedBigInteger('proprietario')->index();
             $table->foreign('proprietario')->references('id')->on('users');

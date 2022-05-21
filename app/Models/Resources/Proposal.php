@@ -14,4 +14,10 @@ class Proposal extends Model
     {
         return $this->belongsTo(User::class, 'mittente', 'id');
     }
+    
+     // Relazione one-to-many con Accommodation
+    public function alloggio()
+    {
+        return $this->belongsTo(Accommodation::class, 'alloggio', 'id');
+    }
 }

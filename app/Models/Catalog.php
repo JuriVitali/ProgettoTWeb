@@ -2,33 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\Resources\Category;
-use App\Models\Resources\Product;
+use App\Models\Resources\Accomodation;
+
 
 class Catalog {
 
-    public function getTopCats() {
-        return Category::where('parId', 0)->get();
+    //Ritorna tutti gli alloggi paginati in pagine da 6
+    public function getAll(){
+        $accomodations = Accomodation::all();
+        return $accomodations->paginate(6);
     }
-
-    public function getCatsByParId($topId) {
-        return Category::whereIn('parId', $topId)->get();
-    }
-
-    // Estrae i prodotti della categoria/e $catId (tutti o solo quelli in sconto), eventualmente ordinati
-    public function getProdsByCat($catId, $paged = 1, $order = null, $discounted = false) {
-
-        $prods = Product::whereIn('catId', $catId)
-                ->orWhereHas('prodCat', function ($query) use ($catId) {
-                        $query->whereIn('parId', $catId);
-        });
-        if ($discounted) {
-            $prods = $prods->where('discounted', true);
-        }
-        if (!is_null($order)) {
-            $prods = $prods->orderBy('discountPerc', $order);
-        }
-        return $prods->paginate($paged);
+    
+    //Ritorna gli alloggi che soddisfano il filtro inserito paginati in pagine da 6
+    public function getFiltered($filter){
+        
     }
 
 }
