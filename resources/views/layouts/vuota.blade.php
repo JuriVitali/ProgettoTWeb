@@ -14,9 +14,11 @@
                         <h1><a href="{{ route('home') }}">TrovAffitto</a></h1>
                     </div>
                     <nav id="mainav" class="fl_right"> 
-                        @include('layouts/_navbarpubbl')
+                        @include('layouts/_navbar')
                     </nav>
                 </header>
+                
+                <br>
 
 
       
@@ -25,7 +27,7 @@
             <main class="hoc container clear"> 
                 <!-- main body -->
                 <section id="introblocks">
-                    @yield('log_reg')
+                    @yield('content')
                 </section>
                 <!-- / main body -->
                 <div class="clear"></div>

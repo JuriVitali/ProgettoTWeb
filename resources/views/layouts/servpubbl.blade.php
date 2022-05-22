@@ -14,7 +14,7 @@
                         <h1><a href="{{ route('home') }}">TrovAffitto</a></h1>
                     </div>
                     <nav id="mainav" class="fl_right"> 
-                        @include('layouts/_navbarpubbl')
+                        @include('layouts/_navbar')
                     </nav>
                 </header>
             </div>

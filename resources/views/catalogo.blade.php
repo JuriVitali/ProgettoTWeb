@@ -1,4 +1,4 @@
-@extends('layouts.servizio')
+@extends('layouts.servpubbl')
 
 @section('title', 'Catalogo')
 
@@ -39,7 +39,7 @@
                                 di spese condominiali con riscaldamento centralizzato incluso.
                                 </p>
                             <br>
-                            <a class="btn" href="#" >Maggiori Informazioni</a>
+                            <a class="btn" href="{{ route('infoalloggio') }}" >Maggiori Informazioni</a>
                         </article>
                     </li>
                 </ul>

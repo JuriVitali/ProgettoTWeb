@@ -50,6 +50,12 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::view('/catalogo', 'catalogo')
         ->name('catalogo');
 
+Route::view('catalogo/infoalloggio', 'infoalloggio')
+        ->name('infoalloggio');
+
+/*Route::get('/catalogo/alloggi{alloggioId}', '')
+        ->name('alloggio');*/
+
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
 

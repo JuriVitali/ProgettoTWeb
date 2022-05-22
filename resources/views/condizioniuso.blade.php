@@ -1,4 +1,4 @@
-@extends('layouts.servizio')
+@extends('layouts.servpubbl')
 
 @section('title', 'Condizioni Uso')
 
