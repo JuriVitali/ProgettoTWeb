@@ -41,8 +41,10 @@ a{outline:none; text-decoration:none;}
 .fl_right, .imgr{float:right;}
 
 img{width:auto; max-width:100%; height:auto; margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
-.imgl{margin:0 15px 10px 0; clear:left;}
-.imgr{margin:0 0 10px 15px; clear:right;}
+.imgl{margin-right: 10px; clear:left;}
+.imgr{margin-left: 10px; clear:right;}
+.imgservicel{float:left;height:200px; width:200px; margin-right: 20px;}
+.imgservicer{float:right;height:200px; width:200px; margin-left: 20px;}
 .imgover{display:inline-block; position:relative; max-width:100%;}
 .imgover::before, .imgover::after{display:block; position:absolute; content:""; text-align:center; opacity:0;}
 .imgover::before{top:0; right:0; bottom:0; left:0;}
@@ -53,7 +55,7 @@ img{width:auto; max-width:100%; height:auto; margin:0; padding:0; border:none; l
 /* Fonts
 --------------------------------------------------------------------------------------------------------------- */
 body, input, textarea, select{font-family:Verdana, Geneva, sans-serif;}
-h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, "Times New Roman", Times, serif;}
+h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, "Bierstadt Display", Times, serif;}
 
 
 /* Forms

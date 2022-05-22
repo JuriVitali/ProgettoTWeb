@@ -3,7 +3,7 @@
     <li class="one_third first">
         <figure><a class="imgover" href="{{ route('login') }}"><img src="images/servizi/Registrati.png" alt=""></a>
             <figcaption>
-                <h6 class="heading">Sei già registrato a TrovAffitto?</h6>
+                <h4 class="heading">Sei già registrato a TrovAffitto?</h4>
                 <div>
                     <p>Accedi per usufruire delle funzionalità e tutti i vantaggi che offre il sito.</p>
                 </div>
