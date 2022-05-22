@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder {
 
 
         DB::table('users')->insert([
-            ['username' => 'tariotario', 'password' => 'tariotario','ruolo' => 'locatario', 'nome' => 'Giorgio', 'cognome' => 'Verdi',
+            ['username' => 'tariotario', 'password' => Hash::make('tariotario'),'role' => 'locatario', 'nome' => 'Giorgio', 'cognome' => 'Verdi',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")],
-            ['username' => 'localoca', 'password' => 'localoca','ruolo' => 'locatore', 'nome' => 'Mario', 'cognome' => 'Rossi',
+            ['username' => 'localoca', 'password' => Hash::make('localoca'),'role' => 'locatore', 'nome' => 'Mario', 'cognome' => 'Rossi',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")],
-            ['username' => 'adminadmin', 'password' => 'adminadmin','ruolo' => 'admin', 'nome' => 'Admin', 'cognome' => 'Admin',
+            ['username' => 'adminadmin', 'password' => Hash::make('adminadmin'),'role' => 'admin', 'nome' => 'Admin', 'cognome' => 'Admin',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")]
         ]);
     }

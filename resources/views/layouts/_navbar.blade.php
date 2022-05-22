@@ -9,36 +9,26 @@
     @endguest
     
     @can('isLocatore')
-        <li><a href="{{ route('proposte') }}" title="Visualizza le proposte">Proposte</a></li>
-        <li><a href="{{ route('messaggi') }}" title="Visualizza i messaggi">Messaggi</a></li>
-        <li><a href="{{ route('profilo') }}" title="Visualizza il tuo profilo">Profilo</a></li>
-        @auth
-            <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
-        @endauth 
+        <li><a href="{{ route('home') }}" title="Visualizza le proposte">Proposte</a></li>
+        <li><a href="{{ route('home') }}" title="Visualizza i messaggi">Messaggi</a></li>
+        <li><a href="{{ route('home') }}" title="Visualizza il tuo profilo">Profilo</a></li>
+        
     @endcan
     
     @can('isLocatario')
-        <li><a href="{{ route('proposte') }}" title="Visualizza le proposte">Proposte</a></li>
-        <li><a href="{{ route('messaggi') }}" title="Visualizza i messaggi">Messaggi</a></li>
-        <li><a href="{{ route('profilo') }}" title="Visualizza il tuo profilo">Profilo</a></li>
-        @auth
-            <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
-        @endauth 
+        <li><a href="{{ route('home') }}" title="Visualizza le proposte">Proposte</a></li>
+        <li><a href="{{ route('home') }}" title="Visualizza i messaggi">Messaggi</a></li>
+        <li><a href="{{ route('home') }}" title="Visualizza il tuo profilo">Profilo</a></li>      
     @endcan
     
     @can('isAdmin')
-        @auth
-            <li><a href="" title="">Amministratore</a></li>
+        <li><a href="" title="">Amministratore</a></li>
+    @endcan
+    
+    @auth  
             <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
             </form>
-        @endauth  
-    @endcan
+    @endauth 
 </ul>
