@@ -27,7 +27,7 @@
             <div class="one_half first">
                 <!-- Slide container -->
                 <div class="slideshow-container">
-                    <img src="images/servizi/Monolocale_rossi.webp" style="width:550px; height: 350px;">
+                    <img src= " {{asset($accommodation->image)}} " style="width:550px; height: 350px;">
                 </div>
                 
             <!-- Porzione delle info dell'alloggio -->

@@ -61,7 +61,7 @@ Route::view('catalogo/infoalloggio_1', 'infoalloggio_1')
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
 
-Route::view('/', 'home')
+Route::get('/', 'PublicController@showCatalog')
         ->name('home');
 
 Route::view('/condizioniuso', 'condizioniuso')
