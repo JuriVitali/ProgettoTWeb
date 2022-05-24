@@ -52,6 +52,8 @@ Route::view('/catalogo', 'catalogo')
 
 Route::view('catalogo/infoalloggio', 'infoalloggio')
         ->name('infoalloggio');
+Route::view('catalogo/infoalloggio_1', 'infoalloggio_1')
+        ->name('infoalloggio_1');
 
 /*Route::get('/catalogo/alloggi{alloggioId}', '')
         ->name('alloggio');*/

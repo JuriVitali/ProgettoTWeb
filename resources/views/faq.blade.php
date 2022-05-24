@@ -8,7 +8,7 @@
 </article>
 <ul>
     <li><a href="{{ route('home') }}">Home</a></li>
-    <li><a href="#">Chi siamo</a></li>
+    <li><a href="#">Faq</a></li>
 </ul>
 @endsection
 

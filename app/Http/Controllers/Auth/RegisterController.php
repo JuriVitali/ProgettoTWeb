@@ -51,10 +51,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'min:8', 'unique:users'],
+            'name' => ['required', 'string', 'max:30'],
+            'surname' => ['required', 'string', 'max:30'],
+            'data_nascita' => ['required', 'date'],
+            'genere' => ['required', 'string', 'max:1'],
+            'citta' => ['required', 'string', 'max:30'],
+            'provincia' => ['required', 'string','min:2', 'max:2'],
+            'indirizzo' => ['required', 'string', 'max:40'],
+            'image' => ['string','unique:users'],
+            'role' => ['required', 'string', 'max:10'],
+            'username' => ['required', 'string', 'min:8', 'max:20', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -70,7 +76,13 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
-            'email' => $data['email'],
+            'data_nascita' => $data['data_nascita'],
+            'genere' => $data['genere'],
+            'citta' => $data['citta'],
+            'provincia' => $data['provincia'],
+            'indirizzo' => $data['indirizzo'],
+            'image' => $data['image'],
+            'role' => $data['role'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);

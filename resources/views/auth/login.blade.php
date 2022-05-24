@@ -47,4 +47,6 @@
     </div>
 
 </div>
+
+<div style="padding-bottom: 120px"></div>    
 @endsection

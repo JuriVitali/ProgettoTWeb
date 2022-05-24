@@ -4,6 +4,7 @@
        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="{{ asset('css/layout_base.css') }}"  rel="stylesheet" type="text/css" media="all">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <title>ProgettoTweb | @yield('title', '')</title>
     </head>
     <body id="top" style="background: #ffffff; color: #000000">
@@ -35,46 +36,8 @@
         <!-- Founders -->
         @yield('founders')
 
-
-        <div class="bgded overlay row4" >
-            <footer id="footer" class="hoc clear"> 
-                <div class="one_quarter first">
-                    <h6 class="heading">Contatti</h6>
-                    <ul class="nospace linklist">
-                        <li>Telefono &nbsp 071 8547145</li>
-                        <li>Email &nbsp TrovAffito@gmail.com</li>
-
-                    </ul>
-                </div>
-                <div class="one_quarter">
-                    <h6 class="heading"><a href="../TrovAffitto/pagine/condizioniuso.html">Regolamento generale d'uso</a></h6>
-                    <ul class="nospace linklist">
-                        <li>.............</li>
-                        <li>.............</li>
-                    </ul>
-                </div>
-                <div class="one_quarter">
-                    <h6 class="heading">Localizzazione</h6>
-                    <ul class="nospace linklist">
-                        <li>.............</li>
-                        <li>.............</li>
-                    </ul>
-                </div>
-                <div class="one_quarter">
-                    <h6 class="heading">Social</h6>
-                    <ul class="nospace clear latestimg">
-                        <li><a class="imgover" href="#"><img src="../TrovAffitto/images/demo/100x100.png" alt=""></a></li>
-                    </ul>
-                </div>
-
-            </footer>
-        </div>
-
-        <div class="wrapper row5">
-            <div id="copyright" class="hoc clear"> 
-                <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved </p>
-            </div>
-        </div>
+        <!-- Footer -->
+        @include('layouts/footer')
 
         <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
         <!-- JAVASCRIPTS -->
