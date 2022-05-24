@@ -1,33 +1,49 @@
 @if ($paginator->lastPage() != 1)
-<div id="pagination">
-    {{ $paginator->firstItem() }} - {{ $paginator->lastItem() }} di {{ $paginator->total() }} ---
+<nav class="pagination" id="pagination">
 
     <!-- Link alla prima pagina -->
     @if (!$paginator->onFirstPage())
-        <a href="{{ $paginator->url(1) }}">Inizio</a> |
+        <li>
+            <a href="{{ $paginator->url(1) }}">Inizio</a> 
+        </li>
     @else
-        Inizio |
+        <li>
+            Inizio 
+        </li>
     @endif
 
     <!-- Link alla pagina precedente -->
     @if ($paginator->currentPage() != 1)
-        <a href="{{ $paginator->previousPageUrl() }}">&lt; Precedente</a> |
+        <li>
+            <a href="{{ $paginator->previousPageUrl() }}">« Precedente</a> 
+        </li>
     @else
-        &lt; Precedente |
+        <li>
+            « Precedente 
+        </li>
     @endif
 
     <!-- Link alla pagina successiva -->
     @if ($paginator->hasMorePages())
-        <a href="{{ $paginator->nextPageUrl() }}">Successivo &gt;</a> |
+        <li>
+            <a href="{{ $paginator->nextPageUrl() }}">Successivo &gt;</a> 
+        </li>
     @else
-        Successivo &gt; |
+        <li>
+            Successivo &gt; 
+        </li>
     @endif
 
     <!-- Link all'ultima pagina -->
     @if ($paginator->hasMorePages())
-        <a href="{{ $paginator->url($paginator->lastPage()) }}">Fine</a>
+        <li>
+            <a href="{{ $paginator->url($paginator->lastPage()) }}">Fine</a>
+        </li>
     @else
-        Fine
+        <li>
+            Fine
+        </li>
     @endif
-</div>
+    
+</nav>
 @endif

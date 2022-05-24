@@ -47,7 +47,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::view('/catalogo', 'catalogo')
+Route::get('/catalogo', 'PublicController@showCatalog')
         ->name('catalogo');
 
 Route::view('catalogo/infoalloggio', 'infoalloggio')
@@ -61,7 +61,7 @@ Route::view('catalogo/infoalloggio_1', 'infoalloggio_1')
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
 
-Route::view('/', 'home')
+Route::get('/', 'PublicController@showCatalog')
         ->name('home');
 
 Route::view('/condizioniuso', 'condizioniuso')

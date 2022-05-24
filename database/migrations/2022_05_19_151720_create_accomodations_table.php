@@ -17,7 +17,7 @@ class CreateAccomodationsTable extends Migration
             $table->unsignedBigInteger('id', true);
             $table->unsignedBigInteger('proprietario')->index();
             $table->foreign('proprietario')->references('id')->on('users');
-            $table->string('titolo_annuncio', 30);
+            $table->string('titolo_annuncio', 60);
             $table->string('tipologia', 15);
             $table->date('inizio_disponibilita');
             $table->date('fine_disponibilita');
@@ -28,7 +28,6 @@ class CreateAccomodationsTable extends Migration
             $table->string('provincia', 2);
             $table->string('indirizzo', 40);
             $table->unsignedSmallInteger('superficie_tot');
-            $table->unsignedTinyInteger('posti_letto')->nullable();
             $table->unsignedTinyInteger('n_camere')->nullable();
             $table->boolean('locale_ricreativo')->default(false)->nullable();
             $table->boolean('cucina')->default(false)->nullable();
@@ -39,6 +38,7 @@ class CreateAccomodationsTable extends Migration
             $table->char('genere_locatario')->nullable();
             $table->unsignedTinyInteger('eta_min_locatario')->nullable();
             $table->unsignedTinyInteger('eta_max_locatario')->nullable();
+            $table->string('foto')->nullable();
         });
     }
 

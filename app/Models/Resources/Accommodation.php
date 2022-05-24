@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Accommodation extends Model
-{
+{   
     protected $guarded = ['id'];
     public $timestamps = false;
     
@@ -19,12 +19,6 @@ class Accommodation extends Model
     public function proposte()
     {
         return $this->hasMany(Proposal::class, 'alloggio', 'id');
-    }
-    
-    //Relazione one-to-many con Photo
-    public function foto()
-    {
-        return $this->hasMany(Photo::class, 'alloggio', 'id');
     }
     
     //Relazione one-to-many con Inclded_service
