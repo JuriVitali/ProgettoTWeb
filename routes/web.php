@@ -61,14 +61,17 @@ Route::view('catalogo/infoalloggio_1', 'infoalloggio_1')
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
 
-Route::get('/', 'home')
+Route::view('/', 'home')
         ->name('home');
 
 Route::view('/condizioniuso', 'condizioniuso')
         ->name('condizioniuso');
 
-Route::view('/faq', 'faq')
+Route::get('/faq', 'PublicController@showFaqs')
         ->name('faq');
+
+Route::view('/profilo', 'profilo')
+        ->name('profilo');
 
 // Rotte inserite dal comando artisan "ui vue --auth" 
 // Auth::routes();

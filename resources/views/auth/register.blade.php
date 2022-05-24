@@ -118,6 +118,7 @@
                 @endif
             </div>
             
+            <!-- 
             <div  class="wrap-input  rs1-wrap-input" >
                 <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                     {{ Form::label('image', 'Immagine Profilo ', ['class' => 'label-input']) }} &nbsp &nbsp
@@ -131,6 +132,8 @@
                 </ul>
                 @endif
             </div>
+            -->
+            
             
             <div  class="wrap-input">
                 <p style="display: inline-flex; margin-block-start: 0em;align-items: center;">
