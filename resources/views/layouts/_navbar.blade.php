@@ -10,18 +10,18 @@
     @can('isLocatore')
         <li><a href="{{ route('home') }}" title="Visualizza le proposte">Proposte</a></li>
         <li><a href="{{ route('home') }}" title="Visualizza i messaggi">Messaggi</a></li>
-        <li><a href="{{ route('home') }}" title="Visualizza il tuo profilo">Profilo</a></li>
+        <li><a href="{{ route('profilo') }}" title="Visualizza il tuo profilo">Profilo</a></li>
         
     @endcan
     
     @can('isLocatario')
         <li><a href="{{ route('home') }}" title="Visualizza le proposte">Proposte</a></li>
         <li><a href="{{ route('home') }}" title="Visualizza i messaggi">Messaggi</a></li>
-        <li><a href="{{ route('home') }}" title="Visualizza il tuo profilo">Profilo</a></li>      
+        <li><a href="{{ route('profilo') }}" title="Visualizza il tuo profilo">Profilo</a></li>      
     @endcan
     
     @can('isAdmin')
-        <li><a href="" title="">Amministratore</a></li>
+        <li><a href="{{ route('home') }}" title="">Amministratore</a></li>
     @endcan
     
     @auth  

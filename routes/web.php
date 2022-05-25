@@ -62,8 +62,11 @@ Route::get('/', 'PublicController@showCatalog')
 Route::view('/condizioniuso', 'condizioniuso')
         ->name('condizioniuso');
 
-Route::view('/faq', 'faq')
+Route::get('/faq', 'PublicController@showFaqs')
         ->name('faq');
+
+Route::view('/profilo', 'profilo')
+        ->name('profilo');
 
 // Rotte inserite dal comando artisan "ui vue --auth" 
 // Auth::routes();

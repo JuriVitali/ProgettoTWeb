@@ -74,7 +74,7 @@
 @can('isLocatario')
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="#"><img src="images/servizi/catalogodig.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('catalogo') }}"><img src="images/servizi/catalogodig.png" alt=""></a>
             <figcaption>
                 <h6 class="heading">Ricerca l'alloggio che fa per te</h6>
                 <div>
