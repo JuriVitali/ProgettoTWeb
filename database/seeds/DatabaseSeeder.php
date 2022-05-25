@@ -14,14 +14,11 @@ class DatabaseSeeder extends Seeder {
 
 
         DB::table('users')->insert([
-            ['username' => 'lariolario', 'password' => Hash::make('lariolario'),'role' => 'locatario', 'name' => 'Giorgio', 'surname' => 'Verdi',
-               'genere' => 'M', 'data_nascita' => date("1998-03-02"), 'citta' => 'Ancona', 'provincia' => 'AN', 'indirizzo' => 'Via Giotto 67',
+            ['username' => 'tariotario', 'password' => Hash::make('tariotario'),'role' => 'locatario', 'name' => 'Giorgio', 'surname' => 'Verdi',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")],
-            ['username' => 'lorelore', 'password' => Hash::make('lorelore'),'role' => 'locatore', 'name' => 'Mario', 'surname' => 'Rossi',
-               'genere' => 'F', 'data_nascita' => date("1978-10-05"), 'citta' => 'Milano', 'provincia' => 'MI', 'indirizzo' => 'Via Bolzano 7',
+            ['username' => 'localoca', 'password' => Hash::make('localoca'),'role' => 'locatore', 'name' => 'Mario', 'surname' => 'Rossi',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")],
             ['username' => 'adminadmin', 'password' => Hash::make('adminadmin'),'role' => 'admin', 'name' => 'Admin', 'surname' => 'Admin',
-                'genere' => 'M', 'data_nascita' => date("1979-10-05"), 'citta' => 'Firenze', 'provincia' => 'FI', 'indirizzo' => 'Via PAscoli 4A',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")]
         ]);
      
@@ -203,31 +200,6 @@ class DatabaseSeeder extends Seeder {
             'data'=>curdate(''),'ora'=>curtime('')]
          * 
          */
-
-        DB::table('faqs')->insert([
-            ['domanda' => 'Come ci si registra al sito?', 'risposta' => 'La registrazione al sito serve per accedere ai principali servizi che offre TrovAffito.
-                Per registrarsi basta premere sul bottone Registrati presente sulla home del sito oppure premere il tasto Accedi della barra di navigazione.'],
-            ['domanda' => 'Che dati richiede la registrazione?', 'risposta' => 'La registrazione richiede vari campi da inserire: il nome, il cognome, la data di nascita,
-                il sesso,la città, la provincia, indirizzo, il nome utente e la password'],
-            ['domanda' => 'Che servizi offre il sito?', 'risposta' => 'Il sito offre servizi sia per gli utenti registrati sia per quelli non registrati. Gli utenti
-                senza registrazione possono accedere solo alla sezione pubblica del sito che comprende la sezioni:
-                chi siamo, faqs, condizioni di uso e il servizio visualizza catalogo. Gli utenti registrati si divido in due classi utente: il locatore e  il potenziale locatario.
-                Gli utenti registrati oltre a poter usufruire di tutte le sezioni pubbliche, hanno specifici servizi in base al tipo di utente.
-                I locatori modificare il loro profilo utente, inserire/cancellare/modificare di alloggi, visualizzare le richieste ricevute per ciascun alloggio, comunicare con i potenziali locatari 
-                che hanno opzionato un’offerta, attraverso un sistema di messaggistica interna al sito,assegnare alloggio a un locatario.
-                I potenziali locatari possono modificare il loro profilo utente, ricercare un’alloggio in base alle proprie esigenze,
-                opzionare un alloggio, comunicare con i locatori, attraverso il sistema di messaggistica del sito.'],
-            ['domanda' => 'Cosa si intende per locatore?', 'risposta' => 'Per locatore si intende la persona che dà in locazione un bene, cioè che affitta un appartamento o un posto letto. '],
-            ['domanda' => 'Cosa si intende per potenziale locatario?', 'risposta' => 'Per potenziale locatario si intende la persona che prende in locazione un appartamento o un posto letto.'],
-            ['domanda' => 'Che cosa è il catalogo?', 'risposta' => 'Il catalogo è un elenco ordinato di una o più serie di annunci di locazione, con le indicazioni specifiche per ogni inserzione'],
-            ['domanda' => 'FAQ#6', 'risposta' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard '],
-            ['domanda' => 'FAQ#7', 'risposta' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard '],
-            ['domanda' => 'FAQ#8', 'risposta' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard '],
-            ['domanda' => 'FAQ#9', 'risposta' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard '],
-            ['domanda' => 'FAQ#10', 'risposta' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard '],
-            ['domanda' => 'FAQ#11', 'risposta' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard '],
-        ]);
-
         
     }
 

@@ -3,7 +3,6 @@
 @section('title', 'Informazioni Alloggio')
 
 @section('content')
-
 <div class="bgded row6"> 
     <main class="hoc container1 clear"> 
         <!-- main body -->
@@ -22,11 +21,9 @@
                     <!-- colonna sinistra -->
                     <div class="one_half first">
 
-
                         <!-- immagine -->
                         <img src="{{ asset($accommodation->foto) }}" style="width:550px; height: 350px;">
                         <br>
-
 
                         <!-- descrizione -->
                         <section class="group" style="background:#E1E0E1; padding: 30px;">
@@ -34,7 +31,6 @@
                             <p class="nospace">{{$accommodation->descrizione}}</p>
                         </section>
                         <br>
-
 
                     <!-- colonna destra -->
                     </div>
@@ -86,4 +82,5 @@
     </main>
 </div>
 
+@endsection
 
