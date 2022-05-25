@@ -15,11 +15,14 @@ class DatabaseSeeder extends Seeder {
 
 
         DB::table('users')->insert([
-            ['username' => 'tariotario', 'password' => Hash::make('tariotario'),'role' => 'locatario', 'name' => 'Giorgio', 'surname' => 'Verdi',
+            ['username' => 'lariolario', 'password' => Hash::make('lariolario'),'role' => 'locatario', 'name' => 'Giorgio', 'surname' => 'Verdi',
+               'genere' => 'M', 'data_nascita' => date("1998-03-02"), 'citta' => 'Ancona', 'provincia' => 'AN', 'indirizzo' => 'Via Giotto 67',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")],
-            ['username' => 'localoca', 'password' => Hash::make('localoca'),'role' => 'locatore', 'name' => 'Mario', 'surname' => 'Rossi',
+            ['username' => 'lorelore', 'password' => Hash::make('lorelore'),'role' => 'locatore', 'name' => 'Mario', 'surname' => 'Rossi',
+               'genere' => 'F', 'data_nascita' => date("1978-10-05"), 'citta' => 'Milano', 'provincia' => 'MI', 'indirizzo' => 'Via Bolzano 7',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")],
-            ['username' => 'adminadmin', 'password' => Hash::make('adminadmin'),'role' => 'admin', 'nae' => 'Admin', 'surname' => 'Admin',
+            ['username' => 'adminadmin', 'password' => Hash::make('adminadmin'),'role' => 'admin', 'name' => 'Admin', 'surname' => 'Admin',
+                'genere' => 'M', 'data_nascita' => date("1979-10-05"), 'citta' => 'Firenze', 'provincia' => 'FI', 'indirizzo' => 'Via PAscoli 4A',
                'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")]
         ]);
         

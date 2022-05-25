@@ -21,7 +21,7 @@
     @endcan
     
     @can('isAdmin')
-        <li><a href="" title="">Amministratore</a></li>
+        <li><a href="{{ route('home') }}" title="">Amministratore</a></li>
     @endcan
     
     @auth  
