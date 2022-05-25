@@ -27,7 +27,7 @@
             <div class="one_half first">
                 <!-- Slide container -->
                 <div class="slideshow-container">
-                    <img src= " {{asset($accommodation->image)}} " style="width:550px; height: 350px;">
+                    <img src= " {{asset($accommodation->foto)}} " style="width:550px; height: 350px;">
                 </div>
                 
             <!-- Porzione delle info dell'alloggio -->
@@ -37,18 +37,13 @@
                     <li class="one first ">
                         <article>
                             <h6 class="heading">{{ $accommodation->titolo_annuncio }}</h6>
-                            <p class="nospace"><b>{{ $accommodation->canone_affitto }} $/mese</b></p>
-                            <p class="nospace"><b> Locazione: {{ $accommodation->citta }} ({{ $accommodation->provincia }}), {{ $accommodation->indirizzo }}</b></p>
-                            <p class="nospace"><b> Tipologia: {{ $accommodation->tipologia }} </b></p>
+                            <p class="nospace"><b>{{ $accommodation->canone_affitto }} €/mese</b></p>
+                            <p class="nospace"> Locazione: {{ $accommodation->citta }} ({{ $accommodation->provincia }}), {{ $accommodation->indirizzo }}</p>
+                            <p class="nospace"> Tipologia: {{ $accommodation->tipologia }} </p>
                             <p class="nospace">Periodo disponibilità: dal {{ $accommodation->inizio_disponibilita }} al {{ $accommodation->fine_disponibilita }}</p>
                             <p class="nospace">Superficie: {{ $accommodation->superficie_tot }} m^2 </p>
-                            <p class="nospace">Affittiamo un confortevole monolocale di 35 mq circa in zona Bligny, situato al terzo piano con 
-                                ascensore, completamente e finemente arredato. Composto da Ingresso, zona Notte e zona Giorno in unico ambiente 
-                                con angolo cottura e Bagno con box doccia. Non ci sono Balconi. Il canone mensile ammonta a 600 euro+ 100 euro 
-                                di spese condominiali con riscaldamento centralizzato incluso.
-                                </p>
                             <br>
-                            <a class="btn" style="padding-bottom: 5px;" href="{{ route('infoalloggio') }}" >Maggiori Informazioni</a>
+                            <a class="btn" style="padding-bottom: 5px;" href="{{ route('infoalloggio', [$accommodation->id]) }}" >Maggiori Informazioni</a>
                         </article>
                     </li>
                 </ul>
@@ -60,8 +55,7 @@
     
 </ul>
 
-<!--Paginazione-->
-    @include('pagination.paginator', ['paginator' => $accommodations])
+@include('pagination.paginator', ['paginator' => $accommodations])
 
 <br> 
 @endsection

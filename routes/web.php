@@ -50,13 +50,8 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('/catalogo', 'PublicController@showCatalog')
         ->name('catalogo');
 
-Route::view('catalogo/infoalloggio', 'infoalloggio')
+Route::get('catalogo/infoalloggio{Id}', 'PublicController@showAccInfo')
         ->name('infoalloggio');
-Route::view('catalogo/infoalloggio_1', 'infoalloggio_1')
-        ->name('infoalloggio_1');
-
-/*Route::get('/catalogo/alloggi{alloggioId}', '')
-        ->name('alloggio');*/
 
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');

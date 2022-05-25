@@ -55,7 +55,9 @@ img{width:auto; max-width:100%; height:auto; margin:0; padding:0; border:none; l
 /* Fonts
 --------------------------------------------------------------------------------------------------------------- */
 body, input, textarea, select{font-family:Verdana, Geneva, sans-serif;}
-h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, "Bierstadt Display", Times, serif;}
+p, h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, Bierstadt Display, Times, serif;}
+
+
 
 
 /* Forms
@@ -71,6 +73,13 @@ label{margin-bottom:5px;}
 /* Generalise
 --------------------------------------------------------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6, .heading{margin:0 0 30px 0; font-size:1.4rem; line-height:normal; font-weight:normal; }
+h1 {font-size:2rem;}
+h2 {font-size:1.9rem;}
+h3 {font-size:1.8rem;}
+h4 {font-size:1.7rem;}
+h5 {font-size:1.6rem;}
+h6 {font-size:1.5rem;}
+p {font-size:1.1rem;}
 
 .heading.nospace{margin-bottom:0;}
 .heading.underline{display:inline-block; position:relative; padding:0 0 15px 0;}

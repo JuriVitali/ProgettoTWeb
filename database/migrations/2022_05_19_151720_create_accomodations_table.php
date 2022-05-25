@@ -39,7 +39,7 @@ class CreateAccomodationsTable extends Migration
             $table->unsignedTinyInteger('eta_min_locatario')->nullable();
             $table->unsignedTinyInteger('eta_max_locatario')->nullable();
             $table->date('data_locazione')->nullable()->default(null);
-            $table->text('foto')->nullable()->default('Appartamento_1.jpg');
+            $table->text('foto')->default('images/accommodations/default.jpg');
         });
     }
 

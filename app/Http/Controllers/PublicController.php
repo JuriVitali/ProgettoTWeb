@@ -23,4 +23,19 @@ class PublicController extends Controller
         return view('catalogo')
                         ->with('accommodations', $accommodations);
     }
+    
+    //public function showAccInfo($AccId){
+    public function showAccInfo($id){
+        
+        //recupero dell'alloggio 
+        $accommodation = $this->_catalogModel->getAccById($id);
+        
+        //recupero dei servizi inclusi nell'alloggio
+        $services = $this->_catalogModel->getServById($id);
+        
+        
+        return view('infoalloggio')
+                        ->with('accommodation', $accommodation)
+                        ->with('services', $services);   
+    }
 }

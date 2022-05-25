@@ -1,7 +1,7 @@
 @if ($paginator->lastPage() != 1)
 <nav class="pagination" id="pagination">
 
-    <!-- Link alla prima pagina -->
+       <!-- Link alla prima pagina -->
     @if (!$paginator->onFirstPage())
         <li>
             <a href="{{ $paginator->url(1) }}">Inizio</a> 
@@ -47,3 +47,4 @@
     
 </nav>
 @endif
+
