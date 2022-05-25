@@ -56,7 +56,7 @@ Route::get('catalogo/infoalloggio{Id}', 'PublicController@showAccInfo')
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
 
-Route::get('/', 'PublicController@showCatalog')
+Route::view('/', 'home')
         ->name('home');
 
 Route::view('/condizioniuso', 'condizioniuso')
