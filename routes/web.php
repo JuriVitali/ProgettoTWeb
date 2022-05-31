@@ -11,63 +11,56 @@
   |
  */
 
-/*Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog3')
-        ->name('catalog3');
-
-Route::get('/selTopCat/{topCatId}', 'PublicController@showCatalog2')
-        ->name('catalog2');
-
-Route::get('/', 'PublicController@showCatalog1')
-        ->name('catalog1');
-
-Route::get('/admin/newproduct', 'AdminController@addProduct')
-        ->name('newproduct');
-
-Route::post('/admin/newproduct', 'AdminController@storeProduct')
-        ->name('newproduct.store');
-
-Route::get('/admin', 'AdminController@index')
-        ->name('admin');
-
-Route::get('/user', 'UserController@index')
-        ->name('user')->middleware('can:isUser');*/
-
-// Rotte per l'autenticazione
-Route::get('login', 'Auth\LoginController@showLoginForm')
-        ->name('login');
-
-Route::post('login', 'Auth\LoginController@login');
-
-Route::post('logout', 'Auth\LoginController@logout')
-        ->name('logout');
-
-// Rotte per la registrazione
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')
-        ->name('register');
-
-Route::post('register', 'Auth\RegisterController@register');
-
-Route::get('/catalogo', 'PublicController@showCatalog')
-        ->name('catalogo');
-
-Route::get('catalogo/infoalloggio{Id}', 'PublicController@showAccInfo')
-        ->name('infoalloggio');
-
+//Chi siamo
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
 
+//Home pubblica
 Route::view('/', 'home')
         ->name('home');
 
+//Condizioni d'uso
 Route::view('/condizioniuso', 'condizioniuso')
         ->name('condizioniuso');
 
+//Visualizzazione Faq
 Route::get('/faq', 'PublicController@showFaqs')
         ->name('faq');
 
+//Visualizzazione profilo
 Route::view('/profilo', 'profilo')
         ->name('profilo');
 
-// Rotte inserite dal comando artisan "ui vue --auth" 
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+//Visualizzazione form di login
+Route::get('login', 'Auth\LoginController@showLoginForm')
+        ->name('login');
+
+//Login utente
+Route::post('login', 'Auth\LoginController@login');
+
+//Logout
+Route::post('logout', 'Auth\LoginController@logout')
+        ->name('logout');
+
+//Visualizzazione form di registrazione
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+        ->name('register');
+
+//Registrazione utente
+Route::post('register', 'Auth\RegisterController@register');
+
+//Visualizzazione catalogo pubblico
+Route::get('/catalogo', 'PublicController@showCatalog')
+        ->name('catalogo');
+
+//Visualizzazione informazioni alloggio
+Route::get('/catalogo/infoalloggio{Id}', 'PublicController@showAccInfo')
+        ->name('infoalloggio');
+
+//Visualizzazione chat per un locatore
+Route::get('/chat_locatore{IdLocatore}', 'LocatoreController@showContacts')
+        ->name('chat_locatore');
+
+//Visualizzazione chat per un locatario
+Route::view('/chat_locatario', 'chat')
+        ->name('chat');

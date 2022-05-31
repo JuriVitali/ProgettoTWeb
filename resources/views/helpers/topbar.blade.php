@@ -1,7 +1,7 @@
 @guest
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="{{ route('login') }}"><img src="images/servizi/login.jpg" alt=""></a>
+        <figure><a class="imgover" href="{{ route('login') }}"><img style="width: 350px; height:400px;" src="images/servizi/Login.jpg" alt=""></a>
             <figcaption>
                 <h4 class="heading">Ti sei già registrato a TrovAffitto?</h4>
                 <div>
@@ -11,7 +11,7 @@
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="{{ route('register') }}"><img src="images/servizi/registrazione.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('register') }}"><img style="width: 350px; height:400px;" src="images/servizi/Registrati.png" alt=""></a>
             <figcaption>
                 <h6 class="heading">Cerchi alloggi o vuoi offrire alloggi?</h6>
                 <div>

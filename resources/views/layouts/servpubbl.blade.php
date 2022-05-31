@@ -5,10 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="{{ asset('css/layout_base.css') }}"  rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-        <title>ProgettoTweb | @yield('title', '')</title>
+        @show
+        @section('scripts')
+        @show
+        <title>TrovAffitto | @yield('title', '')</title>
     </head>
     <body id="top" style="background: #ffffff; color: #000000">
-        <div class="bgded" style="background-image:url('../public/images/background/letto_stretta.jpg');"> 
+        <div class="bgded" style="background-image: {{asset('/images/background/letto_stretta.jpg')}} "> 
             <div class="wrapper row1">
                 <header id="header" class="hoc clear">
                     <div id="logo" class="fl_left"> 

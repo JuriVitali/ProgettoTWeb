@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('citta', 30)->nullable();
             $table->string('provincia', 2)->nullable();
             $table->string('indirizzo', 40)->nullable();
-            $table->text('image')->nullable();
             $table->rememberToken();
             $table->timestamps();                        
         });

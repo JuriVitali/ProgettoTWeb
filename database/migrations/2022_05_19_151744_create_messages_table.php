@@ -19,8 +19,7 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('destinatario')->index();
             $table->boolean('letto');
             $table->text('testo');
-            $table->date('data');
-            $table->time('ora');
+            $table->datetime('data');
         });
     }
 

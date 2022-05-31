@@ -2,83 +2,97 @@
 
 @section('title', 'Informazioni Alloggio')
 
+<!-- percorso con link per tornare alle pagine precedenti -->
+@section('menu')
+<article>
+    <h3 class="heading"> Catalogo</h3>
+</article>
+<ul>
+    <li><a href="{{ route('home') }}">Home &#9658</a></li>
+    <li><a href="{{ route('catalogo') }}">Catalogo &#9658</a></li>
+    <li><a href="#">Info alloggio</a></li>
+</ul>
+@endsection
+
 @section('content')
 <div class="bgded row6"> 
     <main class="hoc container1 clear"> 
         <!-- main body -->
         <br> <br>
-        <div class="sectiontitle">
-            <h2 class="heading underline"><b>{{$accommodation->titolo_annuncio}}</b></h2>
+        
+
+        <section class="group" style="background:#F0F2F5; padding: 30px;">
+            
+            <div class="sectiontitle">
+            <h2 class="heading underline font-x2">{{$accommodation->titolo_annuncio}}</h2>
         </div>
-        <ul class="nospace group overview btmspace-80">
-            <li class="one first">
-                <section class="group" style="background:#F0F2F5; padding: 30px;">
 
-                    <section class="group" style="background:#93FF96; padding: 20px; margin-top: -50px; margin-bottom: 30px; margin-left: 600px; margin-right: 150px;">
-                        <h6 style="margin-bottom: 0px; text-align: center;">Disponibile</h6>
-                    </section>
+            <!-- colonna sinistra -->
+            <div class="one_half first">
 
-                    <!-- colonna sinistra -->
-                    <div class="one_half first">
+                <!-- immagine -->
+                <img src="{{ asset($accommodation->foto) }}" style="width:550px; height: 350px;">
 
-                        <!-- immagine -->
-                        <img src="{{ asset($accommodation->foto) }}" style="width:550px; height: 350px;">
-                        <br>
+                <!-- Segnalazione alloggio già affittato -->
+                @if ($accommodation->data_locazione != null)
+                <img src="{{asset('/images/background/affittato.png')}}" style="width:300px; height: 150px; margin-top: -350px; margin-left: 125px;">
+                @endif
+                <br>
 
-                        <!-- descrizione -->
-                        <section class="group" style="background:#E1E0E1; padding: 30px;">
-                            <h6 class="heading underline">Descrizione</h6>
-                            <p class="nospace">{{$accommodation->descrizione}}</p>
-                        </section>
-                        <br>
-
-                    <!-- colonna destra -->
-                    </div>
-                    <div class="one_half">
-
-                        <!-- Informazioni principali -->
-                        <section class="group"; padding: 30px;">
-                            <h6 class="heading">Canone d'affitto: &nbsp {{$accommodation->canone_affitto}} €/mese</h6>
-                            <h6 class="heading">Locazione: &nbsp {{$accommodation->citta}} ({{$accommodation->provincia}}), {{$accommodation->indirizzo}} </h6>
-                            <h6 class="heading">Disponibilità: &nbsp dal {{$accommodation->inizio_disponibilita}} al {{$accommodation->fine_disponibilita}} </h6>
-                        </section> 
-
-                        <br>
-
-                        <!-- Informazioni secondarie -->
-                        <section class="group " style="background:#E1E0E1; padding: 30px;">
-                            
-                            <!-- Caratteristiche -->
-                            <h6 class="heading underline">Caratteristiche</h6>
-                            <p class="nospace">Tipologia: &nbsp {{$accommodation->tipologia}}</p>
-                            <p class="nospace">Superficie totale: &nbsp {{$accommodation->superficie_tot}} m^2</p>
-                            <p class="nospace">Posti letto: &nbsp {{$accommodation->posti_tot}}</p>
-                            <p class="nospace">Camere: &nbsp {{$accommodation->n_camere}}</p>
-                            <p class="nospace">Cucina: &nbsp {{$accommodation->cucina}}</p>
-                            <p class="nospace">Locale ricreativo: &nbsp {{$accommodation->locale_ricreativo}}</p>
-
-                            <br> <br>          
-                            
-                            <!-- Servizi -->
-                            <h6 class="heading underline">Servizi</h6>
-                            
-                            <p class="nospace">Fibra ottica</p>
-                            <p class="nospace">Impianto di allarme</p>
-                            
-                            
-                            <br> <br> 
-                            
-                            <!-- Vincoli sul locatario -->
-                            <h6 class="heading underline">Vincoli sul locatario</h6>
-                            <p class="nospace">	&FilledSmallSquare; Il locatario deve essere di genere maschile</p>
-                            <p class="nospace">	&FilledSmallSquare; Il locatario deve avere tra i 16 e 23 anni</p>   
-                        </section>
-
-                    </div>
-
+                <!-- descrizione -->
+                <section class="group inspace-30" style="background:#E1E0E1;">
+                    <h6 class="heading underline">Descrizione</h6>
+                    <p class="nospace">{{$accommodation->descrizione}}</p>
                 </section>
-            </li>
-        </ul>
+                <br>
+                
+            </div>
+
+            <!-- colonna destra -->
+            <div class="one_half">
+
+                <!-- Informazioni principali -->
+                <section class="group inspace-30">
+                    <h6 class="heading">Canone d'affitto: &nbsp {{$accommodation->canone_affitto}} €/mese</h6>
+                    <h6 class="heading">Locazione: &nbsp {{$accommodation->citta}} ({{$accommodation->provincia}}), {{$accommodation->indirizzo}} </h6>
+                    <h6 class="heading">Disponibilità: &nbsp dal {{$accommodation->inizio_disponibilita}} al {{$accommodation->fine_disponibilita}} </h6>
+                </section> 
+
+                <!-- Pulsanti per il locatario: "Contatta locatore" e "Invia una proposta" -->
+                @can('isLocatario')
+                <div class="one" style="padding-bottom: 10px; padding-top: -10px;" >
+                    <a class="btn center" style="width: 47.5%; margin-right: 1.8%;" href="{{ route('catalogo') }}" >Contatta il locatore</a>
+                    <a class="btn center" style= "width: 47.5%; margin-left: 1.8%;" href="{{ route('catalogo') }}" >Invia una proposta</a>
+                </div>
+                <br>
+                @endcan
+
+                <!-- Informazioni secondarie -->
+                <section class="group inspace-30" style="background:#E1E0E1;">
+
+                    <!-- Caratteristiche -->
+                    <h6 class="heading underline">Caratteristiche</h6>
+                    @include('helpers/caratteristicheAlloggio', ['accommodation' => $accommodation])
+
+                    <br> <br>          
+
+                    <!-- Servizi -->
+                    <h6 class="heading underline">Servizi</h6>
+                    @foreach ($services as $service)
+                    <p class="nospace">{{$service[0]->descrizione}}</p>
+                    @endforeach
+
+                    <br> <br> 
+
+                    <!-- Vincoli sul locatario -->
+                    <h6 class="heading underline">Vincoli sul locatario</h6>
+                    @include('helpers/vincoliLocatario', ['eta_min' => $accommodation->eta_min_locatario, 'eta_max' => $accommodation->eta_max_locatario, 'genere' => $accommodation->genere_locatario])  
+                </section>
+
+            </div>
+        </section>
+        <br> <br> <br> <br>
+
     </main>
 </div>
 

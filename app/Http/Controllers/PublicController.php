@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use \App\Models\Catalog;
 use \App\Models\Faqs;
 
@@ -30,7 +29,6 @@ class PublicController extends Controller
     }
     
 
-    //public function showAccInfo($AccId){
     public function showAccInfo($id){
         
         //recupero dell'alloggio 
@@ -47,7 +45,7 @@ class PublicController extends Controller
 
     public function showFaqs(){
         
-        //Recupero di tutti gli alloggi
+        //Recupero di tutte le faqs
         $faqs = $this->_faqModel->getAll();
         
         return view('faq')

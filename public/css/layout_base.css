@@ -740,7 +740,8 @@ input[type=date], select, textarea {
 	margin-bottom: 16px;
 	resize: vertical;
 }
-input[type="submit"] {
+
+/*input[type="submit"] {
 	background-color: #413b3b;
 	color: #fff;
 	padding: 15px 50px;
@@ -750,7 +751,7 @@ input[type="submit"] {
 	font-size: 15px;
 	text-transform: uppercase;
 	letter-spacing: 3px;
-}
+}*/
 
 .inlinea{
 	display: inline-block;

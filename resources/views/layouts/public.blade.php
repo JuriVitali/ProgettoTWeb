@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="{{ asset('css/layout_base.css') }}"  rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-        <title>ProgettoTweb | @yield('title', '')</title>
+        <title>TrovAffitto | @yield('title', '')</title>
     </head>
     <body id="top">
         <div class="bgded" @include('helpers/imagebackground')>

@@ -27,14 +27,13 @@ class CreateAccomodationsTable extends Migration
             $table->string('citta', 30);
             $table->string('provincia', 2);
             $table->string('indirizzo', 40);
-            $table->unsignedSmallInteger('superficie_tot');
+            $table->unsignedSmallInteger('superficie');
             $table->unsignedTinyInteger('n_camere')->nullable();
             $table->boolean('locale_ricreativo')->default(false)->nullable();
             $table->boolean('cucina')->default(false)->nullable();
             $table->unsignedTinyInteger('posti_tot')->nullable();
-            $table->unsignedTinyInteger('posti_per_stanza')->nullable();
+            $table->unsignedTinyInteger('letti_stanza')->nullable();
             $table->boolean('angolo_studio')->default(false)->nullable();
-            $table->unsignedTinyInteger('superficie_camera')->nullable();
             $table->char('genere_locatario')->nullable();
             $table->unsignedTinyInteger('eta_min_locatario')->nullable();
             $table->unsignedTinyInteger('eta_max_locatario')->nullable();

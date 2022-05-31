@@ -7,7 +7,7 @@
     <h3 class="heading"> Condizioni d'Uso</h3>
 </article>
 <ul>
-    <li><a href="{{ route('home') }}">Home</a></li>
+    <li><a href="{{ route('home') }}">Home &#9658</a></li>
     <li><a href="#">Condizioni d'uso</a></li>
 </ul>
 @endsection
