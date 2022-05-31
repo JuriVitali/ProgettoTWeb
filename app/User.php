@@ -42,5 +42,14 @@ class User extends Authenticatable {
         $role = (array)$role;
         return in_array($this->role, $role);
     }
+    
+     public function getUserByUsername($username){
+        return User::find($username); 
+    }
+    
+    public function getAll($limit = 6){
+        $users = User::paginate($limit);
+        return $users;
+    }
 
 }

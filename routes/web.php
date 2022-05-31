@@ -64,3 +64,34 @@ Route::get('/chat_locatore{IdLocatore}', 'LocatoreController@showContacts')
 //Visualizzazione chat per un locatario
 Route::view('/chat_locatario', 'chat')
         ->name('chat');
+
+
+// Rotte profilo e per la la modifica del profilo
+Route::get('/profilo', 'UserController@index')
+        ->name('profilo');
+
+Route::post('/profilo{id}', 'Auth\UpdateController@update')
+        ->name('profiloupdate');
+
+Route::put('/profilo{id}', 'Auth\UpdateController@updatepassword')
+        ->name('passwordupdate');
+
+Route::put('/profilo/{id}', 'Auth\UpdateController@updateusername')
+        ->name('usernameupdate');
+
+Route::get('/profilo/modificaprofilo={Id}', 'Auth\UpdateController@edit')
+        ->name('modificaprofilo');
+
+Route::get('/profilo/cambiapassword={Id}', 'Auth\UpdateController@editpassword')
+        ->name('cambiapassword');
+
+Route::get('/profilo/cambiausername={Id}', 'Auth\UpdateController@editusername')
+        ->name('cambiausername');
+
+Route::get('/allprofilo', 'UserController@showUsers')
+        ->name('allprofilo');
+
+
+// Rott* per la gestione alloggi locatore
+Route::get('/visualizzalloggi{Id}', 'PublicController@showAlloggi')
+        ->name('visualizzalloggi');

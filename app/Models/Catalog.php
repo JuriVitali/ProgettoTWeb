@@ -14,6 +14,12 @@ class Catalog {
         return $accommodations;
     }
     
+    //Ritorna tutti gli alloggi di un locatore paginati in pagine da 6
+    public function getAlloggiLocatore($id, $limit = 6){
+        $accommodations = Accommodation::where('proprietario',$id)->paginate($limit);
+        return $accommodations;
+    }
+    
     //Ritorna l'alloggio di cui viene passato l'id
     public function getAccById($id){
         return Accommodation::find($id); 

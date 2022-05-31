@@ -50,9 +50,18 @@
               </article>
             </li>
             
+            
             <li class="">
-              <a class="btn" href="#" align="center">Modifica profilo</a>
+              <a class="btn" href="{{ route('modificaprofilo', [ Auth::id() ]) }}" align="center">Modifica profilo</a>
             </li>  
+            <br>
+            <li class="">
+              <a class="btn" href="{{ route('cambiapassword', [ Auth::id() ]) }}" align="center">Cambia Password</a>
+            </li>  
+            <br>
+            <li class="">
+              <a class="btn" href="{{ route('cambiausername', [ Auth::id() ]) }}" align="center">Cambia Username</a>
+            </li> 
     </ul>
 
     <br> <br>

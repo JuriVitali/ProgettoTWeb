@@ -4,7 +4,7 @@
 
 @section('menu')
 <article>
-    <h3 class="heading"> Chi Siamo</h3>
+    <h3 class="heading"> FAQ</h3>
 </article>
 <ul>
     <li><a href="{{ route('home') }}">Home</a></li>
