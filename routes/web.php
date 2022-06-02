@@ -23,9 +23,6 @@ Route::view('/', 'home')
 Route::view('/condizioniuso', 'condizioniuso')
         ->name('condizioniuso');
 
-//Visualizzazione Faq
-Route::get('/faq', 'PublicController@showFaqs')
-        ->name('faq');
 
 //Visualizzazione profilo
 Route::view('/profilo', 'profilo')
@@ -95,3 +92,31 @@ Route::get('/allprofilo', 'UserController@showUsers')
 // Rott* per la gestione alloggi locatore
 Route::get('/visualizzalloggi{Id}', 'PublicController@showAlloggi')
         ->name('visualizzalloggi');
+
+//Visualizzazione Faq
+Route::get('/faq', 'PublicController@showFaqs')
+        ->name('faq');
+
+
+//aggiunta faqs
+Route::get('/aggiungifaq','AggiungifaqController@showfaqform')
+        ->name('aggiungifaq');
+
+Route::post('/aggiungifaq','AggiungifaqController@addfaq');
+//elimina faq
+Route::get('eliminafaq/{id}','AggiungifaqController@deletefaq')
+         ->name('eliminafaq');
+//modifica faq
+Route::get('modificafaq/{id}','AggiungifaqController@modificafaq')
+        ->name('modificafaq');
+
+Route::post('/faq/{id}','AggiungifaqController@updatefaq')
+        ->name('updatefaq');
+
+Route::view('/faq/statistiche','statistiche')
+        ->name('statistiche');
+
+
+
+
+

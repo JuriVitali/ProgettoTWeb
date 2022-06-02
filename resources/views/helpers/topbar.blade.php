@@ -112,23 +112,21 @@
 @can('isAdmin')
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="#"><img src="images/servizi/statistiche.jpg" alt=""></a>
+        <figure><a class="imgover" href="{{ route('statistiche') }}"><img src="images/servizi/statistiche.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Visualizza Statistiche</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>visualizza le statistiche del  tuo sito</p>
                 </div>
             </figcaption>
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="#"><img src="images/servizi/faq.jpg" alt=""></a>
+        <figure><a class="imgover" href="{{ route('faq') }}"><img src="images/servizi/faq.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Modifica FAQ</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Modifica, aggiungi o elimina le domande del sito</p>
                 </div>
             </figcaption>
         </figure>
