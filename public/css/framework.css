@@ -30,7 +30,7 @@ html, body{margin:0; padding:0; font-size:15px; line-height:1.6em;}
 .btn2{display:inline-block; padding:8px 18px 10px; text-transform:uppercase; border:1px solid;
     background-color: #2a9292; color: #FFF; border-color: #2a9292}
 .btn2:hover{background-color: #FFF; color: #000; border-color: #000}
-.btn3{display:inline-block; padding:8px 18px 10px; border-top:0.5px solid #B946AD; border-bottom: 0.5px solid #FFC1F8;
+.btn3{display:inline-block; padding:8px 18px 10px; border-bottom: 0.5px solid #B946AD;
     background-color: #F6F6F6; color: #444; display: flex; justify-content: center; align-items: center; height: 60px; width: 100%;}
 .btn3:hover{background-color: #e1b0dc;}
 
@@ -152,10 +152,10 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 /* Messages
 --------------------------------------------------------------------------------------------------------------- */
 
-.message-r{display: flex; float: right; clear: both; width: 500px; background:#F0F2F5; padding: 5px 10px; border-radius: 10px 30px;}
-.message-l{float: left; clear: both; width: 500px; background:#FFC1F8; padding: 5px 10px; border-radius: 30px 10px;}
-.date-message-r{color: #777; font-size: 0.9rem; margin: 0px; padding-left: 10px;}
-.date-message-l{color: #777; font-size: 0.9rem; margin: 0px; padding-right: 10px;}
+.message-r{float: right; clear: both; width: 500px; background-color:#FCE093; padding: 5px 10px; border-radius: 10px 30px; display: flex; flex-direction: column;}
+.message-l{float: left; clear: both; width: 500px; background-color:#F79CEC; padding: 5px 10px; border-radius: 30px 10px; display: flex; flex-direction: column;}
+.date-message-r{color: #555; font-size: 0.9rem; margin: 0px; padding-left: 10px; }
+.date-message-l{color: #555; font-size: 0.9rem; margin: 0px; padding-right: 10px; }
 .send-message {
   display: flex;
   align-items: flex-end;
@@ -171,7 +171,7 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
     height: 90px;
     margin-left: 20px;
     width: 90%;
-    border-radius: 20px;
+    border-radius: 15px;
     border: none;
 }
 .send-btn {
@@ -185,4 +185,66 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 3px;
+}
+.btn3_selected{display:inline-block; padding:8px 18px 10px; border-bottom: 0.5px solid #B946AD;
+    background-color: #B946AD; color: #FFF; display: flex; justify-content: center; align-items: center; height: 60px; width: 100%;}
+.chat_title{text-align: center; padding: 20px; color: #FFF; background-color: #B946AD; margin-bottom: 0px;}
+.btn-new_con{display:inline-block; padding:8px 18px 10px; border-bottom: 0.5px solid #30BA1A; border-radius: 4px;
+    background-color: #30BA1A; color: #FFF; display: flex; justify-content: center; align-items: center; height: 75px; width: 100%;}
+.btn-new_con:hover{background-color: #2AA017;}
+
+/* Faqs
+--------------------------------------------------------------------------------------------------------------- */
+
+.faq-ques-box{background-color: #D13AC1; color:#FFF; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; padding: 10px 20px 10px 20px; vertical-align: middle;}
+.faq-ques-1{width: 77%; float: left; font-size: 1.3rem; padding: 7px;}
+.faq-ques-2{width: 100%; padding:10px 20px; font-size: 1.3rem; background-color: #D13AC1; color:#FFF; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; vertical-align: middle;}
+.faq-ans{background-color: #F0F0F0; border-radius: 0px 0px 5px 5px; margin-top: 0px;}
+.btn-faq-m {
+    display:inline-block;
+    background-color: #2a9292; 
+    text-transform:uppercase;
+    color: #FFF;
+    padding: 7px 15px;
+    border-radius: 10px;
+    vertical-align: middle;
+    height: min-content;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.btn-faq-m:hover{background-color: #1C7878;}
+.btn-faq-d {
+    display:inline-block;
+    background-color: #D60D0D;
+    color: #FFF;
+    text-transform:uppercase;
+    padding: 7px 15px;
+    vertical-align: middle;
+    border-radius: 10px;
+    height: min-content;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.btn-faq-d:hover{background-color: #B00C0C;}
+.btn-faq-a{
+    display: inline-block;
+    background-color: #30BA1A;
+    color: #FFF;
+    text-transform:uppercase;
+    padding-top: 22px;
+    border-radius: 5px;
+    height: 70px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-family: Verdana;
+}
+.btn-faq-a:hover{background-color: #2AA017;}
+
+
+/* Form
+--------------------------------------------------------------------------------------------------------------- */
+.error{
+    background-color: #f3e4e4;
+    border: solid 1px #ff0000;
 }

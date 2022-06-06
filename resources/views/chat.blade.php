@@ -18,62 +18,57 @@
     
     <!-- Colonna contatti -->
     <section class="one_quarter first" style="border: 1px solid #666; height: 550px;">
-        <div class="center heading font-x2" style="padding: 20px; color: #FFF; background-color: #B946AD; margin-bottom: 0px;">Contatti</div>
-        <div style="overflow: auto; height: 467px;">
+        <div class="center heading font-x2" style="border-bottom: 1px solid #666; padding: 20px; color: #FFF; background-color: #B946AD; margin-bottom: 0px;">Contatti</div>
+        
+        @can('isLocatore')
+        <div style="overflow: auto; height: 467px; background-color: #F4D1F0;">      
+        @endcan
+        @can('isLocatario')
+        <div style="overflow: auto; height: 392px; background-color: #F4D1F0;">            
+        @endcan
             
+            <!-- Generazione dei bottoni corrispondenti ai contatti -->
             @foreach($contacts as $contact)
-                <a class="btn3 center bold" href="{{ route('home') }}" > {{ $contact->name }}</a>
+            
+                <!-- Contatto selezionato -->
+                @if(isset($selectedUser) and $contact->id == $selectedUser->id)
+                    <a class="btn3_selected center bold" href="{{ route('chat_messages', [$contact->id]) }}"> {{ $contact->name }} {{ $contact->surname}}</a>
+                
+                <!-- Contatto non selezionato -->
+                 @else
+                    <a class="btn3 center bold" href="{{ route('chat_messages', [$contact->id]) }}"> {{ $contact->name }} {{ $contact->surname}}</a>
+                @endif
             @endforeach
-            
-            
-            <!-- <a class="btn3 center bold" href="{{ route('chat') }}" >Mario Rossi</a> -->
-            
-            
         </div>
+        
+        <!-- pulsante per messaggiare un nuovo locatore -->
+        @can('isLocatario')
+        <a class="btn-new_con center bold" href="{{ route('chat_new_locatore', [$contact->id]) }}">Messaggia nuovo locatore</a>           
+        @endcan
+
     </section>
     
     <!-- Porzione della chat -->
     <section class="three_quarter" style="border: 1px solid #666; height: 550px;">
-        <div class="center heading font-x2" style="padding: 20px; color: #FFF; background-color: #B946AD; margin-bottom: 0px;">Chat</div>
-        <div class="inspace-10" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 347px; background-image: url(images/background/chat.png); background-size: cover;">
-            
-            <!-- Messaggi -->
-            <!-- Bisogna metterli in ordine inverso (dal basso verso l'alto) -->
-            @for($i=1; $i<=15; $i++)
-            <div>
-            <div class="group btmspace-15 message-l">
-                <p style="margin: 0px; padding: 0px;">Salve, sarei interessato all'appartamento ad Ancona in Via Corinaldo. A che piano si trova?</p>
-                <p class="date-message-l">29-05-2022 09:15</p>
-            </div>
-            </div>
-            
-            <div>
-            <div class="group btmspace-15 message-r">
-                <p style="margin: 0px; padding: 0px;">Ciao Marco, si trova al terzo piano.</p>
-                <p class="date-message-r">30-05-2022 15:53</p>
-            </div>
-            </div>
-            @endfor
-        </div>
-            
-        <!-- Form per l'invio di un nuovo messaggio -->
-        <div class="group send-message" style="background-color: #BBB;">
-            {{ Form::open(array('route' => 'catalogo', 'id' => 'send_message', 'class' => 'send-message-form')) }}
-
-            <div   style="width: 85%;">
-                {{ Form::textarea('message', '', ['class' => 'message-area', 'id' => 'message', 'placeholder' => 'Scrivi un messaggio']) }}
-            </div>
-            
-            <div>
-                {{ Form::hidden('destinatario', '', ['class' => 'input', 'id' => 'destinatario']) }}
-            </div>
-
-            <div style="display: flex; align-items: center;">
-                {{ Form::submit('Invia', ['class' => 'send-btn', 'id' => 'sub-btn']) }}
-            </div>
-
-            {{ Form::close() }}    
-            
-        </div>
+        
+        <!-- Titolo della chat -->
+        @if(isset($selectedUser))
+            <div class="heading font-x2 chat_title">{{ $selectedUser->name }} {{ $selectedUser->surname}}</div>
+        @else
+             <div class="heading font-x2 chat_title">Chat</div>
+        @endif    
+             
+            <!-- Porzione in cui vengono mostrati i messaggi e la form per l'invio di un nuovo messaggio se è stato selezionato un utente -->
+            @if(isset($messages))
+                <!-- Prozione dei messaggi -->
+                @include('helpers/messagges', ['messages' => $messages])                  
+                
+                <!-- Form per l'invio di un nuovo messaggio -->
+                @include('helpers/sendMessageForm', ['selectedUserId' => $selectedUser->id])  
+                
+            @else
+                <div class="inspace-10" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-image: url(/images/background/chat.png); background-size: cover;">
+            @endif
+               
     </section>
 @endsection

@@ -23,7 +23,6 @@ Route::view('/', 'home')
 Route::view('/condizioniuso', 'condizioniuso')
         ->name('condizioniuso');
 
-
 //Visualizzazione profilo
 Route::view('/profilo', 'profilo')
         ->name('profilo');
@@ -47,21 +46,27 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 //Visualizzazione catalogo pubblico
-Route::get('/catalogo', 'PublicController@showCatalog')
+Route::get('/catalogo', 'CatalogController@showCatalog')
         ->name('catalogo');
 
 //Visualizzazione informazioni alloggio
-Route::get('/catalogo/infoalloggio{Id}', 'PublicController@showAccInfo')
+Route::get('/catalogo/infoalloggio{Id}', 'CatalogController@showAccInfo')
         ->name('infoalloggio');
 
-//Visualizzazione chat per un locatore
-Route::get('/chat_locatore{IdLocatore}', 'LocatoreController@showContacts')
-        ->name('chat_locatore');
-
-//Visualizzazione chat per un locatario
-Route::view('/chat_locatario', 'chat')
+//Visualizzazione della pagina della chat
+Route::get('/chat', 'chatController@showContacts')
         ->name('chat');
 
+//Visualizzazione della pagina della chat con i messaggi scambiati con l'utente selezionato
+Route::get('/chat/messages/{selectedId}', 'chatController@showMessages')
+        ->name('chat_messages');
+
+Route::post('/chat/messages/{selectedId}/send', 'chatController@sendMessage')
+        ->name('send_message');
+
+//Visualizzazione della form per l'invio di un messaggio ad un nuovo locatore
+Route::get('/chat/new_locatore', 'ChatController@showMessages')
+        ->name('chat_new_locatore');
 
 // Rotte profilo e per la la modifica del profilo
 Route::get('/profilo', 'UserController@index')
@@ -76,47 +81,42 @@ Route::put('/profilo{id}', 'Auth\UpdateController@updatepassword')
 Route::put('/profilo/{id}', 'Auth\UpdateController@updateusername')
         ->name('usernameupdate');
 
-Route::get('/profilo/modificaprofilo={Id}', 'Auth\UpdateController@edit')
+Route::get('/profilo/modificaprofilo{Id}', 'Auth\UpdateController@edit')
         ->name('modificaprofilo');
 
-Route::get('/profilo/cambiapassword={Id}', 'Auth\UpdateController@editpassword')
+Route::get('/profilo/cambiapassword{Id}', 'Auth\UpdateController@editpassword')
         ->name('cambiapassword');
 
-Route::get('/profilo/cambiausername={Id}', 'Auth\UpdateController@editusername')
+Route::get('/profilo/cambiausername{Id}', 'Auth\UpdateController@editusername')
         ->name('cambiausername');
 
 Route::get('/allprofilo', 'UserController@showUsers')
         ->name('allprofilo');
 
-
-// Rott* per la gestione alloggi locatore
-Route::get('/visualizzalloggi{Id}', 'PublicController@showAlloggi')
+// Rotta per la gestione alloggi locatore
+Route::get('/visualizzalloggi{Id}', 'CatalogController@showAlloggi')
         ->name('visualizzalloggi');
 
 //Visualizzazione Faq
-Route::get('/faq', 'PublicController@showFaqs')
+Route::get('/faq', 'FaqController@showFaqs')
         ->name('faq');
 
-
 //aggiunta faqs
-Route::get('/aggiungifaq','AggiungifaqController@showfaqform')
+Route::get('/aggiungifaq','FaqController@showfaqform')
         ->name('aggiungifaq');
 
-Route::post('/aggiungifaq','AggiungifaqController@addfaq');
+Route::post('/aggiungifaq','FaqController@addfaq');
+
 //elimina faq
-Route::get('eliminafaq/{id}','AggiungifaqController@deletefaq')
+Route::get('eliminafaq/{id}','FaqController@deletefaq')
          ->name('eliminafaq');
+
 //modifica faq
-Route::get('modificafaq/{id}','AggiungifaqController@modificafaq')
+Route::get('modificafaq/{id}','FaqController@modificafaq')
         ->name('modificafaq');
 
-Route::post('/faq/{id}','AggiungifaqController@updatefaq')
+Route::post('/faq/{id}','FaqController@updatefaq')
         ->name('updatefaq');
 
 Route::view('/faq/statistiche','statistiche')
         ->name('statistiche');
-
-
-
-
-
