@@ -217,14 +217,11 @@ class DatabaseSeeder extends Seeder {
             ['mittente' => 11, 'destinatario' => 10, 'letto' => true,
                 'testo' => 'No, non è trattabile', 'data' => date_create("2022-05-30 15:50:20")],
             
-            ['mittente' => 8, 'destinatario' => 11, 'letto' => true,
-                'testo' => 'Buonasera, sono interessato all\'appartamento ad Ancona in zona Le Grazie', 'data' => date_create("2022-05-28 15:25:20")],
+            
             ['mittente' => 8, 'destinatario' => 11, 'letto' => true,
                 'testo' => 'A che piano si trova?', 'data' => date_create("2022-05-28 15:38:10")],
             ['mittente' => 11, 'destinatario' => 8, 'letto' => true,
-                'testo' => 'Si trova al terzo piano', 'data' => date_create("2022-05-29 14:00:20")],
-            ['mittente' => 8, 'destinatario' => 11, 'letto' => true,
-                'testo' => 'Ok, il prezzo è trattabile?', 'data' => date_create("2022-05-29 19:55:02")],
+                'testo' => 'Si trova al terzo piano', 'data' => date_create("2022-05-29 14:00:20")],           
             ['mittente' => 11, 'destinatario' => 8, 'letto' => true,
                 'testo' => 'No, non è trattabile', 'data' => date_create("2022-05-30 18:50:20")],
             
@@ -249,6 +246,11 @@ class DatabaseSeeder extends Seeder {
                 'testo' => 'Ok, il prezzo è trattabile?', 'data' => date_create("2022-05-29 19:55:02")],
             ['mittente' => 9, 'destinatario' => 4, 'letto' => true,
                 'testo' => 'No, non è trattabile', 'data' => date_create("2022-05-30 18:50:20")],
+            
+            ['mittente' => 8, 'destinatario' => 11, 'letto' => true,
+                'testo' => 'Ok, il prezzo è trattabile?', 'data' => date_create("2022-05-29 19:55:02")],
+            ['mittente' => 8, 'destinatario' => 11, 'letto' => true,
+                'testo' => 'Buonasera, sono interessato all\'appartamento ad Ancona in zona Le Grazie', 'data' => date_create("2022-05-28 15:25:20")]
             
         ]);
         
