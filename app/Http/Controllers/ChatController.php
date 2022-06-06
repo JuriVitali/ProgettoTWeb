@@ -55,4 +55,11 @@ class ChatController extends Controller
 
         return redirect()->action('ChatController@showMessages', [$selectedId]);               
     }
+    
+    public function chatNewLocatore(){
+        
+        return;              
+    }
+    
+    
 }

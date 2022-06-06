@@ -14,57 +14,34 @@
 
 @section('content')
 <div class="sectiontitle">
-    <p class="heading underline font-x2">FAQ</p>
+    <p class="heading underline font-x2">FAQs</p>
 </div>
-<ul class="nospace group overview btmspace-80">
-     @can('isAdmin')
-      <div align="center"> <a class="btn" name="modifica" href="{{ route('aggiungifaq') }}">aggiungi faq</a></div>
-   <br>  @endcan
-    
-     @foreach ($faqs as $faq)
-    <li class="one first" style="background:#F0F2F5; padding: 20px;">
-        <article>
-            <h6 class="heading" style="color:#B946AD"><b>{{ $faq->domanda }} </b></h6>
-            <p>{{ $faq->risposta }}</p>
-            @can('isAdmin')
-            <!--<script>
-            var vis = 1000;    //CONFIRM
-window.confirm = function(message) {
-  var a = document.createElement('div');
-  var y = document.createElement('button');
-  var n = document.createElement('button');  
-  //regole di stile CSS
-  a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px; background:white; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black;z-index:"+ vis+ ";";
-  //buttons style
-  y.style.cssText = "position:absolute; bottom:0; right:0; width:50%; margin:2px;clear:both;";
-  n.style.cssText = "position:absolute; bottom:0; left:0; width:50%; margin:2px;clear:both;";
-  a.innerHTML = "<b>Confirm</b><br>"+message;
-    y.innerHTML = "Conferma";
-    n.innerHTML = "Annulla";
-  document.body.appendChild(a);
-  a.appendChild(y);
-  a.appendChild(n);
-    vis--;
-  
-// case YES  
-  y.addEventListener("click", function(e) {
-     return true;
-  	 a.remove();
-  }
-)
-  //case NO
-  n.addEventListener("click", function(e,resp) {
-   	event.stopPropagation(); event.preventDefault()	
-            a.remove();
 
-  }
-)  
-};
-           </script>-->
-           <div align="center"> <a class="btn" name="modifica" href="{{route('modificafaq', ['id' => $faq->id])}}">modifica</a> 
-               <a class="btn" name="elimina" href="{{ route('eliminafaq', ['id' => $faq->id]) }}" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};" >elimina</a></div>
-      @endcan
-        </article>
+@can('isAdmin')
+    <div class="one first btmspace-20" style="height: 70px;">
+        <a class="btn-faq-a heading"  href="{{ route('aggiungifaq') }}">aggiungi faq</a>
+    </div>
+@endcan
+
+<ul class="nospace group overview btmspace-80">
+    
+    @foreach ($faqs as $faq)
+    <li class="one" style="border-radius: 10px;">
+            
+            @can('isAdmin')
+            <div style='background-color: #D13AC1; color:#FFF; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; padding: 10px 20px 10px 20px; vertical-align: middle;'>                
+                <h6 class="heading faq-ques-1" style="width: 77%; float: left; font-size: 1.3rem; padding: 7px;"><b>{{ $faq->domanda }} </b></h6>             
+                    <a class="btn-faq-m" name="modifica" href="{{route('modificafaq', ['id' => $faq->id])}}">modifica</a> 
+                    <a class="btn-faq-d" name="elimina" href="{{ route('eliminafaq', ['id' => $faq->id]) }}" onclick="if (confirm('Sei sicuro di voler eliminare la domanda selezionata?')){return true;}else{event.stopPropagation(); event.preventDefault();};" >elimina</a>       
+            </div>
+            @endcan
+        
+            @cannot('isAdmin')
+            <h6 class="heading faq-ques-2" style="width: 100%; padding:10px 20px; font-size: 1.3rem; background-color: #D13AC1; color:#FFF; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; vertical-align: middle;"><b>{{ $faq->domanda }} </b></h6>  
+            @endcannot
+            
+            <p class="inspace-20 faq-ans" >{{ $faq->risposta }}</p>
+            
     </li>
     <br> 
     @endforeach

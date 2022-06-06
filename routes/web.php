@@ -58,14 +58,15 @@ Route::get('/chat', 'chatController@showContacts')
         ->name('chat');
 
 //Visualizzazione della pagina della chat con i messaggi scambiati con l'utente selezionato
-Route::get('/chat/messages/{selectedId}', 'chatController@showMessages')
+Route::get('/chat/messages/{selectedId}', 'ChatController@showMessages')
         ->name('chat_messages');
 
-Route::post('/chat/messages/{selectedId}/send', 'chatController@sendMessage')
+//Visualizzazione della form per l'invio di un messaggio al locatore selezionato
+Route::post('/chat/messages/{selectedId}/send', 'ChatController@sendMessage')
         ->name('send_message');
 
 //Visualizzazione della form per l'invio di un messaggio ad un nuovo locatore
-Route::get('/chat/new_locatore', 'ChatController@showMessages')
+Route::get('/chat/new_locatore', 'ChatController@chatNewLocatore')
         ->name('chat_new_locatore');
 
 // Rotte profilo e per la la modifica del profilo
