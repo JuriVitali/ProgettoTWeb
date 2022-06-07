@@ -69,12 +69,16 @@ Route::get('/chat', 'chatController@showContacts')
 Route::get('/chat/messages/{selectedId}', 'ChatController@showMessages')
         ->name('chat_messages');
 
-//Visualizzazione della form per l'invio di un messaggio al locatore selezionato
-Route::post('/chat/messages/{selectedId}/send', 'ChatController@sendMessage')
+//Invio di un messaggio ad un utente con cui l'utente autenticato ha già scambiato messaggi
+Route::post('/chat/messages/{selectedId}/send', 'ChatController@sendMessageToContact')
         ->name('send_message');
 
 //Visualizzazione della form per l'invio di un messaggio ad un nuovo locatore
 Route::get('/chat/new_locatore', 'ChatController@chatNewLocatore')
+        ->name('chat_new_locatore');
+
+//Invio di un messaggio ad un locatore con cui il locatario autenticato non ha mai scambiato messaggi
+Route::post('/chat/new_locatore', 'ChatController@sendMessageToNewLoc')
         ->name('chat_new_locatore');
 
 /* Visualizzazione e modifica del profilo utente

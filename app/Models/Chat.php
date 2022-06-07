@@ -76,4 +76,10 @@ class Chat extends Model
         
         return User::find($userId);   
     }
+    
+    //Ritorna l'utente associato all'id passato come parametro
+    public function getUserByUsername($username){
+        
+        return User::where('username', $username)->first();   
+    }
 }

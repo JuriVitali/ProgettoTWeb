@@ -7,6 +7,7 @@ use App\Models\Resources\Message;
 use App\Models\Chat;
 use Auth;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\messageNewLocatoreRequest;
 
 class ChatController extends Controller
 {
@@ -45,17 +46,21 @@ class ChatController extends Controller
                         ->with('selectedUser', $selectedUser);               
     }
     
-    public function sendMessage(Request $request, $selectedId){
-        
+    public function sendMess($text, $contactId) {
         date_default_timezone_set('Europe/Rome');
         
         $message = new Message;
-        $message->testo = $request->text_mess;
+        $message->testo = $text;
         $message->letto = false;
         $message->mittente = Auth::id();
-        $message->destinatario = $selectedId;
-        $message->data = date("Y-m-d h:i:s");
+        $message->destinatario = $contactId;
+        $message->data = date("Y-m-d H:i:s");
         $message->save();
+    }
+    
+    public function sendMessageToContact(Request $request, $selectedId){
+        
+        $this->sendMess($request->text_mess, $selectedId);     
 
         return redirect()->action('ChatController@showMessages', [$selectedId]);               
     }
@@ -68,5 +73,17 @@ class ChatController extends Controller
                         ->with('contacts', $contacts)
                         ->with('newLocatore', true);
     } 
+    
+    public function sendMessageToNewLoc(messageNewLocatoreRequest $request){
+        
+        $newLoc = $this->_chatModel->getUserByUsername($request->usernameLoc);
+        
+        Log::info($request->message);
+        Log::info($newLoc->id());
+        
+        $this->sendMess($request->message, $newLoc->id()); 
+        
+        return redirect()->action('ChatController@showMessages', [$newLoc->id()]);
+    }
     
 }
