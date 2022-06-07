@@ -35,8 +35,10 @@
                     <a class="btn3_selected center bold" href="{{ route('chat_messages', [$contact->id]) }}"> {{ $contact->name }} {{ $contact->surname}}</a>
                 
                 <!-- Contatto non selezionato -->
-                 @else
-                    <a class="btn3 center bold" href="{{ route('chat_messages', [$contact->id]) }}"> {{ $contact->name }} {{ $contact->surname}}</a>
+                 @elseif($contact->notReadMessages != 0)
+                    <a class="btn3 center bold" href="{{ route('chat_messages', [$contact->id]) }}"> {{ $contact->name }} {{ $contact->surname}} <p class='notReadMess'> {{ $contact->notReadMessages }} </p></a>
+                    @else
+                        <a class="btn3 center bold" href="{{ route('chat_messages', [$contact->id]) }}"> {{ $contact->name }} {{ $contact->surname}}</a>
                 @endif
             @endforeach
         </div>
@@ -60,13 +62,15 @@
              
             <!-- Porzione in cui vengono mostrati i messaggi e la form per l'invio di un nuovo messaggio se è stato selezionato un utente -->
             @if(isset($messages))
-                <!-- Prozione dei messaggi -->
-                @include('helpers/messagges', ['messages' => $messages])                  
+                <!-- Porzione dei messaggi -->
+                @include('helpers/showMessagges', ['messages' => $messages])                  
                 
                 <!-- Form per l'invio di un nuovo messaggio -->
                 @include('helpers/sendMessageForm', ['selectedUserId' => $selectedUser->id])  
                 
-            @else
+            @elseif(isset($newLocatore))
+                @include('helpers/sendMessageToNewLocatoreForm')
+                @else
                 <div class="inspace-10" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-image: url(/images/background/chat.png); background-size: cover;">
             @endif
                

@@ -192,6 +192,7 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 .btn-new_con{display:inline-block; padding:8px 18px 10px; border-bottom: 0.5px solid #30BA1A; border-radius: 4px;
     background-color: #30BA1A; color: #FFF; display: flex; justify-content: center; align-items: center; height: 75px; width: 100%;}
 .btn-new_con:hover{background-color: #2AA017;}
+.notReadMess{margin-left:10px; padding:0px 7px; border-radius: 50px; background-color: #35AA81; color:#FFF}
 
 /* Faqs
 --------------------------------------------------------------------------------------------------------------- */

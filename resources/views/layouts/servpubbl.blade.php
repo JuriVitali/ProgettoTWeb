@@ -11,7 +11,7 @@
         <title>TrovAffitto | @yield('title', '')</title>
     </head>
     <body id="top" style="background: #ffffff; color: #000000">
-        <div class="bgded" style="background-image: {{asset('/images/background/letto_stretta.jpg')}} "> 
+        <div class="bgded" style="background-image: url('/images/background/letto_stretta.jpg') "> 
             <div class="wrapper row1">
                 <header id="header" class="hoc clear">
                     <div id="logo" class="fl_left"> 

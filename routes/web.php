@@ -11,6 +11,9 @@
   |
  */
 
+/* Homepage e altre rotte statiche
+--------------------------------------------------------------------------------------------------------------- */
+
 //Chi siamo
 Route::view('/chisiamo', 'chisiamo')
         ->name('chisiamo');
@@ -22,6 +25,9 @@ Route::view('/', 'home')
 //Condizioni d'uso
 Route::view('/condizioniuso', 'condizioniuso')
         ->name('condizioniuso');
+
+/* Registrazione e autenticazione
+--------------------------------------------------------------------------------------------------------------- */
 
 //Visualizzazione profilo
 Route::view('/profilo', 'profilo')
@@ -45,6 +51,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 //Registrazione utente
 Route::post('register', 'Auth\RegisterController@register');
 
+/* Chat
+--------------------------------------------------------------------------------------------------------------- */
 //Visualizzazione catalogo pubblico
 Route::get('/catalogo', 'CatalogController@showCatalog')
         ->name('catalogo');
@@ -68,6 +76,9 @@ Route::post('/chat/messages/{selectedId}/send', 'ChatController@sendMessage')
 //Visualizzazione della form per l'invio di un messaggio ad un nuovo locatore
 Route::get('/chat/new_locatore', 'ChatController@chatNewLocatore')
         ->name('chat_new_locatore');
+
+/* Visualizzazione e modifica del profilo utente
+--------------------------------------------------------------------------------------------------------------- */
 
 // Rotte profilo e per la la modifica del profilo
 Route::get('/profilo', 'UserController@index')
@@ -94,9 +105,15 @@ Route::get('/profilo/cambiausername{Id}', 'Auth\UpdateController@editusername')
 Route::get('/allprofilo', 'UserController@showUsers')
         ->name('allprofilo');
 
+/* Gestione Alloggi
+--------------------------------------------------------------------------------------------------------------- */
+
 // Rotta per la gestione alloggi locatore
 Route::get('/visualizzalloggi{Id}', 'CatalogController@showAlloggi')
         ->name('visualizzalloggi');
+
+/* Faqs
+--------------------------------------------------------------------------------------------------------------- */
 
 //Visualizzazione Faq
 Route::get('/faq', 'FaqController@showFaqs')
@@ -119,5 +136,7 @@ Route::get('modificafaq/{id}','FaqController@modificafaq')
 Route::post('/faq/{id}','FaqController@updatefaq')
         ->name('updatefaq');
 
+/* Statistiche
+--------------------------------------------------------------------------------------------------------------- */
 Route::view('/faq/statistiche','statistiche')
         ->name('statistiche');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Resources\Message;
 use App\Models\Chat;
 use Auth;
+use Illuminate\Support\Facades\Log;
 
 class ChatController extends Controller
 {
@@ -25,6 +26,9 @@ class ChatController extends Controller
     }
     
     public function showMessages($selectedId){
+        
+        //setta come letti i messaggi non letti inviati dall'utente selezionato all'utente autenticato
+        $this->_chatModel->readMessages(Auth::id(), $selectedId);
         
         //recupera i messaggi scambiati tra l'utente autenticato e quello selezionato
         $messages = $this->_chatModel->getMessages(Auth::id(), $selectedId);
@@ -50,16 +54,19 @@ class ChatController extends Controller
         $message->letto = false;
         $message->mittente = Auth::id();
         $message->destinatario = $selectedId;
-        $message->data = date("Y-m-d h:i");
+        $message->data = date("Y-m-d h:i:s");
         $message->save();
 
         return redirect()->action('ChatController@showMessages', [$selectedId]);               
     }
     
     public function chatNewLocatore(){
+        //recupera gli utenti con cui l'utente di cui viene passato l'id ha scambiato almeno un messaggio
+        $contacts = $this->_chatModel->getContacts(Auth::id());
         
-        return;              
-    }
-    
+        return view('chat')
+                        ->with('contacts', $contacts)
+                        ->with('newLocatore', true);
+    } 
     
 }
