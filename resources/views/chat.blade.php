@@ -45,7 +45,7 @@
         
         <!-- pulsante per messaggiare un nuovo locatore -->
         @can('isLocatario')
-        <a class="btn-new_con center bold" href="{{ route('chat_new_locatore', [$contact->id]) }}">Messaggia nuovo locatore</a>           
+        <a class="btn-new_con center bold" href="{{ route('chat_new_locatore') }}">Messaggia nuovo locatore</a>           
         @endcan
 
     </section>
@@ -69,7 +69,7 @@
                 @include('helpers/sendMessageForm', ['selectedUserId' => $selectedUser->id])  
                 
             @elseif(isset($newLocatore))
-                @include('helpers/sendMessageToNewLocatoreForm')
+                @include('helpers/sendMessageToNewLocatoreForm', ['locUsername' => $locUsername])
                 @else
                 <div class="inspace-10" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-image: url(/images/background/chat.png); background-size: cover;">
             @endif

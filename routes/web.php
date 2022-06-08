@@ -51,7 +51,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 //Registrazione utente
 Route::post('register', 'Auth\RegisterController@register');
 
-/* Chat
+/* Catalogo
 --------------------------------------------------------------------------------------------------------------- */
 //Visualizzazione catalogo pubblico
 Route::get('/catalogo', 'CatalogController@showCatalog')
@@ -60,6 +60,10 @@ Route::get('/catalogo', 'CatalogController@showCatalog')
 //Visualizzazione informazioni alloggio
 Route::get('/catalogo/infoalloggio{Id}', 'CatalogController@showAccInfo')
         ->name('infoalloggio');
+
+
+/* Chat
+--------------------------------------------------------------------------------------------------------------- */
 
 //Visualizzazione della pagina della chat
 Route::get('/chat', 'chatController@showContacts')
@@ -74,12 +78,12 @@ Route::post('/chat/messages/{selectedId}/send', 'ChatController@sendMessageToCon
         ->name('send_message');
 
 //Visualizzazione della form per l'invio di un messaggio ad un nuovo locatore
-Route::get('/chat/new_locatore', 'ChatController@chatNewLocatore')
+Route::get('/chat/messages/new_loc/{locId?}', 'ChatController@chatNewLocatore')
         ->name('chat_new_locatore');
 
 //Invio di un messaggio ad un locatore con cui il locatario autenticato non ha mai scambiato messaggi
 Route::post('/chat/new_locatore', 'ChatController@sendMessageToNewLoc')
-        ->name('chat_new_locatore');
+        ->name('send_message_new_loc');
 
 /* Visualizzazione e modifica del profilo utente
 --------------------------------------------------------------------------------------------------------------- */

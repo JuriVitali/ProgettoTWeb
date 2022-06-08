@@ -59,7 +59,7 @@
                     <!-- Pulsanti per il locatario: "Contatta locatore" e "Invia una proposta" -->
                     @can('isLocatario')
                     <div class="one" style="margin-top: 10px" >
-                        <a class="btn2" style="text-align: center; width: 41%; margin-right: 1.5%;" href="{{ route('catalogo') }}" >Contatta locatore</a>
+                        <a class="btn2" style="text-align: center; width: 41%; margin-right: 1.5%;" href="{{ route('chat_new_locatore', [$accommodation->proprietario]) }}" >Contatta locatore</a>
                         <a class="btn2" style="text-align: center; width: 41%; margin-left: 1.5%;" href="{{ route('catalogo') }}" >Invia una proposta</a>
                     </div>
                     <br>

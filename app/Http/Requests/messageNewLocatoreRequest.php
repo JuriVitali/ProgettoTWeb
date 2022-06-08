@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class messageNewLocatoreRequest extends FormRequest
 {
@@ -24,10 +25,11 @@ class messageNewLocatoreRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
-            'message' => ['required', 'max:200'],
-            'usernameLoc' => ['required', 'string', 'min:8', 'max:20',
-                    Rule::exists('users,username')]
+            'text_mess' => ['required', 'max:200'],
+            'locatore' => ['required', 'string', 'min:8', 'max:20', 
+                    Rule::exists('users', 'username')->where('role', 'locatore')]  //si controlla l'esistenza del locatore
         ];
     }
 }

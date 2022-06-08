@@ -46,6 +46,7 @@ class ChatController extends Controller
                         ->with('selectedUser', $selectedUser);               
     }
     
+    //funzione che inserisce nel db il messaggio di cui vengono passati testo e mittente
     public function sendMess($text, $contactId) {
         date_default_timezone_set('Europe/Rome');
         
@@ -65,25 +66,29 @@ class ChatController extends Controller
         return redirect()->action('ChatController@showMessages', [$selectedId]);               
     }
     
-    public function chatNewLocatore(){
+    public function chatNewLocatore($locId = null){
         //recupera gli utenti con cui l'utente di cui viene passato l'id ha scambiato almeno un messaggio
         $contacts = $this->_chatModel->getContacts(Auth::id());
         
+        if ($locId != null) {
+            $destinatario = $this->_chatModel->getUserById($locId);
+        }
+        
         return view('chat')
                         ->with('contacts', $contacts)
-                        ->with('newLocatore', true);
+                        ->with('newLocatore', true)
+                        ->with('locUsername', $destinatario->username);
     } 
     
     public function sendMessageToNewLoc(messageNewLocatoreRequest $request){
         
-        $newLoc = $this->_chatModel->getUserByUsername($request->usernameLoc);
+        //recupero del locatore con l'username passato
+        $newLoc = $this->_chatModel->getUserByUsername($request->locatore);
         
-        Log::info($request->message);
-        Log::info($newLoc->id());
+        //invio del messaggio al locatore estratto
+        $this->sendMess($request->text_mess, $newLoc->id); 
         
-        $this->sendMess($request->message, $newLoc->id()); 
-        
-        return redirect()->action('ChatController@showMessages', [$newLoc->id()]);
+        return redirect()->action('ChatController@showMessages', [$newLoc->id]);
     }
     
 }
