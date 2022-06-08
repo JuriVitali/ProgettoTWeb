@@ -146,5 +146,26 @@ Route::post('/faq/{id}','FaqController@updatefaq')
 
 /* Statistiche
 --------------------------------------------------------------------------------------------------------------- */
-Route::view('/faq/statistiche','statistiche')
+//pagina per la selezione delle statistiche
+Route::view('/showstatistiche', 'statistiche')
         ->name('statistiche');
+
+//pagina con risultati delle statistiche
+Route::get('/statistiche','StatisticheController@confstatistiche')
+        ->name('cambiastatistiche');
+
+/* Proposte
+--------------------------------------------------------------------------------------------------------------- */
+
+Route::get('/catalogo/InvioProposta{Id}', 'ProposalController@showProposalForm')
+        ->name('InvioProposta');
+
+Route::post('/catalogo/InvioProposta{Id}/conferma/{userId}', 'ProposalController@__insert');
+     
+Route::get('/VisualPropInviate{userId}', 'ProposalController@showPropInviate')
+        ->name('VisualPropInviate');
+
+Route::post('/catalogo/VisualPropInviate{userId}/conferma/{PropId}', 'ProposalController@EliminaProposta');
+
+Route::get('/VisualPropRicevute{userId}', 'ProposalController@showPropRicevute')
+        ->name('VisualPropRicevute');

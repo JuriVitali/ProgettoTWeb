@@ -1,20 +1,11 @@
 
-@extends('layouts.servpubbl')
+@extends('layouts.vuota')
 
-@section('title', 'Profilo')
-
-@section('menu')
-<article>
-    <h3 class="heading">Modifica Faq</h3>
-</article>
-<ul>
-    <li><a href="{{ route('home') }}">Home</a></li>
-    <li><a href="{{ route('faq') }}">faq</a></li>
-    <li><a href="{{ route('faq') }}">Modifica Faq</a></li>
-</ul>
-@endsection
+@section('title', 'Modifica faq')
 
 @section('content')
+<br>
+<br>
 <div class="borderedbox" style="text-align: left; background: #E7E7E7;width: 53%; padding: 30px; margin-left: auto; margin-right: auto; " >
     <h3><b><center>Modifica Faq</center></b></h3>
 
@@ -24,14 +15,20 @@
              {!! Form::open(['action' => ['AggiungifaqController@updatefaq', $faq->id], 'method' => 'POST']) !!} 
             
              <div  class="wrap-input" align="center">
-                {{ Form::label('domanda', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::text('domanda', $faq->domanda, ['class' => 'input','id' => 'domanda']) }}
-                
+                {{ Form::label('domanda', 'Modifica Domanda', ['class' => 'label-input']) }}
+                {{ Form::textarea('domanda', $faq->domanda, ['class' => 'input','rows' => 3,'cols' =>55]) }}
+                 @if ($errors->first('domanda'))
+                    <ul class="errors">
+                        @foreach ($errors->get('domanda') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
             </div>
 
              <div  class="wrap-input" align="center">
-                {{ Form::label('risposta', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::textarea('risposta', $faq->risposta, ['class' => 'input','id' => 'risposta','rows' => 3,'cols' =>26]) }}
+                {{ Form::label('risposta', 'Modifica Risposta', ['class' => 'label-input']) }}
+                {{ Form::textarea('risposta', $faq->risposta, ['class' => 'input','id' => 'risposta','rows' => 5,'cols' =>55]) }}
               
             </div>
             

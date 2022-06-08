@@ -72,13 +72,17 @@ class ChatController extends Controller
         
         if ($locId != null) {
             $destinatario = $this->_chatModel->getUserById($locId);
-        }
-        
-        return view('chat')
+            return view('chat')
                         ->with('contacts', $contacts)
                         ->with('newLocatore', true)
                         ->with('locUsername', $destinatario->username);
-    } 
+        }
+        else {
+        return view('chat')
+                        ->with('contacts', $contacts)
+                        ->with('newLocatore', true);
+        } 
+    }
     
     public function sendMessageToNewLoc(messageNewLocatoreRequest $request){
         

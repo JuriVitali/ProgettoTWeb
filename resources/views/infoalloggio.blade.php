@@ -62,7 +62,7 @@
                 @can('isLocatario')
                 <div class="one" style="padding-bottom: 10px; padding-top: -10px;" >
                     <a class="btn center" style="width: 47.5%; margin-right: 1.8%;" href="{{ route('chat_new_locatore', [$accommodation->proprietario]) }}" >Contatta il locatore</a>
-                    <a class="btn center" style= "width: 47.5%; margin-left: 1.8%;" href="{{ route('catalogo') }}" >Invia una proposta</a>
+                    <a class="btn center" style= "width: 47.5%; margin-left: 1.8%;" href=""{{ route('InvioProposta', [$accommodation->id]) }}"" >Invia una proposta</a>
                 </div>
                 <br>
                 @endcan

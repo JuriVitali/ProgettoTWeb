@@ -3,17 +3,19 @@
 @section('title','Aggiungi faq')
 
 @section('content')
-<div class="borderedbox" style="background: #E7E7E7; width: 30%; padding: 30px; margin-left: auto; margin-right: auto; margin-top: 250px" >
-    <h3><b>Aggiungi Faq</b></h3>
+<br>
+<br>
+<div class="borderedbox" style="text-align: left; background: #E7E7E7;width: 53%; padding: 30px; margin-left: auto; margin-right: auto; " >
+    <h3><b><center>Aggiungi Faq</center></b></h3>
 
     <div class="container-contact" >
         <div class="wrap-contact1">
             {{ Form::open(array('route' => 'aggiungifaq', 'class' => 'contact-form')) }}
             
             
-                <div  class="wrap-input">
-                        {{ Form::label('domada', 'Domanda', ['class' => 'label-input']) }} &nbsp 
-                        {{ Form::text('domanda', '', ['class' => 'input', 'id' => 'domanda','size' => 40]) }} &nbsp &nbsp &nbsp 
+                <div  class="wrap-input" align="center">
+                        {{ Form::label('domada', 'Inserisici Domanda', ['class' => 'label-input']) }} 
+                        {{ Form::textarea('domanda', '', ['class' => 'input', 'id' => 'domanda','rows' => 3,'cols' =>55]) }} &nbsp &nbsp &nbsp 
                   @if ($errors->first('domanda'))
                     <ul class="errors">
                         @foreach ($errors->get('domanda') as $message)
@@ -25,10 +27,10 @@
 
                 <br>
                 
-                <div  class="wrap-input">
+                <div  class="wrap-input" align="center">
                    
-                        {{ Form::label('risposta', 'Risposta', ['class' => 'label-input']) }} &nbsp
-                        {{ Form::textarea('risposta', '', ['class' => 'input', 'id' => 'risposta','rows' => 3,'cols' =>26]) }}
+                        {{ Form::label('risposta', 'Inserisci Risposta', ['class' => 'label-input']) }} 
+                        {{ Form::textarea('risposta', '', ['class' => 'input', 'id' => 'risposta','rows' => 5,'cols' =>55]) }}
                      @if ($errors->first('risposta'))
                     <ul class="errors">
                         @foreach ($errors->get('risposta') as $message)

@@ -15,27 +15,61 @@
 <div class="sectiontitle">
     <p class="heading underline font-x2">Statistiche</p>
 </div>
-  <div class="bgded row6">  <h6>Modifica Statistiche:</h6> 
-<form style="background:#F0F2F5; padding: 20px;">
-    <div class="one_third first"><label for="dai">Data inizio:</label><input id="dai" type="date" size="25" ></label></div>
-        <div class="one_third"><label for="daf">Data fine:</label><input id="daf" type="date" size="25" ></div>
-        <div class="one_third"><label for="tial">Tipologia alloggio:</label><select id="tial"><option >appartamento</option><option>posto letto</option><option selected>tutte</option></select></div>
-            <br> 
-          <br>
-          <div align="center"> <a class="btn" name="conferma" href="#">conferma</a></div>
-</form>
+  <div class="bgded row6" name="prova">  <h6>Inserisci Parametri:</h6> </div>
+<div style="background:#F0F2F5; padding: 20px;">        
+     
+      {!! Form::open(['route' =>'cambiastatistiche', 'method' => 'GET','name'=>'modifica']) !!}
+    
+    <div class="one_third first">{{ Form::label('dai', 'Data inizio', ['class' => 'label-input']) }} 
+        {{ Form::date('dai','', ['class' => 'input']) }}
+       @if ($errors->first('dai'))
+                    <ul class="errors">
+                        @foreach ($errors->get('dai') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif </div>
+        <div class="one_third">{{ Form::label('daf', 'Data Fine', ['class' => 'label-input']) }} 
+        {{ Form::date('daf','', ['class' => 'input']) }}
+        @if ($errors->first('daf'))
+                    <ul class="errors">
+                        @foreach ($errors->get('daf') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif </div>
+        <div class="one_third">
+            {{ Form::label('locazione', 'Tipologia alloggio', ['class' => 'label-input']) }} 
+        {{ Form::select('tipologia',[
+            'appartamento'=>'appartamento',
+          'posto letto'=>'posto letto',
+        'tutte'=>'tutte'],'tutte')}}
+         </div>
+      &nbsp
+           
+           <div  align="center">                
+                {{ Form::submit('invia', ['class' => 'btn']) }}
+            </div>
+          
+ {{ Form::close() }}
+        </div>
 <br>
+@if(isset ($newdata) && isset($proposte) && isset($allocati))
+&nbsp
   <div>
+   
     <ul class="nospace linklist">
-     <li> <div class="one_half first"><h5>Il numero di annunci presenti nel sito:</h5></div> <div class="one_half"></div></li>
-     <br> <br><br>
-     <li> <div class="one_half first"><h5>Numero di proposte fatte dai potenziali locatari:</h5></div> <div class="one_half"></div></li>
-     <br><br><br>
-     <li> <div class="one_half first"><h5>Numero alloggi locati:</h5></div> <div class="one_half"></div></li>
-    <br><br><br>
+     <li> <div class="one_half first"><h5>Il numero di annunci presenti nel sito:</h5></div> <div class="one_half" style="color:#B946AD">{{$newdata}} </div></li>
+     &nbsp <br> <br>
+     <li> <div class="one_half first"><h5>Numero di proposte fatte dai potenziali locatari:</h5></div> <div class="one_half" style="color:#B946AD">{{$proposte}}</div></li>
+   &nbsp
+  <br> <br>
+     <li> <div class="one_half first"><h5>Numero alloggi locati:</h5></div> <div class="one_half" style="color:#B946AD">{{$allocati}}</div></li>
+   &nbsp  <br>
+  
     </ul>
   </div>
-  </div>
-
+  
+@endif
 @endsection
     
