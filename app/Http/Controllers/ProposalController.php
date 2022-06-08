@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Resources\Proposal;
-use \App\Models\Resources\Accommodation;
+use \App\Models\Proposals;
 use \App\Models\Catalog;
 use \App\Models\Faqs;
 use App\User;
@@ -24,7 +23,7 @@ class ProposalController extends Controller
     public function __construct() {
         $this->_catalogModel = new Catalog;
         $this->_faqModel = new Faqs;
-        $this->_proposalModel = new Proposal;
+        $this->_proposalModel = new Proposals;
         $this->userModel = new User;
         $this->middleware('auth');
     }
