@@ -29,7 +29,13 @@
              <div  class="wrap-input" align="center">
                 {{ Form::label('risposta', 'Modifica Risposta', ['class' => 'label-input']) }}
                 {{ Form::textarea('risposta', $faq->risposta, ['class' => 'input','id' => 'risposta','rows' => 5,'cols' =>55]) }}
-              
+               @if ($errors->first('risposta'))
+                    <ul class="errors">
+                        @foreach ($errors->get('risposta') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
             </div>
             
            

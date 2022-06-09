@@ -1,4 +1,4 @@
-<div class="inspace-10" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 347px; background-image: url(/images/background/chat.png); background-size: cover;">
+<div class="inspace-10 chat-sfondo" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 347px; background-size: cover;">
 <!-- Messaggi -->
 @foreach($messages as $message)
 <!-- Inviati dall'utente autenticato -->

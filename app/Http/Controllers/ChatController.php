@@ -78,7 +78,7 @@ class ChatController extends Controller
                         ->with('locUsername', $destinatario->username);
         }
         else {
-        return view('chat')
+            return view('chat')
                         ->with('contacts', $contacts)
                         ->with('newLocatore', true);
         } 

@@ -6,11 +6,11 @@
 @section('menu')
  @if(isset($proprietario))
     <article>
-        <h3 class="heading"> Info Allogio</h3>
+        <h3 class="heading"> Info Alloggio</h3>
     </article>
     <ul>
-        <li><a href="{{ route('home') }}">Home &#9658</a></li>
-        <li><a href="{{ route('visualizzalloggi', [Auth::id()]) }}">I tuoi Alloggi &#9658</a></li>
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('visualizzalloggi') }}">I tuoi Alloggi</a></li>
         <li><a href="#">Info alloggio</a></li>
     </ul>
  @else
@@ -18,8 +18,8 @@
         <h3 class="heading"> Catalogo</h3>
     </article>
     <ul>
-        <li><a href="{{ route('home') }}">Home &#9658</a></li>
-        <li><a href="{{ route('catalogo') }}">Catalogo &#9658</a></li>
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('catalogo') }}">Catalogo</a></li>
         <li><a href="#">Info alloggio</a></li>
     </ul>
  @endif

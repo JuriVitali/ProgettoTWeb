@@ -62,7 +62,7 @@ Route::get('/catalogo/infoalloggio{Id}', 'CatalogController@showAccInfo')
 --------------------------------------------------------------------------------------------------------------- */
 
 //Visualizzazione della pagina della chat
-Route::get('/chat', 'chatController@showContacts')
+Route::get('/chat', 'ChatController@showContacts')
         ->name('chat')->middleware('can:isLocatoreOrLocatario');
 
 //Visualizzazione della pagina della chat con i messaggi scambiati con l'utente selezionato

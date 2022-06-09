@@ -59,12 +59,6 @@ $(function () {
                         element.addClass('_error');
                     }
                     break;
-                /*case '_email':
-                    var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,6})$/;
-                    if (!pattern.test(element.val())) {
-                        element.addClass('_error');
-                    }
-                    break;*/
             }
             ;
         });

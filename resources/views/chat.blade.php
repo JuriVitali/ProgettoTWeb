@@ -67,11 +67,12 @@
                 
                 <!-- Form per l'invio di un nuovo messaggio -->
                 @include('helpers/sendMessageForm', ['selectedUserId' => $selectedUser->id])  
-                
-            @elseif(isset($newLocatore))
+            @endif
+               
+            @if(isset($newLocatore))
                 @include('helpers/sendMessageToNewLocatoreForm', ['locUsername' => $locUsername])
-                @else
-                <div class="inspace-10" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-image: url(/images/background/chat.png); background-size: cover;">
+            @else
+                <div class="inspace-10 chat-sfondo" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-size: cover;">
             @endif
                
     </section>

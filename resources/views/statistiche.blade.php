@@ -20,20 +20,20 @@
 
     {!! Form::open(['route' =>'cambiastatistiche', 'method' => 'GET','name'=>'modifica', 'class'=>'classic-form']) !!}
 
-    <div class="one_third first">{{ Form::label('dai', 'Data inizio', ['class' => 'label-input']) }} 
-        {{ Form::date('dai','', ['class' => 'input']) }}
-        @if ($errors->first('dai'))
+    <div class="one_third first">{{ Form::label('data_iniziale', 'Data inizio', ['class' => 'label-input']) }} 
+        {{ Form::date('data_iniziale','', ['class' => 'input']) }}
+        @if ($errors->first('data_iniziale'))
         <ul class="errors">
-            @foreach ($errors->get('dai') as $message)
+            @foreach ($errors->get('data_iniziale') as $message)
             <li>{{ $message }}</li>
             @endforeach
         </ul>
         @endif </div>
-    <div class="one_third">{{ Form::label('daf', 'Data Fine', ['class' => 'label-input']) }} 
-        {{ Form::date('daf','', ['class' => 'input']) }}
-        @if ($errors->first('daf'))
+    <div class="one_third">{{ Form::label('data_finale', 'Data Fine', ['class' => 'label-input']) }} 
+        {{ Form::date('data_finale','', ['class' => 'input']) }}
+        @if ($errors->first('data_finale'))
         <ul class="errors">
-            @foreach ($errors->get('daf') as $message)
+            @foreach ($errors->get('data_finale') as $message)
             <li>{{ $message }}</li>
             @endforeach
         </ul>

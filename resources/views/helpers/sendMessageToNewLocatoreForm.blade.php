@@ -1,4 +1,4 @@
-<div class="inspace-10" style="height: 288px; background-image: url(/images/background/chat.png); background-size: cover;"></div>
+<div class="inspace-10 chat-sfondo" style="height: 288px; background-size: cover;"></div>
 <div class="group send-message-new-loc" style="background-color: #BBB;">
     {{ Form::open(array('route' => 'send_message_new_loc', 'id' => 'send_message_new_locatore', 'class' => 'send-message-form')) }}
     

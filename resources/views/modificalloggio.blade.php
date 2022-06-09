@@ -8,8 +8,8 @@
 </article>
 <ul>
     <li><a href="{{ route('home') }}">Home</a></li>
-    <li><a href="{{ route('visualizzalloggi', [Auth::id()]) }}">I tuoi Alloggi &#9658</a></li>
-    <li><a href="{{ route('infoalloggiolocatore', [$alloggio->id]) }}">Info alloggio</a></li>
+    <li><a href="{{ route('visualizzalloggi') }}">I tuoi Alloggi</a></li>
+    <li><a href="{{ route('infoalloggiolocatore') }}">Info alloggio</a></li>
     <li><a href="#">Modifica Alloggio</a></li>
 </ul>
 @endsection

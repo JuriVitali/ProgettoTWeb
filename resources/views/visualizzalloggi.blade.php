@@ -22,7 +22,7 @@ function ConfirmDelete()
     <h3 class="heading">I Tuoi Alloggi</h3>
 </article>
 <ul>
-    <li><a href="{{ route('home') }}">Home &#9658</a></li>
+    <li><a href="{{ route('home') }}">Home</a></li>
     <li><a href="#">I tuoi alloggi</a></li>
 </ul>
 @endsection

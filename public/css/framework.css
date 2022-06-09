@@ -328,3 +328,13 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
     margin: 20px 250px 20px 250px;
     padding: 20px 50px 20px 150px;
 }
+
+/* Immagini
+--------------------------------------------------------------------------------------------------------------- */
+.sfondo-gen{
+background-image: url('../images/background/letto_stretta.jpg');
+}
+
+.chat-sfondo{
+background-image: url('../images/background/chat.png');
+}

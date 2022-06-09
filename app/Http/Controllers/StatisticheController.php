@@ -16,13 +16,13 @@ class StatisticheController extends Controller {
     }
   public function confstatistiche(Request $prova) {
     $this->validate($prova, [
-            'dai' => ['max:10','after:2020-01-01'],
-            'daf' => ['max:10',],
+            'data_iniziale' => [ 'nullable','max:10','before_or_equal:'. date('Y-m-d'),'after_or_equal:'. date('31-12-2021')],
+            'data_finale' => [ 'nullable','max:10','before_or_equal:'. date('Y-m-d'),'after_or_equal:'. date('31-12-2021')],
             'tipologia' => ['required', 'string'] ]);
      
   
-     $datai=$prova->input('dai');
-      $dataf=$prova->input('daf');
+     $datai=$prova->input('data_iniziale');
+      $dataf=$prova->input('data_finale');
        $tipologia=$prova->input('tipologia');
       if($datai==0) $datai=date('0001-01-01');
      if($dataf==0)  $dataf=date('9999-12-30');

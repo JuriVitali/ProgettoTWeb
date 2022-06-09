@@ -6,7 +6,6 @@
 <style>
 .myDiv{
 	display:none;
-    
 }  
 </style>
 
@@ -27,8 +26,8 @@ $(document).ready(function(){
         <h3 class="heading"> Inserisci Alloggio</h3>
     </article>
     <ul>
-        <li><a href="{{ route('home') }}">Home &#9658</a></li>
-        <li><a href="{{ route('visualizzalloggi', [Auth::id()]) }}">I tuoi Alloggi &#9658</a></li>
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('visualizzalloggi') }}">I tuoi Alloggi</a></li>
         <li><a href="#">Inserisci Alloggio</a></li>
     </ul>
  @else
@@ -36,7 +35,7 @@ $(document).ready(function(){
         <h3 class="heading"> Inserisci Alloggio</h3>
     </article>
     <ul>
-        <li><a href="{{ route('home') }}">Home &#9658</a></li>
+        <li><a href="{{ route('home') }}">Home</a></li>
         <li><a href="#">Inserisci Alloggio</a></li>
     </ul>
  @endif
