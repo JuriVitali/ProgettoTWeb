@@ -25,29 +25,23 @@ class UpdateController extends Controller
     }
     
     //Ritorna la vista modificaprofilo con l'utente
-    public function edit($Id)
+    public function edit()
     {
-        $user = User::find($Id);
-
-        return view('modificaprofilo') -> with ('user', $user);
+        return view('modificaprofilo') -> with ('user', Auth::user());
     }
     
-     public function editpassword($Id)
+     public function editpassword()
     {
-        $user = User::find($Id);
-
-        return view('cambiapassword') -> with ('user', $user);
+        return view('cambiapassword') -> with ('user', Auth::user());
     }
     
-     public function editusername($Id)
+     public function editusername()
     {
-        $user = User::find($Id);
-
-        return view('cambiausername') -> with ('user', $user);
+        return view('cambiausername') -> with ('user', Auth::user());
     }
     
     //Funzione per la modifica dei dati dell'utente
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:30'],
@@ -61,7 +55,7 @@ class UpdateController extends Controller
         ]);
         
         
-        $user = User::find($id);
+        $user = Auth::user();
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->data_nascita = $request->input('data_nascita');
@@ -79,14 +73,14 @@ class UpdateController extends Controller
     }
     
     //Funzione per la modifica della password
-    public function updatepassword(Request $request, $id)
+    public function updatepassword(Request $request)
     {
         $this->validate($request, [
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
         
         
-        $user = User::find($id);
+        $user = Auth::user();
         $user->password = Hash::make($request->input('password'));
         $user->save();
 

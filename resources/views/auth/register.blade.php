@@ -8,7 +8,7 @@
 
     <div class="container-contact" >
         <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
+            {{ Form::open(array('route' => 'register', 'class' => 'classic-form')) }}
             
             <div style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                 <div  class="wrap-input">
@@ -117,22 +117,6 @@
                 </ul>
                 @endif
             </div>
-            
-            <!-- 
-            <div  class="wrap-input  rs1-wrap-input" >
-                <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
-                    {{ Form::label('image', 'Immagine Profilo ', ['class' => 'label-input']) }} &nbsp &nbsp
-                    {{ Form::file('image', ['class' => 'input', 'id' => 'image']) }}
-                </p>
-                @if ($errors->first('image'))
-                <ul class="errors">
-                    @foreach ($errors->get('image') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            -->
             
             
             <div  class="wrap-input">

@@ -20,7 +20,7 @@
 
     <div class="container-contact" >
         <div class="wrap-contact1">
-            {!! Form::open(['action' => ['GestioneAlloggiController@updateAlloggio', $alloggio->id], 'method' => 'POST', 'files' => true]) !!} 
+            {!! Form::open(['action' => ['GestioneAlloggiController@updateAlloggio', $alloggio->id], 'method' => 'POST', 'files' => true, 'class' => 'classic-form']) !!} 
             
             <h6><b>Informazione Generali</b></h6>
 

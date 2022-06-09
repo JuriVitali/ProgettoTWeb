@@ -301,3 +301,30 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
     color:#FFF;
     border-color: #2AA017;
 }
+
+/* Profilo
+--------------------------------------------------------------------------------------------------------------- */
+.btn-upd-prof{
+    cursor: pointer;
+    text-align: center;
+    width: 350px;
+    padding:8px 18px; 
+    text-transform:uppercase; 
+    border:1px solid;
+    background-color: #B946AD; 
+    color: #FFF; 
+    border-color: #B946AD;
+    margin-bottom: 10px;
+}
+.btn-upd-prof:hover{
+    background-color: #FFF; 
+    color: #000; 
+    border-color: #000;
+}
+
+.info-pers{
+    border-radius: 5px;
+    background-color: #DDD;
+    margin: 20px 250px 20px 250px;
+    padding: 20px 50px 20px 150px;
+}

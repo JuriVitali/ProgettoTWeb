@@ -10,7 +10,7 @@
 
     <div class="container-contact" >
         <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'aggiungifaq', 'class' => 'contact-form')) }}
+            {{ Form::open(array('route' => 'aggiungifaq', 'class' => 'contact-form', 'class' => 'classic-form')) }}
             
             
                 <div  class="wrap-input" align="center">

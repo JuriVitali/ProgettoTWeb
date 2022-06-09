@@ -92,10 +92,10 @@ Route::view('/profilo', 'profilo')
 Route::get('/profilo', 'Auth\UpdateController@index')
         ->name('profilo')->middleware('can:isLocatoreOrLocatario');
 
-Route::post('/profilo{id}', 'Auth\UpdateController@update')
+Route::post('/profilo/modificaInfo', 'Auth\UpdateController@update')
         ->name('profiloupdate')->middleware('can:isLocatoreOrLocatario');
 
-Route::put('/profilo{id}', 'Auth\UpdateController@updatepassword')
+Route::put('/profilo', 'Auth\UpdateController@updatepassword')
         ->name('passwordupdate')->middleware('can:isLocatoreOrLocatario');
 
 Route::post('/profilo', 'Auth\UpdateController@updateusername')
@@ -104,13 +104,13 @@ Route::post('/profilo', 'Auth\UpdateController@updateusername')
 Route::post('/profilo/username', 'Auth\UpdateController@validateusername')
         ->name('validateusername')->middleware('can:isLocatoreOrLocatario');
 
-Route::get('/profilo/modificaprofilo{Id}', 'Auth\UpdateController@edit')
+Route::get('/profilo/modificaprofilo', 'Auth\UpdateController@edit')
         ->name('modificaprofilo')->middleware('can:isLocatoreOrLocatario');
 
-Route::get('/profilo/cambiapassword{Id}', 'Auth\UpdateController@editpassword')
+Route::get('/profilo/cambiapassword', 'Auth\UpdateController@editpassword')
         ->name('cambiapassword')->middleware('can:isLocatoreOrLocatario');
 
-Route::get('/profilo/cambiausername{Id}', 'Auth\UpdateController@editusername')
+Route::get('/profilo/cambiausername', 'Auth\UpdateController@editusername')
         ->name('cambiausername')->middleware('can:isLocatoreOrLocatario');
 
 /* Gestione Alloggi

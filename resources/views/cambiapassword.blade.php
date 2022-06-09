@@ -21,7 +21,7 @@
     <div class="container-contact" >
         <div class="wrap-contact1">
             <!-- {!! Form::model($user, [ 'route' => ['profiloupdate', $user->id], 'method' => 'post' ]) !!} -->
-             {!! Form::open(['action' => ['Auth\UpdateController@updatepassword', $user->id], 'method' => 'PUT']) !!} 
+             {!! Form::open(['action' => ['Auth\UpdateController@updatepassword'], 'method' => 'PUT', 'class' => 'classic-form']) !!} 
             
              <div  class="wrap-input" align="center">
                 {{ Form::label('password', 'Password', ['class' => 'label-input']) }} 

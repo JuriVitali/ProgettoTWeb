@@ -99,7 +99,7 @@ $(function () {
     <div class="container-contact" >
         <div class="wrap-contact1" >
             <!-- {!! Form::model($user, [ 'route' => ['profiloupdate', $user->id], 'method' => 'post' ]) !!} -->
-             {!! Form::open(['action' => ['Auth\UpdateController@update', $user->id], 'method' => 'POST', 'id' => 'form']) !!} 
+             {!! Form::open(['action' => ['Auth\UpdateController@update'], 'method' => 'POST', 'id' => 'form', 'class' => 'classic-form']) !!} 
             
             <div style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                 

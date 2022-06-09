@@ -28,55 +28,39 @@
 </div>
 @endif
 
-<div class="sectiontitle">
-      <p class="heading underline font-x2">Profilo</p>
+<div class="group one" style=" margin: auto; border-radius: 5px; background-color: #EEE; width: 40%; padding: 25px 50px; ">
+    <div class="sectiontitle">
+    <p class="heading underline font-x2" >Profilo</p>
 </div>
-    <ul class="nospace group overview btmspace-20" align="center" >
-      <div class="clear">
-            <h6 class="heading">Informazioni Profilo</h6>
-       </div>
-        
-            <li class="one_half first" align="right">
-              <article>
-                <p><b>Username</b></p>
-                <p><b>Tipo</b></p>
-                <p><b>Nome</b></p>
-                <p><b>Cognome</b></p>
-                <p><b>Data Nascita</b></p>
-                <p><b>Sesso</b></p>
-                <p><b>Città</b></p>
-                <p><b>Provincia</b></p>
-                <p><b>Indirizzo</b></p>
-              </article>
-            </li>
-            <li class="one_half" align="left">
-              <article>
+    <div class="one_half first">
+        <p><b>Username</b></p>
+        <p><b>Tipo</b></p>
+        <p><b>Nome</b></p>
+        <p><b>Cognome</b></p>
+        <p><b>Data Nascita</b></p>
+        <p><b>Sesso</b></p>
+        <p><b>Città</b></p>
+        <p><b>Provincia</b></p>
+        <p><b>Indirizzo</b></p>
+    </div>
 
-                <p> {{ Auth::user()->username }}</p>
-                <p> {{ Auth::user()->role }}</p>
-                <p> {{ Auth::user()->name }}</p>
-                <p> {{ Auth::user()->surname }}</p>
-                <p> {{ Auth::user()->data_nascita }}</p>
-                <p> {{ Auth::user()->genere }}</p>
-                <p> {{ Auth::user()->citta }}</p>
-                <p> {{ Auth::user()->provincia }}</p>
-                <p> {{ Auth::user()->indirizzo }}</p>
-              </article>
-            </li>
+    <div class="one_half">
+        <p> {{ Auth::user()->username }}</p>
+        <p> {{ Auth::user()->role }}</p>
+        <p> {{ Auth::user()->name }}</p>
+        <p> {{ Auth::user()->surname }}</p>
+        <p> {{ Auth::user()->data_nascita }}</p>
+        <p> {{ Auth::user()->genere }}</p>
+        <p> {{ Auth::user()->citta }}</p>
+        <p> {{ Auth::user()->provincia }}</p>
+        <p> {{ Auth::user()->indirizzo }}</p>
+    </div>
+</div>
             
-            
-            <li class="">
-              <a class="btn" href="{{ route('modificaprofilo', [ Auth::id() ]) }}" align="center">Modifica profilo</a>
-            </li>  
-            <br>
-            <li class="">
-              <a class="btn" href="{{ route('cambiapassword', [ Auth::id() ]) }}" align="center">Cambia Password</a>
-            </li>  
-            <br>
-            <li class="">
-              <a class="btn" href="{{ route('cambiausername', [ Auth::id() ]) }}" align="center">Cambia Username</a>
-            </li> 
-    </ul>
+<div class="one" style="display:flex; flex-direction: column; align-items: center; margin: 40px auto;">
+    <a class="btn-upd-prof" href="{{ route('modificaprofilo') }}">Modifica Informazioni utente</a>
+    <a class="btn-upd-prof" href="{{ route('cambiapassword') }}">Cambia Password</a>
+    <a class="btn-upd-prof" href="{{ route('cambiausername') }}">Cambia Username</a>
+</div>
 
-    <br> <br>
 @endsection

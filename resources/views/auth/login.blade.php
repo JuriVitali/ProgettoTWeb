@@ -8,7 +8,7 @@
 
     <div class="container-contact">
         <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
+            {{ Form::open(array('route' => 'login', 'class' => 'classic-form')) }}
                  
              <div  class="wrap-input">
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}

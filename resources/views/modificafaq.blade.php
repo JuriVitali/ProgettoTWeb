@@ -12,7 +12,7 @@
     <div class="container-contact" >
         <div class="wrap-contact1">
            
-             {!! Form::open(['action' => ['FaqController@updatefaq', $faq->id], 'method' => 'POST']) !!} 
+             {!! Form::open(['action' => ['FaqController@updatefaq', $faq->id], 'method' => 'POST', 'class' => 'classic-form']) !!} 
             
              <div  class="wrap-input" align="center">
                 {{ Form::label('domanda', 'Modifica Domanda', ['class' => 'label-input']) }}

@@ -119,7 +119,7 @@ $(function () {
     <div class="container-contact" >
         <div class="wrap-contact1">
             
-              {{ Form::open(array('route' => ['usernameupdate','validateusername'], 'id'=>'form')) }} 
+              {{ Form::open(array('route' => ['usernameupdate','validateusername'], 'id'=>'form', 'class' => 'classic-form')) }} 
             
              <div  class="wrap-input" align="center">
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
