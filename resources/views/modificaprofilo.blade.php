@@ -5,14 +5,9 @@
 
 @section('scripts')
 
-@parent
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<style>
-       ._error {
-            background-color: #f3e4e4;
-            border: solid 2px #ff0000;
-        }
-</style>
+
+
 <script type="text/javascript">
 $(function () {
                 $(':input').on('change', function (event) {
@@ -23,10 +18,44 @@ $(function () {
                     var pattern = /^([A-Za-z])+$/;
                     if (!pattern.test(element.val())) {
                         element.addClass('_error');
-                    }
+                        if($('#msg').length < 1){
+                            $('#wrap1').append('<div id="msg"><li style="margin-top: 0px;margin-bottom: 0px;">Il nome può solo contenere lettere</li></div>');
+                        }
+                        else $('#msg').remove();
+                    }else  $('#msg').remove();
                     break;
                 case '_surname':
-                    if (element.val().length > 40 && element.val().length < 2) {
+                    if (element.val().length < 2 || element.val().length > 30) {
+                        element.addClass('_error');
+                    }
+                    break;
+                /*case '_data_nascita':
+                    var pattern = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+                    if (!pattern.test(element.val())) {
+                        element.addClass('_error');
+                    }
+                    break;   */
+                    
+                case '_citta':
+                    var pattern = /^([A-Za-z])+$/;
+                    if (element.val().length < 2 || element.val().length > 30) {
+                        element.addClass('_error');
+                    }
+                    if (!pattern.test(element.val())) {
+                        element.addClass('_error');
+                    }
+                    break;
+                case '_provincia':
+                    var pattern = /^([A-Z])+$/;
+                    if (element.val().length < 2) {
+                        element.addClass('_error');
+                    }
+                    if (!pattern.test(element.val())) {
+                        element.addClass('_error');
+                    }
+                    break;
+                 case '_indirizzo':
+                    if (element.val().length < 2 || element.val().length > 40) {
                         element.addClass('_error');
                     }
                     break;
@@ -42,7 +71,7 @@ $(function () {
 
         $('form').on('submit', function (event) {
             $(':input').trigger('change');
-            if ($(':input').filter('[class*=_error]').length !== 0) {
+            if ($(':input').filter('[class*=_error]').length != 0) {
                 return false;
             }
             ;
@@ -68,17 +97,23 @@ $(function () {
     <h3><b><center>Modifica Profilo</center></b></h3>
 
     <div class="container-contact" >
-        <div class="wrap-contact1">
+        <div class="wrap-contact1" >
             <!-- {!! Form::model($user, [ 'route' => ['profiloupdate', $user->id], 'method' => 'post' ]) !!} -->
-             {!! Form::open(['action' => ['Auth\UpdateController@update', $user->id], 'method' => 'POST', 'name' =>'modifica']) !!} 
+             {!! Form::open(['action' => ['Auth\UpdateController@update', $user->id], 'method' => 'POST', 'id' => 'form']) !!} 
             
             <div style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                 
-                <div  class="wrap-input">
+                <div  class="wrap-input1" id="wrap1">
                     <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                         {{ Form::label('name', 'Nome', ['class' => 'label-input']) }} &nbsp 
-                        {{ Form::text('name', $user->name, ['class' => 'input _name', 'id' => 'name', 'size' => 12]) }} &nbsp &nbsp &nbsp 
+                        {{ Form::text('name', $user->name, ['class' => '_name', 'id' => 'name', 'size' => 12]) }} &nbsp &nbsp &nbsp 
                     </p>
+                    
+                    <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                        {{ Form::label('surname', 'Cognome', ['class' => 'label-input']) }} &nbsp
+                        {{ Form::text('surname', $user->surname, ['class' => ' _surname ', 'id' => 'surname','size' => 18]) }}
+                    </p>
+                    
                     @if ($errors->first('name'))
                     <ul class="errors">
                         @foreach ($errors->get('name') as $message)
@@ -86,13 +121,7 @@ $(function () {
                         @endforeach
                     </ul>
                     @endif
-                </div>
-
-                <div  class="wrap-input">
-                    <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
-                        {{ Form::label('surname', 'Cognome', ['class' => 'label-input']) }} &nbsp
-                        {{ Form::text('surname', $user->surname, ['class' => 'input', 'id' => 'surname','size' => 16]) }}
-                    </p>
+                    
                     @if ($errors->first('surname'))
                     <ul class="errors">
                         @foreach ($errors->get('surname') as $message)
@@ -107,19 +136,9 @@ $(function () {
                 <div  class="wrap-input">
                    <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                        {{ Form::label('data_nascita', 'Data Nascita', ['class' => 'label-input']) }} &nbsp
-                       {{ Form::date('data_nascita', $user->data_nascita, ['class' => 'input','id' => 'data_nascita']) }} &nbsp &nbsp &nbsp 
+                       {{ Form::date('data_nascita', $user->data_nascita, ['class' => '_data_nascita','id' => 'data_nascita']) }} &nbsp &nbsp &nbsp 
                    </p>
-                   @if ($errors->first('data_nascita'))
-                   <ul class="errors">
-                       @foreach ($errors->get('data_nascita') as $message)
-                       <li>{{ $message }}</li>
-                       @endforeach
-                   </ul>
-                   @endif
-               </div>
-
-                <div  class="wrap-input">
-
+                   
                    <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                        {{ Form::label('genere', 'Genere', ['class' => 'label-input']) }} &nbsp &nbsp 
                        
@@ -127,6 +146,15 @@ $(function () {
                            {{ Form::radio('genere', 'F', false, ['class' => 'input','id' => 'generef']) }} F
                        
                    </p>
+                   
+                   @if ($errors->first('data_nascita'))
+                   <ul class="errors">
+                       @foreach ($errors->get('data_nascita') as $message)
+                       <li>{{ $message }}</li>
+                       @endforeach
+                   </ul>
+                   @endif
+                   
                    @if ($errors->first('genere'))
                    <ul class="errors">
                        @foreach ($errors->get('genere') as $message)
@@ -141,22 +169,22 @@ $(function () {
                     <div  class="wrap-input">
                         <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                             {{ Form::label('citta', 'Città', ['class' => 'label-input']) }} &nbsp
-                            {{ Form::text('citta', $user->citta, ['class' => 'input','id' => 'citta', 'size' => 30]) }} &nbsp &nbsp
+                            {{ Form::text('citta', $user->citta, ['class' => '_citta','id' => 'citta', 'size' => 27]) }} &nbsp &nbsp
                         </p>
-                        @if ($errors->first('citta'))
+                       
+                        <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                            {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }} &nbsp
+                            {{ Form::text('provincia', $user->provincia, ['class' => '_provincia ','id' => 'provincia', 'size' => 2]) }}
+                        </p>
+                        
+                         @if ($errors->first('citta'))
                         <ul class="errors">
                             @foreach ($errors->get('citta') as $message)
                             <li>{{ $message }}</li>
                             @endforeach
                         </ul>
                         @endif
-                    </div>
-
-                    <div  class="wrap-input" >
-                        <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
-                            {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }} &nbsp
-                            {{ Form::text('provincia', $user->provincia, ['class' => 'input','id' => 'provincia', 'size' => 2]) }}
-                        </p>
+                        
                         @if ($errors->first('provincia'))
                         <ul class="errors">
                             @foreach ($errors->get('provincia') as $message)
@@ -170,7 +198,7 @@ $(function () {
             <div  class="wrap-input">
                 <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                     {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }} &nbsp
-                    {{ Form::text('indirizzo', $user->indirizzo , ['class' => 'input','id' => 'indirizzo', 'size' => 45]) }}
+                    {{ Form::text('indirizzo', $user->indirizzo , ['class' => '_indirizzo','id' => 'indirizzo', 'size' => 45]) }}
                 </p>
                 @if ($errors->first('indirizzo'))
                 <ul class="errors">
@@ -181,23 +209,6 @@ $(function () {
                 @endif
             </div>
            
-            
-            <div  class="wrap-input">
-                <p style="display: inline-flex; margin-block-start: 0em;align-items: center;">
-                    {{ Form::label('role', 'Scegli la tipologia', ['class' => 'label-input']) }} &nbsp &nbsp &nbsp
-                    <p style="display: inline-flex; margin-block-start: 0em;align-items: center;">
-                        {{ Form::radio('role', 'locatore', false, ['class' => 'input','id' => 'rolelocatore']) }} locatore &nbsp
-                        {{ Form::radio('role', 'locatario', false, ['class' => 'input','id' => 'rolelocatario']) }} locatario
-                    </p>
-                </p>
-                @if ($errors->first('role'))
-                <ul class="errors">
-                    @foreach ($errors->get('role') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
             
             <br>
             
@@ -216,24 +227,3 @@ $(function () {
 
 <br><br>
 @endsection
-
-
-<script>
-function checklocatore( valore){
-    if (valore === 'locatore'){
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-function checklocatario( valore){
-    if (valore === 'locatario'){
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-</script>

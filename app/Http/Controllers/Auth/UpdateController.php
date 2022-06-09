@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateUsernameRequest;
 use App\User;
+use Auth;
 
 class UpdateController extends Controller
 {
@@ -17,7 +19,13 @@ class UpdateController extends Controller
         $this->middleware('auth');
     }
     
-   public function edit($Id)
+    //Ritorna la vista profilo
+    public function index() {
+        return view('profilo');
+    }
+    
+    //Ritorna la vista modificaprofilo con l'utente
+    public function edit($Id)
     {
         $user = User::find($Id);
 
@@ -38,18 +46,18 @@ class UpdateController extends Controller
         return view('cambiausername') -> with ('user', $user);
     }
     
+    //Funzione per la modifica dei dati dell'utente
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:30'],
             'surname' => ['required', 'string', 'max:30'],
-            'data_nascita' => ['required', 'date'],
+            'data_nascita' => ['required', 'date', 'before:18 years ago', 'after_or_equal:'. date('01-01-1910')],
             'genere' => ['required', 'string', 'max:1'],
             'citta' => ['required', 'string', 'max:30'],
-            'provincia' => ['required', 'string','min:2', 'max:2'],
+            'provincia' => ['required', 'string', 'alpha','min:2', 'max:2'],
             'indirizzo' => ['required', 'string', 'max:40'],
-            'role' => ['required', 'string', 'max:10'],
-            /*'username' => ['required', 'string', 'min:8', 'max:20', 'unique:users']*/
+            
         ]);
         
         
@@ -61,17 +69,16 @@ class UpdateController extends Controller
         $user->citta = $request->input('citta');
         $user->provincia = $request->input('provincia');
         $user->indirizzo = $request->input('indirizzo');
-        $user->role = $request->input('role');
         $user->save();
 
         /*if( $user->save() ) {
             Session::flash('message', 'User Updated Successfully');
         }*/
         
-        return redirect()->to('profilo')-> with('success', 'Updated');
+        return redirect()->to('profilo')->withSuccess(['I Dati del profilo sono stati aggiornati con Successo!']);
     }
     
-    
+    //Funzione per la modifica della password
     public function updatepassword(Request $request, $id)
     {
         $this->validate($request, [
@@ -87,25 +94,28 @@ class UpdateController extends Controller
             Session::flash('message', 'User Updated Successfully');
         }*/
         
-        return redirect()->to('profilo')-> with('success', 'Updated');
+        return redirect()->to('profilo')->withSuccess(['Password aggiornata con Successo!']);
     }
     
-    public function updateusername(Request $request, $id)
+    //funzione per la validazione dell'username con metodo ajax
+    public function validateusername(UpdateUsernameRequest $request){
+        return response()->json(['redirect' => route('profilo')]);
+    }
+    
+    //funzione per la modifica dell'username con metodo ajax
+    public function updateusername(UpdateUsernameRequest $request)
     {
-        $this->validate($request, [
-            'username' => ['required', 'string', 'min:8', 'max:20', 'unique:users']
-        ]);
         
-        
-        $user = User::find($id);
-        $user->username = $request->input('username');
-        $user->save();
+        User::where('id', Auth::id())->update(['username' => $request->input('username')]);
 
         /*if( $user->save() ) {
             Session::flash('message', 'User Updated Successfully');
         }*/
         
-        return redirect()->to('profilo')-> with('success', 'Updated');
+        //return redirect()->to('profilo')-> with('success', 'Updated');
+        return response()->json(['redirect' => route('profilo')]);
     }
 
 }
+
+

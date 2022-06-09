@@ -1,7 +1,7 @@
 @guest
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="{{ route('login') }}"><img style="width: 350px; height:400px;" src="images/servizi/Login.jpg" alt=""></a>
+        <figure><a class="imgover" href="{{ route('login') }}"><img style="width: 350px; height:400px;" src="images/topbar/login.jpg" alt=""></a>
             <figcaption>
                 <h4 class="heading">Ti sei già registrato a TrovAffitto?</h4>
                 <div>
@@ -11,7 +11,7 @@
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="{{ route('register') }}"><img style="width: 350px; height:400px;" src="images/servizi/Registrati.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('register') }}"><img style="width: 350px; height:400px;" src="images/topbar/registrati.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Cerchi alloggi o vuoi offrire alloggi?</h6>
                 <div>
@@ -21,7 +21,7 @@
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="{{ route('catalogo') }}"><img src="images/servizi/catalogodig.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('catalogo') }}"><img src="images/topbar/catalogo_alloggi.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Visualizza il catalogo delle inserzioni</h6>
                 <div>
@@ -36,23 +36,21 @@
 @can('isLocatore')
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="#"><img src="images/servizi/Accedi.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('inseriscialloggiohome', [Auth::id()]) }}"><img src="images/topbar/inserzione.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Inserisci un'inserzione</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Crea un nuovo annuncio per un appartamento o posto letto che vuoi affitare.</p>
                 </div>
             </figcaption>
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="#"><img src="images/servizi/Catalogo.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('visualizzalloggi', [Auth::id()]) }}"><img src="images/topbar/alloggi.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Visualizza le tue inserzioni</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Visualizza tutti i tuoi alloggi, inseriscine di nuovi, modifica quelli già presenti e elimina gli annunci obsoleti.</p>
                 </div>
             </figcaption>
         </figure>
@@ -62,8 +60,7 @@
             <figcaption>
                 <h6 class="heading">Visualizza proposte</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Visualizza le proposte che hai ricevuto per i tuoi alloggi e decide se accettarle o rifiutarle.</p>
                 </div>
             </figcaption>
         </figure>
@@ -74,12 +71,11 @@
 @can('isLocatario')
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="{{ route('catalogo') }}"><img src="images/servizi/catalogodig.png" alt=""></a>
+        <figure><a class="imgover" href="{{ route('catalogo') }}"><img src="images/topbar/ricerca_alloggio.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Ricerca l'alloggio che fa per te</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Visualizza il catalogo con tutte le inserzioni presenti nel sito o filtrandole attraverso l'apposito filtro.</p>
                 </div>
             </figcaption>
         </figure>
@@ -89,19 +85,17 @@
             <figcaption>
                 <h6 class="heading">Visualizza le tue opzioni</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Visualizza tutti gli alloggi che hai opzionato.</p>
                 </div>
             </figcaption>
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="#"><img src="{{ asset('images/servizi/imgchat.jpg') }}" alt=""></a>
+        <figure><a class="imgover" href="#"><img src="{{ asset('images/topbar/messaggi.jpg') }}" alt=""></a>
             <figcaption>
                 <h6 class="heading">Messaggia con i locatori</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Messaggia con i locatori per richiedere informazioni ed, eventualmente, trovare un accordo per l'opzionamento di un alloggio.</p>
                 </div>
             </figcaption>
         </figure>
@@ -112,32 +106,31 @@
 @can('isAdmin')
 <ul class="nospace group btmspace-80">
     <li class="one_third first">
-        <figure><a class="imgover" href="{{ route('statistiche') }}"><img src="images/servizi/statistiche.jpg" alt=""></a>
+        <figure><a class="imgover" href="#"><img src="images/topbar/statistiche.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Visualizza Statistiche</h6>
                 <div>
-                    <p>visualizza le statistiche del  tuo sito</p>
+                    <p>Visiona le statistiche sugli alloggi a partire da un intervallo temporale e/o dalla tipologia di alloggio.</p>
                 </div>
             </figcaption>
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover" href="{{ route('faq') }}"><img src="images/servizi/faq.jpg" alt=""></a>
+        <figure><a class="imgover" href="#"><img src="images/topbar/faq.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Modifica FAQ</h6>
                 <div>
-                    <p>Modifica, aggiungi o elimina le domande del sito</p>
+                    <p>Visualizza, aggiungi, modifica ed elimina le FAQs presentisul sito.</p>
                 </div>
             </figcaption>
         </figure>
     </li>
     <li class="one_third">
-        <figure><a class="imgover " href="{{ route('catalogo') }}"><img src="images/servizi/catalogodig.png" alt=""></a>
+        <figure><a class="imgover " href="{{ route('catalogo') }}"><img src="images/topbar/catalogo_alloggi.jpg" alt=""></a>
             <figcaption>
                 <h6 class="heading">Visualizza il catalogo</h6>
                 <div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                        dummy text ever since the 1500s</p>
+                    <p>Visualizza il catalogo con tutte le inserzioni presenti nel sito.</p>
                 </div>
             </figcaption>
         </figure>

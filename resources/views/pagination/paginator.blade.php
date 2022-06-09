@@ -1,6 +1,8 @@
 @if ($paginator->lastPage() != 1)
 <nav class="pagination" id="pagination">
-
+    <p class="btmspace-20">Pagina {{ $paginator->currentPage() }} di {{ $paginator->lastPage() }} <p>
+    
+    
        <!-- Link alla prima pagina -->
     @if (!$paginator->onFirstPage())
         <li>
@@ -8,18 +10,18 @@
         </li>
     @else
         <li>
-            Inizio 
+            <div>Inizio</div>
         </li>
     @endif
 
     <!-- Link alla pagina precedente -->
     @if ($paginator->currentPage() != 1)
         <li>
-            <a href="{{ $paginator->previousPageUrl() }}">« Precedente</a> 
+            <a href="{{ $paginator->previousPageUrl() }}"> &lt; Precedente</a> 
         </li>
     @else
         <li>
-            « Precedente 
+            <div>&lt; Precedente</div>
         </li>
     @endif
 
@@ -30,7 +32,7 @@
         </li>
     @else
         <li>
-            Successivo &gt; 
+            <div>Successivo &gt; </div>
         </li>
     @endif
 
@@ -41,7 +43,7 @@
         </li>
     @else
         <li>
-            Fine
+            <div>Fine </div>
         </li>
     @endif
     

@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 800, 'citta' => 'Roma', 'provincia' => 'RO', 'indirizzo' => 'Via Giordano Bruno 26',
                 'superficie' => 52, 'posti_tot' => 2, 'n_camere' => 1, 'locale_ricreativo' => false, 'cucina' => true, 'angolo_studio' => null, 'letti_stanza' => null,
                 'genere_locatario' => 'M', 'eta_min_locatario' => 20,
-                'eta_max_locatario' => 25, 'foto' => 'images/accommodations/Appartamento_1.jpeg'],
+                'eta_max_locatario' => 25, 'data_locazione' => null,'foto' => 'images/accommodations/Appartamento_1.jpeg'],
 
             ['proprietario' => '11', 'titolo_annuncio' => 'Posto letto in via Ruggero, Roma','tipologia' => 'posto letto', 'inizio_disponibilita' => date("2022-08-01"), 
                 'fine_disponibilita' => date("2022-12-31"), 'data_inserimento' => date("2022-05-14"),
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 350, 'citta' => 'Roma', 'provincia' => 'RO', 'indirizzo' => 'Via Ruggero Fiore 14',
                 'superficie' => 15, 'posti_tot' => 4, 'n_camere' => null, 'locale_ricreativo' => null, 'cucina' => null, 'angolo_studio' => false, 'letti_stanza' => 2,
                 'genere_locatario' => 'F', 'eta_min_locatario' => 25,
-                'eta_max_locatario' => 50, 'foto' => 'images/accommodations/Posto_letto_2.jpg'],
+                'eta_max_locatario' => 50, 'data_locazione' => null, 'foto' => 'images/accommodations/Posto_letto_2.jpg'],
             
             ['proprietario' => '9', 'titolo_annuncio' => 'Trilocale Via Teatro Biondo 15, Palermo','tipologia' => 'appartamento', 'inizio_disponibilita' => date("2022-08-01"), 
                 'fine_disponibilita' => date("2023-06-30"), 'data_inserimento' => date("2022-05-28"),
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 700, 'citta' => 'Palermo', 'provincia' => 'PA', 'indirizzo' => 'Via Teatro Biondo 15',
                 'superficie' => 85, 'posti_tot' => 3, 'n_camere' => 2, 'locale_ricreativo' => true, 'cucina' => true, 'angolo_studio' => null, 'letti_stanza' => null,
                 'genere_locatario' => null, 'eta_min_locatario' => 20,
-                'eta_max_locatario' => null, 'foto' => 'images/accommodations/default.jpg'],
+                'eta_max_locatario' => null, 'data_locazione' => null, 'foto' => 'images/accommodations/default.jpg'],
             
             ['proprietario' => '11', 'titolo_annuncio' => 'Economico Bilocale a Palermo','tipologia' => 'appartamento', 'inizio_disponibilita' => date("2022-09-01"), 
                 'fine_disponibilita' => date("2023-02-28"), 'data_inserimento' => date("2022-04-20"),
@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 800, 'citta' => 'Palermo', 'provincia' => 'Pa', 'indirizzo' => 'Via Vincenzo di Pavia 4',
                 'superficie' => 50, 'posti_tot' => 2, 'n_camere' => 1, 'locale_ricreativo' => false, 'cucina' => true, 'angolo_studio' => null, 'letti_stanza' => null,
                 'genere_locatario' => null, 'eta_min_locatario' => null,
-                'eta_max_locatario' => 45, 'foto' => 'images/accommodations/Appartamento_2.jpg'],
+                'eta_max_locatario' => 45, 'data_locazione' => date("2022-05-30"), 'foto' => 'images/accommodations/Appartamento_2.jpg'],
             
             ['proprietario' => '6', 'titolo_annuncio' => 'Appartamento ad Ancona, via Corinaldo','tipologia' => 'appartamento', 'inizio_disponibilita' => date("2022-08-16"), 
                 'fine_disponibilita' => date("2023-06-30"), 'data_inserimento' => date("2022-03-28"),
@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 450, 'citta' => 'Ancona', 'provincia' => 'AN', 'indirizzo' => 'Via Corinaldo 15',
                 'superficie' => 60, 'posti_tot' => 2, 'n_camere' => 1, 'locale_ricreativo' => false, 'cucina' => true, 'angolo_studio' => null, 'letti_stanza' => null,
                 'genere_locatario' => 'F', 'eta_min_locatario' => null,
-                'eta_max_locatario' => null, 'foto' => 'images/accommodations/Appartamento_3.jpg'],
+                'eta_max_locatario' => null, 'data_locazione' => null, 'foto' => 'images/accommodations/Appartamento_3.jpg'],
             
             ['proprietario' => '2', 'titolo_annuncio' => 'Posto letto a Firenze, zona San Jacopino','tipologia' => 'posto letto', 'inizio_disponibilita' => date("2022-08-10"), 
                 'fine_disponibilita' => date("2023-09-01"), 'data_inserimento' => date("2022-05-10"),
@@ -129,7 +129,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 400, 'citta' => 'Firenze', 'provincia' => 'FI', 'indirizzo' => 'Viale Redi 21',
                 'superficie' => 18, 'posti_tot' => 2, 'n_camere' => null, 'locale_ricreativo' => null, 'cucina' => null, 'angolo_studio' => true, 'letti_stanza' => 1,
                 'genere_locatario' => 'M', 'eta_min_locatario' => null,
-                'eta_max_locatario' => 40, 'foto' => 'images/accommodations/Posto_letto_3.jpg'],
+                'eta_max_locatario' => 40, 'data_locazione' => null, 'foto' => 'images/accommodations/Posto_letto_3.jpg'],
             
             ['proprietario' => '11', 'titolo_annuncio' => 'Appartamento in Ancona zona Le Grazie','tipologia' => 'appartamento', 'inizio_disponibilita' => date("2022-09-15"), 
                'fine_disponibilita' => date("2023-02-20"), 'data_inserimento' => date("2022-04-22"),
@@ -141,7 +141,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 500, 'citta' => 'Ancona', 'provincia' => 'AN', 'indirizzo' => 'Via Torresi 13',
                 'superficie' => 80, 'posti_tot' => 4, 'n_camere' => 2, 'locale_ricreativo' => true, 'cucina' => true, 'angolo_studio' => null, 'letti_stanza' => null,
                 'genere_locatario' => null, 'eta_min_locatario' => 20,
-                'eta_max_locatario' => 35, 'foto' => 'images/accommodations/Appartamento_4.jpg'],
+                'eta_max_locatario' => 35, 'data_locazione' => null, 'foto' => 'images/accommodations/Appartamento_4.jpg'],
            
             
             ['proprietario' => '9', 'titolo_annuncio' => 'Posto letto a Milano via Moschin','tipologia' => 'posto letto', 'inizio_disponibilita' => date("2022-07-01"), 
@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 800, 'citta' => 'Milano', 'provincia' => 'MI', 'indirizzo' => 'Via Moschin 11',
                 'superficie' => 21, 'posti_tot' => 2, 'n_camere' => null, 'locale_ricreativo' => null, 'cucina' => null, 'angolo_studio' => true, 'letti_stanza' => 2,
                 'genere_locatario' => null, 'eta_min_locatario' => null,
-                'eta_max_locatario' => null, 'foto' => 'images/accommodations/Posto_letto_1.jpg'],
+                'eta_max_locatario' => null, 'data_locazione' => null, 'foto' => 'images/accommodations/Posto_letto_1.jpg'],
             
             ['proprietario' => '9', 'titolo_annuncio' => 'Posto letto a Milano in via G.Verga','tipologia' => 'posto letto', 'inizio_disponibilita' => date("2022-10-01"), 
                 'fine_disponibilita' => date("2023-06-30"), 'data_inserimento' => date("2022-04-30"),
@@ -168,7 +168,7 @@ class DatabaseSeeder extends Seeder {
                 'canone_affitto' => 380, 'citta' => 'Milano', 'provincia' => 'MI', 'indirizzo' => 'Via G.Verga 101',
                 'superficie' => 20, 'posti_tot' => 2, 'n_camere' => null, 'locale_ricreativo' => null, 'cucina' => null, 'angolo_studio' => true, 'letti_stanza' => 2,
                 'genere_locatario' => 'F', 'eta_min_locatario' => 18,
-                'eta_max_locatario' => 30, 'foto' => 'images/accommodations/default.jpg']
+                'eta_max_locatario' => 30, 'data_locazione' => date("2022-06-05"), 'foto' => 'images/accommodations/default.jpg']
                 
         ]);
         

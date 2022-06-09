@@ -29,8 +29,7 @@ class RegisterController extends Controller
      * @var string
      */
     
-    //protected $redirectTo = '/home';
-    protected $redirectTo = '/login';
+   
 
     /**
      * Create a new controller instance.
@@ -40,6 +39,11 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    
+    protected function redirectTo()
+    {        
+         return '/login';
     }
 
     /**
@@ -53,7 +57,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:30'],
             'surname' => ['required', 'string', 'max:30'],
-            'data_nascita' => ['required', 'date' ],
+            'data_nascita' => ['required', 'date', 'before:18 years ago', 'after_or_equal:'. date('01-01-1910') ],
             'genere' => ['required', 'string', 'max:1'],
             'citta' => ['required', 'string', 'max:30'],
             'provincia' => ['required', 'string','min:2', 'max:2'],

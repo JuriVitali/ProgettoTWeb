@@ -57,10 +57,20 @@
                     <a class="btn" style="text-align: center; width: 86%;" href="{{ route('infoalloggio', [$accommodation->id]) }}" >Maggiori Informazioni</a>
 
                     <!-- Pulsanti per il locatario: "Contatta locatore" e "Invia una proposta" -->
-                    @can('isLocatario')
+                    @can('isLocatario')                       
                     <div class="one" style="margin-top: 10px" >
+                        
+                        <!-- Pulsanti attivi se l'alloggio non è stato ancora affittato -->
+                        @if($accommodation->data_locazione == null)
                         <a class="btn2" style="text-align: center; width: 41%; margin-right: 1.5%;" href="{{ route('chat_new_locatore', [$accommodation->proprietario]) }}" >Contatta locatore</a>
                         <a class="btn2" style="text-align: center; width: 41%; margin-left: 1.5%;" href="{{ route('InvioProposta', [$accommodation->id]) }}" >Invia una proposta</a>
+                        
+                        <!-- Pulsanti disattivati se l'alloggio è stato ancora affittato -->
+                        @else
+                        <a class="btn2disabled" style="text-align: center; width: 41%; margin-right: 1.5%;" >Contatta locatore</a>
+                        <a class="btn2disabled" style="text-align: center; width: 41%; margin-left: 1.5%;" >Invia una proposta</a>
+                        @endif
+                        
                     </div>
                     <br>
                     @endcan

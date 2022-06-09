@@ -30,7 +30,7 @@
 <div class="one first">
     <h6>Ricerca l'alloggio che fa per te</h6>
     <div class="wrap-contact">
-        {{ Form::open(array('route' => 'catalogo', 'id' => 'addproduct', 'class' => '')) }}
+        {{ Form::open(array('route' => 'catalogo', 'class' => '')) }}
         
         <!-- Canone di affitto -->
         <div  class="">

@@ -4,10 +4,12 @@
     <li><a href="{{ route('faq') }}" title="Vai alla FAQ">FAQ</a></li>
     
     @guest
-        <li><a href="{{ route('login') }}" class="highlight" title="Accedi all'area riservata del sito">Accedi</a></li>  
+        <li><a href="{{ route('login') }}" class="highlight" title="Accedi all'area riservata del sito">Accedi</a></li> 
+        <li><a href="{{ route('register') }}" class="highlight" title="Accedi all'area riservata del sito">Registrati</a></li> 
     @endguest
     
     @can('isLocatore')
+        <li><a href="{{ route('visualizzalloggi') }}" title="Visualizza i messaggi">I tuoi alloggi</a></li>
         <li><a href="{{ route('VisualPropRicevute', [ Auth::id() ]) }}" title="Visualizza le proposte che hai ricevuto">Proposte</a></li>
         <li><a href="{{ route('chat') }}" title="Visualizza i messaggi">Chat</a></li>
         <li><a href="{{ route('profilo') }}" title="Visualizza il tuo profilo">Profilo</a></li>

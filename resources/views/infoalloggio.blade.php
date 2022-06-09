@@ -4,17 +4,42 @@
 
 <!-- percorso con link per tornare alle pagine precedenti -->
 @section('menu')
-<article>
-    <h3 class="heading"> Catalogo</h3>
-</article>
-<ul>
-    <li><a href="{{ route('home') }}">Home &#9658</a></li>
-    <li><a href="{{ route('catalogo') }}">Catalogo &#9658</a></li>
-    <li><a href="#">Info alloggio</a></li>
-</ul>
+ @if(isset($proprietario))
+    <article>
+        <h3 class="heading"> Info Allogio</h3>
+    </article>
+    <ul>
+        <li><a href="{{ route('home') }}">Home &#9658</a></li>
+        <li><a href="{{ route('visualizzalloggi', [Auth::id()]) }}">I tuoi Alloggi &#9658</a></li>
+        <li><a href="#">Info alloggio</a></li>
+    </ul>
+ @else
+    <article>
+        <h3 class="heading"> Catalogo</h3>
+    </article>
+    <ul>
+        <li><a href="{{ route('home') }}">Home &#9658</a></li>
+        <li><a href="{{ route('catalogo') }}">Catalogo &#9658</a></li>
+        <li><a href="#">Info alloggio</a></li>
+    </ul>
+ @endif
 @endsection
 
 @section('content')
+
+<!-- messaggio che viene mostrato per l'avvenuta modifica -->
+@if (session()->has('success'))
+<div class="alert alert-success">
+    @if(is_array(session('success')))
+        @foreach (session('success') as $message)
+            <center><p class="msg">{{ $message }}</p></center>
+        @endforeach
+    @else
+        {{ session('success') }}
+    @endif
+</div>
+@endif
+
 <div class="bgded row6"> 
     <main class="hoc container1 clear"> 
         <!-- main body -->
@@ -62,7 +87,7 @@
                 @can('isLocatario')
                 <div class="one" style="padding-bottom: 10px; padding-top: -10px;" >
                     <a class="btn center" style="width: 47.5%; margin-right: 1.8%;" href="{{ route('chat_new_locatore', [$accommodation->proprietario]) }}" >Contatta il locatore</a>
-                    <a class="btn center" style= "width: 47.5%; margin-left: 1.8%;" href=""{{ route('InvioProposta', [$accommodation->id]) }}"" >Invia una proposta</a>
+                    <a class="btn center" style= "width: 47.5%; margin-left: 1.8%;" href="{{ route('catalogo') }}" >Invia una proposta</a>
                 </div>
                 <br>
                 @endcan
@@ -90,6 +115,11 @@
                 </section>
 
             </div>
+            @if(isset($proprietario))
+                <div>
+                    <center><a class="btn" style="padding: 15px 25px 15px 25px; font-size: 1.8em; margin-top: 35px" href="{{ route('modificalloggio', [$accommodation->id]) }}" >Modifica Annuncio</a></center>
+                </div>
+            @endif
         </section>
         <br> <br> <br> <br>
 

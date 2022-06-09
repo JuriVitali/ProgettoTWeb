@@ -14,6 +14,20 @@
 @endsection
 
 @section('content')
+
+<!-- messaggio che viene mostrato per l'avvenuta aggiunta dell'alloggio -->
+@if (session()->has('success'))
+<div class="alert alert-success">
+    @if(is_array(session('success')))
+        @foreach (session('success') as $message)
+            <center><p class="msg">{{ $message }}</p></center>
+        @endforeach
+    @else
+        {{ session('success') }}
+    @endif
+</div>
+@endif
+
 <div class="sectiontitle">
       <p class="heading underline font-x2">Profilo</p>
 </div>
