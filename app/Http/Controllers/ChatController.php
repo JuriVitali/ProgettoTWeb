@@ -27,7 +27,6 @@ class ChatController extends Controller
     }
     
     public function showMessages($selectedId){
-        
         //setta come letti i messaggi non letti inviati dall'utente selezionato all'utente autenticato
         $this->_chatModel->readMessages(Auth::id(), $selectedId);
         
@@ -66,11 +65,11 @@ class ChatController extends Controller
         return redirect()->action('ChatController@showMessages', [$selectedId]);               
     }
     
-    public function chatNewLocatore($locId = null){
+    public function chatNewLocatore($locId){
         //recupera gli utenti con cui l'utente di cui viene passato l'id ha scambiato almeno un messaggio
         $contacts = $this->_chatModel->getContacts(Auth::id());
         
-        if ($locId != null) {
+        if ($locId != 0) {
             $destinatario = $this->_chatModel->getUserById($locId);
             return view('chat')
                         ->with('contacts', $contacts)
@@ -78,9 +77,10 @@ class ChatController extends Controller
                         ->with('locUsername', $destinatario->username);
         }
         else {
-            return view('chat')
+        return view('chat')
                         ->with('contacts', $contacts)
-                        ->with('newLocatore', true);
+                        ->with('newLocatore', true)
+                        ->with('locUsername', null);
         } 
     }
     

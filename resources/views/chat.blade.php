@@ -21,10 +21,10 @@
         <div class="center heading font-x2" style="border-bottom: 1px solid #666; padding: 20px; color: #FFF; background-color: #B946AD; margin-bottom: 0px;">Contatti</div>
         
         @can('isLocatore')
-        <div style="overflow: auto; height: 467px; background-color: #F4D1F0;">      
+        <div style="overflow: auto; height: 467px; background-color: #F4D1F0;">    
         @endcan
         @can('isLocatario')
-        <div style="overflow: auto; height: 392px; background-color: #F4D1F0;">            
+        <div style="overflow: auto; height: 392px; background-color: #F4D1F0;">           
         @endcan
             
             <!-- Generazione dei bottoni corrispondenti ai contatti -->
@@ -45,7 +45,7 @@
         
         <!-- pulsante per messaggiare un nuovo locatore -->
         @can('isLocatario')
-        <a class="btn-new_con center bold" href="{{ route('chat_new_locatore') }}">Messaggia nuovo locatore</a>           
+        <a class="btn-new_con center bold" href="{{ route('chat_new_locatore', 0) }}">Messaggia nuovo locatore</a>           
         @endcan
 
     </section>
@@ -59,21 +59,23 @@
         @else
              <div class="heading font-x2 chat_title">Chat</div>
         @endif    
-             
-            <!-- Porzione in cui vengono mostrati i messaggi e la form per l'invio di un nuovo messaggio se è stato selezionato un utente -->
-            @if(isset($messages))
-                <!-- Porzione dei messaggi -->
-                @include('helpers/showMessagges', ['messages' => $messages])                  
-                
-                <!-- Form per l'invio di un nuovo messaggio -->
-                @include('helpers/sendMessageForm', ['selectedUserId' => $selectedUser->id])  
-            @endif
-               
-            @if(isset($newLocatore))
-                @include('helpers/sendMessageToNewLocatoreForm', ['locUsername' => $locUsername])
-            @else
-                <div class="inspace-10 chat-sfondo" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-size: cover;">
-            @endif
+        
+        <!-- Porzione in cui vengono mostrati i messaggi e la form per l'invio di un nuovo messaggio se è stato selezionato un utente -->
+        @if(isset($messages) && isset($selectedUser))
+            <!-- Porzione dei messaggi -->
+            @include('helpers/showMessagges', ['messages' => $messages])                  
+
+            <!-- Form per l'invio di un nuovo messaggio -->
+            @include('helpers/sendMessageForm', ['selectedUserId' => $selectedUser->id])
+            
+        @elseif(isset($newLocatore))
+            @include('helpers/sendMessageToNewLocatoreForm', ['locUsername' => $locUsername])
+            
+        @else
+            <div class="inspace-10 chat-sfondo" style="overflow: auto; display: flex; flex-direction: column-reverse; height: 468px; background-size: cover;"></div>
+        @endif    
+            
                
     </section>
+</section>
 @endsection

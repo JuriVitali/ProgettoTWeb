@@ -4,6 +4,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(function () {
+        dateMin = new Date().toISOString().split("T")[0];
+        $("input#data").attr('min', dateMin);
+        $('#caratt_app').hide();
+        $('#caratt_letto').hide();
         $("select#tipologia").on('change', function (event) {
                 var tipologia = $(this).val();
                 switch (tipologia) {
@@ -42,8 +46,8 @@
         <!-- Periodo di locazione -->
         <div  class="">
             {{ Form::label('periodo_locazione', 'Periodo di locazione', ['class' => '']) }}
-            {{ Form::date('data_inizio', '', ['class' => '', 'min' => 'H:i:s', 'max' => '2030-12-31', 'placeholder'=> 'Da']) }}
-            {{ Form::date('data_fine', '', ['class' => '', 'min' => 'H:i:s', 'max' => '2030-12-31', 'placeholder'=> 'A']) }}
+            {{ Form::date('data_inizio', '', ['class' => '', 'max' => '2030-12-31', 'placeholder'=> 'Da', 'id' => 'data']) }}
+            {{ Form::date('data_fine', '', ['class' => '', 'max' => '2030-12-31', 'placeholder'=> 'A', 'id' =>'data']) }}
         </div>
         
         <!-- Tipologia -->

@@ -166,6 +166,7 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
   padding: 15px;
 }
 .send-message-form {
+    margin-bottom: -15px;
     display: inline-flex;
     width: 100%;
 }
@@ -178,6 +179,7 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
     border: none;
 }
 .send-btn {
+    margin-bottom: 15px;
     margin-left: -20px;
     background-color: #555;
     color: #FFF;
@@ -337,4 +339,5 @@ background-image: url('../images/background/letto_stretta.jpg');
 
 .chat-sfondo{
 background-image: url('../images/background/chat.png');
+background-repeat: no-repeat;
 }

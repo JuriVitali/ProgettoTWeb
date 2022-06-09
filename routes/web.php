@@ -74,7 +74,7 @@ Route::post('/chat/messages/{selectedId}/send', 'ChatController@sendMessageToCon
         ->name('send_message')->middleware('can:isLocatoreOrLocatario');
 
 //Visualizzazione della form per l'invio di un messaggio ad un nuovo locatore
-Route::get('/chat/messages/new_loc/{locId?}', 'ChatController@chatNewLocatore')
+Route::get('/chat/messages/new_loc/{locId}', 'ChatController@chatNewLocatore')
         ->name('chat_new_locatore')->middleware('can:isLocatario');
 
 //Invio di un messaggio ad un locatore con cui il locatario autenticato non ha mai scambiato messaggi
