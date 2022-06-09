@@ -27,7 +27,7 @@
     @if ($accommodation->id == $proposal->alloggio)
     <li class="one first">
         <section class="group" style="background:#F0F2F5;">
-            {!! Form::open(['action' => ['ProposalController@EliminaProposta', Auth::id(), $proposal->id], 'method' => 'POST', 'name' =>'elimina']) !!} 
+            {!! Form::open(['action' => ['ProposalController@EliminaProposta', $proposal->id], 'method' => 'POST', 'name' =>'elimina']) !!} 
              
             <!-- Porzione delle info dell'alloggio opzionato -->
             <div class="one_half first">

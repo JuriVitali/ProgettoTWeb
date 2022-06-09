@@ -7,14 +7,14 @@
 @can('isLocatore')
 <article>
     <h3 class="heading">Area Locatore</h3>
-    <h6>Benvenuto {{ Auth::user()->name }} {{ Auth::user()->surname }}</h6>
+    <h6>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h6>
 </article>
 @endcan
 
 @can('isLocatario')
 <article>
     <h3 class="heading">Area Locatario</h3>
-    <h6>Benvenuto {{ Auth::user()->name }} {{ Auth::user()->surname }}</h6>
+    <h6>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h6>
 </article>
 @endcan
 

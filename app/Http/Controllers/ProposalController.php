@@ -8,6 +8,7 @@ use \App\Models\Catalog;
 use \App\Models\Faqs;
 use App\User;
 use App\Http\Controllers\Auth;
+use Auth;
 
 
 date_default_timezone_set('Europe/Rome');
@@ -30,8 +31,8 @@ class ProposalController extends Controller
     
     
     //mostra le proposte inviate da un locatario
-    public function showPropInviate($userId){
-        $proposals = $this->_proposalModel->getPropInviate($userId);
+    public function showPropInviate(){
+        $proposals = $this->_proposalModel->getPropInviate(Auth::id());
         $accommodations = $this->_catalogModel->getAll();
        
         return view('VisualPropInviate')
@@ -45,9 +46,9 @@ class ProposalController extends Controller
   
     
      //mostra le proposte ricevute da un locatore
-    public function showPropRicevute($userId){
+    public function showPropRicevute(){
         
-        $accommodations = $this->_catalogModel->getAlloggiLocatore($userId);
+        $accommodations = $this->_catalogModel->getAlloggiLocatore(Auth::id());
         $proposals = $this->_proposalModel->getAll();
         $users = $this->userModel->getAll();
         return view('VisualPropRicevute')
@@ -69,14 +70,14 @@ class ProposalController extends Controller
     }
     
     //inserisce i dati della proposta inviata dal locatario
-     public function __insert(Request $request, $id, $userId) {
+     public function __insert(Request $request, $id) {
          
         $this->validate($request, [
           'testo' => ['required', 'string'],  
         ]);
         
         $this->_proposalModel->testo= $request->input('testo');
-        $this->_proposalModel->mittente = $userId;
+        $this->_proposalModel->mittente = Auth::id();
         $this->_proposalModel->alloggio = $id;
         $this->_proposalModel->stato = 'in valutazione';
         $this->_proposalModel->data = date('y-m-d');
@@ -88,10 +89,10 @@ class ProposalController extends Controller
     }
    
     
-    public function EliminaProposta($userId, $PropId){
+    public function EliminaProposta($PropId){
         Proposal::find($PropId)->delete();
         
-        return redirect()->route('VisualPropInviate', [$userId]);
+        return redirect()->route('VisualPropInviate');
     }
      
 }

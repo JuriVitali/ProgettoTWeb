@@ -10,7 +10,7 @@
 
     <div class="container-contact" >
         <div class="wrap-contact1">
-            {!! Form::open(['action' => ['ProposalController@__insert', $accommodation->id, Auth::id()], 'method' => 'POST', 'name' =>'modifica']) !!} 
+            {!! Form::open(['action' => ['ProposalController@__insert', $accommodation->id], 'method' => 'POST', 'name' =>'modifica']) !!} 
 
             <div style="display: inline-flex;margin-block-start: 0em;align-items: center;">
                 <div  class="wrap-input">

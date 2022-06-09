@@ -185,14 +185,14 @@ Route::get('/statistiche','StatisticheController@confstatistiche')
 Route::get('/catalogo/InvioProposta{Id}', 'ProposalController@showProposalForm')
         ->name('InvioProposta')->middleware('can:isLocatario');
 
-Route::post('/catalogo/InvioProposta{Id}/conferma/{userId}', 'ProposalController@__insert')
+Route::post('/catalogo/InvioProposta{Id}/conferma', 'ProposalController@__insert')
         ->middleware('can:isLocatario');
      
-Route::get('/VisualPropInviate{userId}', 'ProposalController@showPropInviate')
+Route::get('/VisualPropInviate', 'ProposalController@showPropInviate')
         ->name('VisualPropInviate')->middleware('can:isLocatario');
 
 Route::post('/catalogo/VisualPropInviate{userId}/conferma/{PropId}', 'ProposalController@EliminaProposta')
         ->middleware('can:isLocatario');
 
-Route::get('/VisualPropRicevute{userId}', 'ProposalController@showPropRicevute')
+Route::get('/VisualPropRicevute', 'ProposalController@showPropRicevute')
         ->name('VisualPropRicevute')->middleware('can:isLocatore');
