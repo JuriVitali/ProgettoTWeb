@@ -341,3 +341,63 @@ background-image: url('../images/background/letto_stretta.jpg');
 background-image: url('../images/background/chat.png');
 background-repeat: no-repeat;
 }
+
+/* Proposte
+--------------------------------------------------------------------------------------------------------------- */
+.btn-prop-d{
+    display:inline-block; 
+    text-transform:uppercase; 
+    border:1px solid; 
+    cursor: pointer;
+    background-color: #D60D0D;
+    border-color: #D60D0D;
+    color:#FFF; 
+    width: auto; 
+    height: 45px;
+    margin-left: 1.5%;
+    padding:10px; 
+}
+.btn-prop-d:hover{
+  background-color: #FFF;
+    color:#000;
+    border-color: #000;  
+}
+
+.btn-info-acc{
+    display:inline-block; 
+    padding:10px; 
+    height: 45px;
+    text-transform:uppercase; 
+    border:1px solid;
+    background-color: #B946AD; 
+    color: #FFF; 
+    border-color: #B946AD;
+    text-align: center; 
+    width: auto; 
+    margin-right: 1.5%;
+    cursor: pointer;
+}
+.btn-info-acc:hover{
+    background-color: #FFF; 
+    color: #000; 
+    border-color: #000;
+}
+.btn-prop-acc{
+    display:inline-block; 
+    padding:10px; 
+    height: 45px;
+    text-transform:uppercase; 
+    border:1px solid;
+    background-color: #30BA1A; 
+    color: #FFF; 
+    border-color: #30BA1A;
+    text-align: center; 
+    width: auto; 
+    margin-right: 1.5%;
+    cursor: pointer;
+}
+.btn-prop-acc:hover{
+    background-color: #FFF; 
+    color: #000; 
+    border-color: #000;
+}

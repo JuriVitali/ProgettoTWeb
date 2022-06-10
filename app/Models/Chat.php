@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\Message;
 use App\User;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 use Auth;
 
 class Chat extends Model

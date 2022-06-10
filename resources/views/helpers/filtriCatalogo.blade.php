@@ -34,7 +34,7 @@
 <div class="one first">
     <h6>Ricerca l'alloggio che fa per te</h6>
     <div class="wrap-contact">
-        {{ Form::open(array('route' => 'catalogo', 'class' => '')) }}
+        {{ Form::open(array('route' => 'filtra_alloggi', 'class' => '')) }}
         
         <!-- Canone di affitto -->
         <div  class="">
@@ -75,17 +75,17 @@
             {{ Form::label('servizi', 'Servizi inclusi', ['class' => '']) }}
             
             {{ Form::label('fibra_ottica', 'Fibra Ottica', ['class' => '']) }}
-            {{ Form::checkbox('fibra_ottica', 'Si') }}
+            {{ Form::checkbox('servizi', 1) }}
             {{ Form::label('posto_auto', 'Posto Auto Riservato', ['class' => '']) }}
-            {{ Form::checkbox('posto_auto', 'Si') }}
+            {{ Form::checkbox('servizi', 2) }}
             {{ Form::label('lavatrice', 'Lavatrice', ['class' => '']) }}
-            {{ Form::checkbox('lavatrice', 'Si') }}
-            {{ Form::label('Aria Condizionata', 'Aria Condizionata', ['class' => '']) }}
-            {{ Form::checkbox('aria_condizionata', 'Si') }}
+            {{ Form::checkbox('servizi', 3) }}
+            {{ Form::label('aria condizionata', 'Aria condizionata', ['class' => '']) }}
+            {{ Form::checkbox('servizi', 4) }}
             {{ Form::label('allarme', 'Impianto di allarme', ['class' => '']) }}
-            {{ Form::checkbox('allarme', 'Si') }}
+            {{ Form::checkbox('servizi', 5) }}
             {{ Form::label('porta_blindata', 'Porta Blindata', ['class' => '']) }}
-            {{ Form::checkbox('porta_blindata', 'Si') }}
+            {{ Form::checkbox('servizi', 6) }}
         </div>
 
         <!-- Caratteristiche appartamento -->
@@ -93,13 +93,13 @@
             <!-- Cucina -->
             <div  class="">
                 {{ Form::label('cucina', 'Cucina', ['class' => '']) }}
-                {{ Form::checkbox('cucina', 'Si') }}
+                {{ Form::checkbox('cucina', true) }}
             </div>
 
             <!-- Locale Ricreativo -->
             <div  class="">
                 {{ Form::label('locale_ricreativo', 'Locale Ricreativo', ['class' => '']) }}
-                {{ Form::checkbox('locale_ricreativo', 'Si') }}
+                {{ Form::checkbox('locale_ricreativo', true) }}
             </div>
         </div>
         
@@ -121,7 +121,7 @@
             <!-- Angolo studio -->
             <div  class="">
                 {{ Form::label('angolo_studio', 'Angolo studio', ['class' => '']) }}
-                {{ Form::checkbox('angolo_studio', 'Si') }}
+                {{ Form::checkbox('angolo_studio', true) }}
             </div>
         </div>
         

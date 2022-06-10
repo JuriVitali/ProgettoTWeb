@@ -57,6 +57,14 @@ Route::get('/catalogo', 'CatalogController@showCatalog')
 Route::get('/catalogo/infoalloggio{Id}', 'CatalogController@showAccInfo')
         ->name('infoalloggio');
 
+//Visualizzazione informazioni alloggio
+Route::get('/catalogo/infoalloggio{Id}', 'CatalogController@showAccInfo')
+        ->name('infoalloggio');
+
+//Filtraggio del catalogo
+Route::post('/catalogo/filtraggio', 'CatalogController@filter')
+        ->name('filtra_alloggi');
+
 
 /* Chat
 --------------------------------------------------------------------------------------------------------------- */
@@ -191,8 +199,14 @@ Route::post('/catalogo/InvioProposta{Id}/conferma', 'ProposalController@__insert
 Route::get('/VisualPropInviate', 'ProposalController@showPropInviate')
         ->name('VisualPropInviate')->middleware('can:isLocatario');
 
-Route::post('/catalogo/VisualPropInviate{userId}/conferma/{PropId}', 'ProposalController@EliminaProposta')
+Route::post('/catalogo/VisualPropInviate/conferma/{PropId}', 'ProposalController@EliminaProposta')
         ->middleware('can:isLocatario');
 
 Route::get('/VisualPropRicevute', 'ProposalController@showPropRicevute')
         ->name('VisualPropRicevute')->middleware('can:isLocatore');
+
+Route::get('/VisualProp/AccettaProp{PropId}', 'ProposalController@AccettaProposta')
+        ->name('accetta_proposta')->middleware('can:isLocatore');
+
+Route::post('/VisualProp/RifiutaProp{PropId}', 'ProposalController@RifiutaProposta')
+        ->name('rifiuta_proposta')->middleware('can:isLocatore');

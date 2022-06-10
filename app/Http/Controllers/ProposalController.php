@@ -3,89 +3,74 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Proposals;
-use \App\Models\Catalog;
-use \App\Models\Faqs;
-use App\User;
-use App\Http\Controllers\Auth;
+use App\Models\Proposals;
+use App\Models\Resources\Proposal;
+use App\Models\Resources\Accommodation;
 use Auth;
-
-
-date_default_timezone_set('Europe/Rome');
+use Illuminate\Support\Facades\Log;
 
         
 class ProposalController extends Controller
 {
     
     protected $_proposalModel; 
-    
-    
 
     public function __construct() {
-        $this->_catalogModel = new Catalog;
-        $this->_faqModel = new Faqs;
         $this->_proposalModel = new Proposals;
-        $this->userModel = new User;
         $this->middleware('auth');
     }
     
-    
     //mostra le proposte inviate da un locatario
     public function showPropInviate(){
+        
         $proposals = $this->_proposalModel->getPropInviate(Auth::id());
-        $accommodations = $this->_catalogModel->getAll();
-       
+        
+        $proposalsWithAccInfo = $this->_proposalModel->getAccInfo($proposals); 
+        
         return view('VisualPropInviate')
-                         ->with('proposals', $proposals)  
-                         ->with('accommodations', $accommodations);
-                       
-                        
+                         ->with('proposals', $proposalsWithAccInfo);                  
     }
     
-    
-  
-    
-     //mostra le proposte ricevute da un locatore
+    //mostra le proposte ricevute da un locatore
     public function showPropRicevute(){
         
-        $accommodations = $this->_catalogModel->getAlloggiLocatore(Auth::id());
-        $proposals = $this->_proposalModel->getAll();
-        $users = $this->userModel->getAll();
+        $proposals = $this->_proposalModel->getPropRicevute(Auth::id());
+        
+        $proposalsWithInfo = $this->_proposalModel->getAccUserInfo($proposals);
+        
         return view('VisualPropRicevute')
-                         ->with('proposals', $proposals)  
-                         ->with('accommodations', $accommodations)
-                         ->with('users', $users);
+                         ->with('proposals', $proposalsWithInfo);  
                                             
     }
     
     
     //mostra la form per l'invio di una proposta
-    public function showProposalForm($id){
-        $accommodation = $this->_catalogModel->getAccById($id);
+    public function showProposalForm($accId){
+        $accommodation = $this->_proposalModel->getAccById($accId);
        
         return view('InvioProposta')
-                         ->with('accommodation', $accommodation);
-                       
-                        
+                         ->with('accommodation', $accommodation);            
     }
     
     //inserisce i dati della proposta inviata dal locatario
-     public function __insert(Request $request, $id) {
+     public function __insert(Request $request, $accId) {
          
         $this->validate($request, [
-          'testo' => ['required', 'string'],  
+          'testo' => ['required', 'max:200', 'string'],  
         ]);
         
-        $this->_proposalModel->testo= $request->input('testo');
-        $this->_proposalModel->mittente = Auth::id();
-        $this->_proposalModel->alloggio = $id;
-        $this->_proposalModel->stato = 'in valutazione';
-        $this->_proposalModel->data = date('y-m-d');
-        $this->_proposalModel->ora = date('H:i:s');
+        date_default_timezone_set('Europe/Rome');
         
-        $this->_proposalModel->save();
+        $proposal = new Proposal;
+        $proposal->testo = $request->input('testo');
+        $proposal->mittente = Auth::id();
+        $proposal->alloggio = $accId;
+        $proposal->stato = 'in valutazione';
+        $proposal->data = date('y-m-d');
+        $proposal->ora= date('H:i:s');
+        $proposal->save();
 
-        return redirect()->to('catalogo')-> with('success', 'Updated'); 
+        return redirect()->to('catalogo')->withSuccess(['La proposta è stata inviata.']); 
     }
    
     
@@ -93,6 +78,27 @@ class ProposalController extends Controller
         Proposal::find($PropId)->delete();
         
         return redirect()->route('VisualPropInviate');
+    }
+    
+    public function AccettaProposta($PropId){
+        
+        Proposal::where('id', $PropId)->update(['stato' => 'accettata']);
+        
+        $proposal = Proposal::find($PropId);
+        
+        date_default_timezone_set('Europe/Rome');
+        Accommodation::find($proposal->alloggio)->update(['data_locazione' => date('y-m-d')]);
+        
+        //rifiuta in automatico tutte le altre proopste per quell'alloggio
+        Proposal::where('alloggio', $proposal->alloggio)->update(['stato' => 'rifiutata']);
+        
+        return redirect()->route('VisualPropRicevute');
+    }
+    
+    public function RifiutaProposta($PropId){
+        Proposal::where('id', $PropId)->update(['stato' => 'rifiutata']);
+        
+        return redirect()->route('VisualPropRicevute');
     }
      
 }

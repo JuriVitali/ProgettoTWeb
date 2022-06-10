@@ -2,89 +2,68 @@
 
 @section('title', 'Proposte inviate')
 
+@section('scripts')
+<script>
+function ConfirmDelete()
+  {
+  var x = confirm("Sei sicuro di volere cancellare la proposta?");
+  if (x)
+    return true;
+  else{
+      event.preventDefault();
+      return false;
+    }
+  }
+</script>
+@endsection
+
 @section('menu')
 <article>
     <h3 class="heading"> Proposte inviate</h3>
 </article>
 <ul>
-    <li><a href="{{ route('home') }}">Home &#9658</a></li>
+    <li><a href="{{ route('home') }}">Home</a></li>
     <li><a href="#">Proposte inviate</a></li>
 </ul>
 @endsection
 
 @section('content')
 <div class="sectiontitle">
-    <p class="heading underline font-x2">Visualizza le proposte inviate</p>
+    <p class="heading underline font-x2">Proposte inviate</p>
 </div>
 <ul class="nospace group overview btmspace-80">
 
-       
-            
-                 
-    @foreach ($accommodations as $accommodation)             
-        @foreach ($proposals as $proposal)
-    
-    @if ($accommodation->id == $proposal->alloggio)
-    <li class="one first">
-        <section class="group" style="background:#F0F2F5;">
-            {!! Form::open(['action' => ['ProposalController@EliminaProposta', $proposal->id], 'method' => 'POST', 'name' =>'elimina']) !!} 
-             
-            <!-- Porzione delle info dell'alloggio opzionato -->
-            <div class="one_half first">
-                
-                <article style="padding: 20px 10px 0px 20px;">
-                
-                    <h6 class="heading"><b>{{ $accommodation->titolo_annuncio }}</b></h6>
-                    <p class="nospace"><b>{{ $accommodation->canone_affitto }} €/mese</b></p>
-                    <p class="nospace"> Locazione: {{ $accommodation->citta }} ({{ $accommodation->provincia }}), {{ $accommodation->indirizzo }}</p>
-                    <p class="nospace"> Tipologia: {{ $accommodation->tipologia }} </p>
-                    <p class="nospace">Periodo disponibilità: dal {{ $accommodation->inizio_disponibilita }} al {{ $accommodation->fine_disponibilita }}</p>
+@foreach ($proposals as $proposal)
+<li class="one first">
+    <section class="group" style="background:#F0F2F5;">
 
-                    @if ($accommodation->tipologia == 'appartamento')
-                    <p class="nospace">Superficie: {{ $accommodation->superficie }} m^2 </p>
-                    @else
-                    <p class="nospace">Superficie camera: {{ $accommodation->superficie }} m^2 </p>
-                    @endif
-                    
-                    <br>
-                    
-                    <p class="nospace"> messaggio per il locatore: {{ $proposal->testo }} </p>
-                    
-                    <br>
-                    
-                </article>
-                
-                
-            </div>
-            
-            <!--Pulsante elimina-->
-       
-            
-            <!-- 
-            <div class="container-form-btn" align="center">                
-                {{ Form::submit('Elimina Proposta', ['class' => 'form-btn1']) }}
-            </div>
-            -->
-            {{ Form::close() }}
-        </section>
-    </li>
-    <br> 
-    @endif
-        @endforeach
-    @endforeach
-</ul>
+        <!-- Porzione dell'immagine dell'alloggio -->
+        <div class="one_half first">
+            <img src= " {{asset($proposal->foto)}} " style="width:550px; height: 350px;">
+        </div>    
 
+        <!-- Porzione delle info dell'alloggio -->
+        <div class="one_half">
+            <article style="padding: 20px 10px 10px 10px">
 
-            <div class="mamt">
-                
-                <div class="modal-content">
-                    <div>vdsb </div>
+                <h6 class="heading center">Proposta per "{{ $proposal->titolo }}"</h6>
+                <p class="nospace">Inoltrata il: {{ $proposal->proposta->data }}</p>
+                <p class="nospace">Stato: {{ $proposal->proposta->stato }}</p>
+                <br>
+                <p class="nospace" style="overflow:auto; height: 120px;">{{ $proposal->proposta->testo }}</p>
+                <br>
+                <div style="display: flex; flex-direction: row;">
+                <a class="btn-info-acc" href="{{ route('infoalloggio', [$proposal->accId]) }}" >Dettagli alloggio</a>
+                {!!Form::open(['action' => ['ProposalController@EliminaProposta', $proposal->proposta->id], 'method' => 'POST', 'onsubmit' => 'ConfirmDelete()'])!!}
+                    {{Form::submit('Annulla proposta', ['class' => 'btn-prop-d'])}}
+                {!!Form::close()!!}
                 </div>
-            </div>
-
-
-@include('pagination.paginator', ['paginator' => $accommodations])
-
-<br> 
+                
+            </article>
+        </div>
+    </section>
+    <br> <br>
+</li>
+@endforeach
 @endsection
 
