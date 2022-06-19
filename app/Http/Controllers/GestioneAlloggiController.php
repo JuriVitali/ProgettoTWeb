@@ -178,7 +178,7 @@ class GestioneAlloggiController extends Controller
             Session::flash('message', 'Alloggio Inserito Correttamente');
         }*/
         
-        return redirect()->route('visualizzalloggi', ['Id' => $id])->withSuccess(['Alloggio aggiunto con Successo!']);
+        return redirect()->route('visualizzalloggi', ['Id' => $idalloggio])->withSuccess(['Alloggio aggiunto con Successo!']);
     
     }
     

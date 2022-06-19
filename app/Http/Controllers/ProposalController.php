@@ -82,8 +82,6 @@ class ProposalController extends Controller
     
     public function AccettaProposta($PropId){
         
-        Proposal::where('id', $PropId)->update(['stato' => 'accettata']);
-        
         $proposal = Proposal::find($PropId);
         
         date_default_timezone_set('Europe/Rome');
@@ -91,6 +89,8 @@ class ProposalController extends Controller
         
         //rifiuta in automatico tutte le altre proopste per quell'alloggio
         Proposal::where('alloggio', $proposal->alloggio)->update(['stato' => 'rifiutata']);
+        
+        Proposal::where('id', $PropId)->update(['stato' => 'accettata']);
         
         return redirect()->route('VisualPropRicevute');
     }
