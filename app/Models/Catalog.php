@@ -5,15 +5,24 @@ namespace App\Models;
 use App\Models\Resources\Accommodation;
 use App\Models\Resources\Included_service;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 class Catalog {
    
     //Ritorna tutti gli alloggi paginati in pagine da 6
-    public function getAll($limit = 6){
+    public function getAllPag($limit = 6){
         $accommodations = Accommodation::paginate($limit);
         return $accommodations;
     }
+    
+    //Ritorna tutti gli alloggi
+    public function getAll(){
+        $accommodations = Accommodation::all();
+        return $accommodations;
+    }
+    
     
     //Ritorna tutti gli alloggi di un locatore paginati in pagine da 6
     public function getAlloggiLocatore($id, $limit = 6){
@@ -43,18 +52,16 @@ class Catalog {
         
     }
     
-    public function getAccServ(){
-        
-        return Accommodation::with('included_services')->get();   
-    }
     
-    //ritorna gli alloggi all'interno dell'array che gli viene oassato paginati
+    //ritorna gli alloggi all'interno dell'array che gli viene passato paginati
     public function getAccPaginated($accommodations) {
         
         $accIds = [];
         foreach ($accommodations as $accommodation) {
             $accIds = Arr::add($accIds, $accommodation->id, $accommodation->id);
         }
+        
+        Log::info($accIds);
         
         return Accommodation::whereIn('id', $accIds)->paginate(6);
     }

@@ -31,112 +31,55 @@
 
 
 
-<div class="one first">
-    <h6>Ricerca l'alloggio che fa per te</h6>
+<div class="one first" style="padding: 20px; background: #E7E7E7; margin-bottom: 20px;">
+    <h6><center><b>Ricerca l'alloggio che fa per te</b></center></h6>
     <div class="wrap-contact">
-        {{ Form::open(array('route' => 'filtra_alloggi', 'class' => '')) }}
-        
+        {{ Form::open(array('route' => 'filtra_alloggi', 'method' => 'GET', 'class' => 'classic-form')) }}
+
         <!-- Canone di affitto -->
         <div  class="">
-            {{ Form::label('canone_affitto', 'Canone di affitto', ['class' => '']) }}
-            {{ Form::number('canone_affitto_min', '', ['class' => '', 'min' => '0', 'max' => '50000', 'step' => '100', 'placeholder'=> 'Min']) }}
-            {{ Form::number('canone_affitto_max', '', ['class' => '', 'min' => '0', 'max' => '50000', 'step' => '100', 'placeholder'=> 'Max']) }}
+            <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                {{ Form::label('canone_affitto', 'Canone di affitto', ['class' => '']) }} &nbsp
+                {{ Form::number('canone_affitto_min', '', ['class' => '', 'min' => '0', 'max' => '50000', 'step' => '100', 'placeholder'=> 'Min']) }} &nbsp
+                {{ Form::number('canone_affitto_max', '', ['class' => '', 'min' => '0', 'max' => '50000', 'step' => '100', 'placeholder'=> 'Max']) }} &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp
+
+            <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                {{ Form::label('periodo_locazione', 'Periodo di locazione', ['class' => '']) }}
+                {{ Form::date('data_inizio', '', ['class' => '', 'max' => '2030-12-31', 'placeholder'=> 'Da', 'id' => 'data']) }} &nbsp
+                {{ Form::date('data_fine', '', ['class' => '', 'max' => '2030-12-31', 'placeholder'=> 'A', 'id' =>'data']) }}
+            <p>
+            <p>
         </div>
 
-        <!-- Periodo di locazione -->
-        <div  class="">
-            {{ Form::label('periodo_locazione', 'Periodo di locazione', ['class' => '']) }}
-            {{ Form::date('data_inizio', '', ['class' => '', 'max' => '2030-12-31', 'placeholder'=> 'Da', 'id' => 'data']) }}
-            {{ Form::date('data_fine', '', ['class' => '', 'max' => '2030-12-31', 'placeholder'=> 'A', 'id' =>'data']) }}
-        </div>
-        
         <!-- Tipologia -->
         <div  class="">
-            {{ Form::label('tipologia', 'Tipologia', ['class' => '']) }}
-            {{ Form::select('tipologia', ['tutte'=> 'Tutte', 'appartamento' => 'Appartamento', 'posto letto' => 'Posto letto'], 'tutte', ['class' => '']) }}
-        </div>
-        
-        <!-- Dimensione -->
-        <div  class="">
-            {{ Form::label('dimensione', 'Dimensione', ['class' => '']) }}
-            {{ Form::number('dimensione_min', '', ['class' => '', 'min' => '0', 'max' => '5000', 'step' => '10', 'placeholder'=> 'Min']) }}
-            {{ Form::number('dimensione_max', '', ['class' => '', 'min' => '0', 'max' => '5000', 'step' => '10', 'placeholder'=> 'Max']) }}
+            <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                {{ Form::label('tipologia', 'Tipologia', ['class' => '']) }} &nbsp
+                {{ Form::select('tipologia', ['tutte'=> 'Tutte', 'appartamento' => 'Appartamento', 'posto letto' => 'Posto letto'], 'tutte', ['class' => '']) }}   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+            <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                {{ Form::label('dimensione', 'Dimensione', ['class' => '']) }} &nbsp 
+                {{ Form::number('dimensione_min', '', ['class' => '', 'min' => '0', 'max' => '5000', 'step' => '10', 'placeholder'=> 'Min']) }} &nbsp 
+                {{ Form::number('dimensione_max', '', ['class' => '', 'min' => '0', 'max' => '5000', 'step' => '10', 'placeholder'=> 'Max']) }} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+
+            <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                {{ Form::label('posti_letto_totali', 'Posti letto nell\'alloggio', ['class' => '']) }} &nbsp 
+                {{ Form::number('posti_letto_min', '', ['class' => '', 'min' => '0', 'max' => '10', 'step' => '1', 'placeholder'=> 'Min']) }} &nbsp 
+                {{ Form::number('posti_letto_max', '', ['class' => '', 'min' => '0', 'max' => '10', 'step' => '1', 'placeholder'=> 'Max']) }}
+            </p>
+
         </div>
 
-        <!-- Posti letto totali -->
-        <div  class="">
-            {{ Form::label('posti_letto_totali', 'Posti letto nell\'alloggio', ['class' => '']) }}
-            {{ Form::number('posti_letto_min', '', ['class' => '', 'min' => '0', 'max' => '10', 'step' => '1', 'placeholder'=> 'Min']) }}
-            {{ Form::number('posti_letto_max', '', ['class' => '', 'min' => '0', 'max' => '10', 'step' => '1', 'placeholder'=> 'Max']) }}
-        </div>
-    
-        <!-- Servizi -->
-        <div class="">
-            {{ Form::label('servizi', 'Servizi inclusi', ['class' => '']) }}
-            
-            {{ Form::label('fibra_ottica', 'Fibra Ottica', ['class' => '']) }}
-            {{ Form::checkbox('servizi', 1) }}
-            {{ Form::label('posto_auto', 'Posto Auto Riservato', ['class' => '']) }}
-            {{ Form::checkbox('servizi', 2) }}
-            {{ Form::label('lavatrice', 'Lavatrice', ['class' => '']) }}
-            {{ Form::checkbox('servizi', 3) }}
-            {{ Form::label('aria condizionata', 'Aria condizionata', ['class' => '']) }}
-            {{ Form::checkbox('servizi', 4) }}
-            {{ Form::label('allarme', 'Impianto di allarme', ['class' => '']) }}
-            {{ Form::checkbox('servizi', 5) }}
-            {{ Form::label('porta_blindata', 'Porta Blindata', ['class' => '']) }}
-            {{ Form::checkbox('servizi', 6) }}
-        </div>
 
-        <!-- Caratteristiche appartamento -->
-        <div  class="" id="caratt_app">
-            <!-- Cucina -->
-            <div  class="">
-                {{ Form::label('cucina', 'Cucina', ['class' => '']) }}
-                {{ Form::checkbox('cucina', true) }}
-            </div>
-
-            <!-- Locale Ricreativo -->
-            <div  class="">
-                {{ Form::label('locale_ricreativo', 'Locale Ricreativo', ['class' => '']) }}
-                {{ Form::checkbox('locale_ricreativo', true) }}
-            </div>
-        </div>
-        
-        <!-- Caratteristiche posto letto -->
-        <div  class="" id="caratt_letto">
-            <!-- Letti nella camera -->
-            <div  class="">
-                {{ Form::label('letti_camera', 'Tipologia camera', ['class' => '']) }}
-                {{ Form::select('letti_camera', [
-                '0' => 'Qualsiasi',
-                '1' => 'Singola', 
-                '2' => 'Doppia',
-                '3' => 'Tripla', 
-                '4' => 'Quadrupla'
-                ],
-                '0', ['class' => '']) }}
-            </div>
-
-            <!-- Angolo studio -->
-            <div  class="">
-                {{ Form::label('angolo_studio', 'Angolo studio', ['class' => '']) }}
-                {{ Form::checkbox('angolo_studio', true) }}
-            </div>
-        </div>
-        
-        
         <!-- Reset -->
-        <div class="">
-            {{ Form::reset('Azzera', ['class' => '']) }}
-        </div>
-        
-        <!-- Submit -->
-        <div class="">
-            {{ Form::submit('Cerca', ['class' => '']) }}
+        <div class="" align="center">
+            <p style="display: inline-flex;margin-block-start: 0em;align-items: center;">
+                {{ Form::reset('Azzera', ['class' => '']) }}  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+                {{ Form::submit('Cerca', ['class' => '']) }}
+            </p>
         </div>
         {{ Form::close() }}
     </div>
 </div>
-
-

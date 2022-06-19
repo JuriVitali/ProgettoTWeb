@@ -62,7 +62,7 @@ Route::get('/catalogo/infoalloggio{Id}', 'CatalogController@showAccInfo')
         ->name('infoalloggio');
 
 //Filtraggio del catalogo
-Route::post('/catalogo/filtraggio', 'CatalogController@filter')
+Route::get('/catalogo/filtraggio', 'CatalogController@filter')
         ->name('filtra_alloggi');
 
 

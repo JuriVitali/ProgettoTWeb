@@ -2,7 +2,7 @@
 
 @if ($accommodation->tipologia == 'appartamento')
     <p class="nospace">Superficie: &nbsp {{$accommodation->superficie}} m^2</p>
-    <p class="nospace">Posti letto totatli: &nbsp {{$accommodation->posti_tot}}</p>
+    <p class="nospace">Posti letto totali: &nbsp {{$accommodation->posti_tot}}</p>
     <p class="nospace">Camere: &nbsp {{$accommodation->n_camere}}</p>
     
     @if ($accommodation->cucina)

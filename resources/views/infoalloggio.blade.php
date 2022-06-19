@@ -22,7 +22,7 @@
         <li><a href="{{ route('catalogo') }}">Catalogo</a></li>
         <li><a href="#">Info alloggio</a></li>
     </ul>
- @endif
+@endif
 @endsection
 
 @section('content')

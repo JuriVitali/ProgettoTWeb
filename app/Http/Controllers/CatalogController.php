@@ -6,8 +6,9 @@ use \App\Models\Catalog;
 use \App\Models\Faqs;
 use App\Http\Requests\FiltriCatRequest;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Arr;
+
+
 
 class CatalogController extends Controller
 {
@@ -26,7 +27,7 @@ class CatalogController extends Controller
     public function showCatalog(){
         
         //Recupero di tutti gli alloggi
-        $accommodations = $this->_catalogModel->getAll();
+        $accommodations = $this->_catalogModel->getAllPag();
         
         return view('catalogo')
                         ->with('accommodations', $accommodations);
@@ -51,17 +52,17 @@ class CatalogController extends Controller
         
         $accommodations = $this->_catalogModel->getAll();
         
-        
+        //filtro in base alle caratteristiche comuni tra appartamento e posto letto
         $filteredAccommodations = $this->controlCommonFeatures($request, $accommodations);
         
         //filtri appartamento
         if ($request->input('tipologia') == 'appartamento'){
-            $filteredAccommodations = $this->controlApFeatures($request, $accommodations);
+            $filteredAccommodations = $this->controlApFeatures($request, $filteredAccommodations);
         }
         
         //filtri posto letto
         elseif ($request->input('tipologia') == 'posto letto'){
-            $filteredAccommodations = $this->controlBedFeatures($request, $accommodations);
+            $filteredAccommodations = $this->controlBedFeatures($request, $filteredAccommodations);
         }
         
         $filteredPagAccommodations = $this->_catalogModel->getAccPaginated($filteredAccommodations);
@@ -75,56 +76,56 @@ class CatalogController extends Controller
         //Canone affitto min
         if ($request->filled('canone_affitto_min')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->canone_affitto > $request->input('canone_affitto_min'));  })
+                    return ($item->canone_affitto >= $request->input('canone_affitto_min'));  })
             ->values();
         }
         
         //Canone affitto max
         if ($request->filled('canone_affitto_max')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->canone_affitto < $request->input('canone_affitto_max'));  })
+                    return ($item->canone_affitto <= $request->input('canone_affitto_max'));  })
             ->values();
         }
         
         //Data min
         if ($request->filled('data_inizio')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->inizio_disponibilita > $request->input('data_inizio'));  })
+                    return ($item->inizio_disponibilita >= $request->input('data_inizio'));  })
             ->values();
         }
         
         //Data max
         if ($request->filled('data_fine')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->fine_disponibilita < $request->input('data_fine'));  })
+                    return ($item->fine_disponibilita <= $request->input('data_fine'));  })
             ->values();
         }
         
         //Dimensione min 
         if ($request->filled('dimensione_min')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->superficie > $request->input('dimensione_min'));  })
+                    return ($item->superficie >= $request->input('dimensione_min'));  })
             ->values();
         }
         
         //Dimensione max
         if ($request->filled('dimensione_max')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->superficie < $request->input('dimensione_max'));  })
+                    return ($item->superficie <= $request->input('dimensione_max'));  })
             ->values();
         }
         
         //Posti letto totali min
         if ($request->filled('posti_letto_min')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->posti_tot > $request->input('posti_letto_min'));  })
+                    return ($item->posti_tot >= $request->input('posti_letto_min'));  })
             ->values();
         }
         
         //Posti letto totali max
         if ($request->filled('posti_letto_max')) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->posti_tot < $request->input('posti_letto_max'));  })
+                    return ($item->posti_tot <= $request->input('posti_letto_max'));  })
             ->values();
         }
         
@@ -169,24 +170,15 @@ class CatalogController extends Controller
         //Posti letto nella camera
         if ($request->input('letti_camera') != 0) {
             $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($accommodations->letti_stanza == $request->input('letti_camera'));  })
+                    return ($item->letti_stanza == $request->input('letti_camera'));  })
             ->values();
         }
             
         return $accommodations;
     }
     
+   
+        
+        
     
-    
-    public function controlService($request){
-        return Accommodation::with('included_services')->get();
-        
-        if ($request->has('fibra_ottica')) {
-            $accommodations = $accommodations->filter(function  ($item) use ($request) {
-                    return ($item->canone_affitto > $request->input('canone_affitto_min'));  })
-            ->values();
-        }
-        
-        
-    }
 }

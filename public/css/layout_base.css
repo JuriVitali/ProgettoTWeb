@@ -743,6 +743,18 @@ form.classic-form input[type=date], select, textarea {
 	resize: vertical;
 }
 
+form.classic-form input[type="reset"] {
+	background-color: #413b3b;
+	color: #fff;
+	padding: 15px 50px;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
 form.classic-form input[type="submit"] {
 	background-color: #413b3b;
 	color: #fff;
